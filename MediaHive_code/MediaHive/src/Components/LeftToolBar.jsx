@@ -64,7 +64,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
           </li>
 
           {/* Elemento de la barra lateral: Help */}
-          <li className="nav-link py-3 border-bottom">
+          <li className="nav-link py-3 border-bottom mt-auto">
               <span>
               <HelpOutlineIcon className="mr-2" />
               </span>
