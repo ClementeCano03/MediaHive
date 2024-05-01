@@ -1,8 +1,13 @@
 import React from "react";
+import TopNavBar from "./Components/TopNavBar";
+import LeftToolBar from "./Components/LeftToolBar";
 
 function App(){
   return(
-    <h1>Hola mundo</h1>
+    <>
+    <TopNavBar />
+    <LeftToolBar />
+    </>
   )
 }
 

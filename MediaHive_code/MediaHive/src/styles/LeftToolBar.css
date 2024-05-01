@@ -1,0 +1,49 @@
+#barraLateral{
+    background-color: #455559;
+    width: 4.5rem; 
+
+}
+
+.HomeIcon{
+    color: white;
+}
+
+.AudiotrackIcon{
+    color: white;
+}
+
+.MovieIcon{
+    color: white;
+}
+
+.SlideshowIcon{
+    color: white;
+}
+
+.HiveIcon{
+    color: white;
+}
+
+.HelpOutlineIcon{
+    color: white;
+}
+
+span{
+    color: white;
+}
+
+
+li:hover .HomeIcon,
+li:hover .AudiotrackIcon,
+li:hover .MovieIcon,
+li:hover .SlideshowIcon,
+li:hover .HiveIcon,
+li:hover .HelpOutlineIcon,
+li:hover span{
+    color:  black;
+}
+
+.HelpOutlineIcon {
+    margin-top: 0px; /* Ajusta este valor según lo necesites */
+}
+
