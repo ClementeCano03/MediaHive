@@ -1,12 +1,12 @@
 import React from "react";
-import TopNavBar from "./components/TopNavBar";
-import LeftToolBar from "./components/LeftToolBar";
+import TopNavBar from "./Components/TopNavBar";
+import LeftToolBar from "./Components/LeftToolBar";
 
 function App(){
   return(
     <>
       <TopNavBar />
-      
+      <LeftToolBar />
     </>
   )
 }
