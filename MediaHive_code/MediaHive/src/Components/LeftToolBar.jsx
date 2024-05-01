@@ -27,8 +27,8 @@ function LeftToolBar({ cambiarTituloPagina }) {
           
           {/* Elemento de la barra lateral: Home */}
           <li className="nav-link py-3 border-bottom">
-              <HomeIcon className="HomeIcon mr-2" />
-              <span>Home</span>
+              <HomeIcon className="HomeIcon mr-2" /><br/>
+              <span>Inicio</span>
           </li>
 
           {/* Elemento de la barra lateral: Musica */}
@@ -36,7 +36,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
               <span>
               <AudiotrackIcon className="AudiotrackIcon mr-2" />
               </span>
-              <span>Music</span>
+              <span>Música</span>
           </li>
 
           {/* Elemento de la barra lateral: Peliculas */}
@@ -44,13 +44,13 @@ function LeftToolBar({ cambiarTituloPagina }) {
               <span>
               <MovieIcon className="MovieIcon mr-2" />
               </span>
-              <span>Films</span>
+              <span>Películas</span>
           </li>
 
           {/* Elemento de la barra lateral: Series */}
           <li className="nav-link py-3 border-bottom">
               <span>
-              <SlideshowIcon className="SlideshowIcon mr-2" />
+              <SlideshowIcon className="SlideshowIcon mr-2" /><br/>
               </span>
               <span>Series</span>
           </li>
@@ -60,15 +60,15 @@ function LeftToolBar({ cambiarTituloPagina }) {
               <span>
               <HiveIcon className="HiveIcon mr-2" />
               </span>
-              <span>Hive</span>
+              <span>Biblioteca</span>
           </li>
 
           {/* Elemento de la barra lateral: Help */}
           <li className="nav-link py-3 border-bottom mt-auto">
               <span>
-              <HelpOutlineIcon className="mr-2" />
+              <HelpOutlineIcon className="mr-2" /><br/>
               </span>
-              <span>Help</span>
+              <span>Ayuda</span>
           </li>
         </ul>
       </div>
