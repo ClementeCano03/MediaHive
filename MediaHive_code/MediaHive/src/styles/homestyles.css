@@ -45,9 +45,14 @@
     margin-top: 100px;
     width: 10vw;
     height: 50vh;
-    background-color: #5D787D;
+    background-color: #5d787d;
     border-radius: 15px;
     color: white;
     padding:12px;
     border: black 3px;
+}
+
+.button:hover {
+    background-color: #50656a;
+    color: black;
 }
