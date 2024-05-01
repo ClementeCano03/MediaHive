@@ -1,6 +1,12 @@
+#leftnav {
+    flex-grow: 1; /* Hace que el contenedor se expanda para ocupar todo el espacio disponible */
+    height: 100vh; /* Hace que el contenedor ocupe toda la altura de la ventana del navegador */
+}
+
 #barraLateral{
     background-color: #455559;
     width: 4.5rem; 
+    flex-grow: 1;
 
 }
 
