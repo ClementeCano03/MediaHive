@@ -5,8 +5,8 @@ import LeftToolBar from "./Components/LeftToolBar";
 function App(){
   return(
     <>
-    <TopNavBar />
-    <LeftToolBar />
+      <TopNavBar />
+      
     </>
   )
 }
