@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Importa useNavigate en lugar de useHistory
 import { Link } from 'react-router-dom';
 
@@ -19,6 +19,13 @@ function LeftToolBar({ cambiarTituloPagina }) {
     navigate(`/${titulo.toLowerCase()}`); // Utiliza navigate en lugar de history.push
   };*/
 
+  const [seccionSeleccionada, setSeccionSeleccionada] = useState(null);
+
+  const handleClick = (seccion) => {
+    setSeccionSeleccionada(seccion);
+    cambiarTituloPagina(seccion);
+  };
+
   return (
     <>
       <div id="leftnav" className="d-flex flex-column flex-grow-1">
@@ -26,29 +33,33 @@ function LeftToolBar({ cambiarTituloPagina }) {
         <ul id="barraLateral" className="nav nav-pills nav-flush flex-column mb-auto text-center">
           
           {/* Elemento de la barra lateral: Home */}
-          <li className="nav-link py-3 border-bottom">
+          {/*Cuando el usuario clica en "Home", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
+          <li className={`nav-link py-3 border-bottom ${seccionSeleccionada === 'Inicio' ? 'active' : ''}`} onClick={() => handleClick("Inicio")}>
               <HomeIcon className="HomeIcon mr-2" />
-              <span>Home</span>
+              <span>Inicio</span>
           </li>
 
           {/* Elemento de la barra lateral: Musica */}
-          <li className="nav-link py-3 border-bottom">
+          {/*Cuando el usuario clica en "Musica", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
+          <li className={`nav-link py-3 border-bottom ${seccionSeleccionada === 'Música' ? 'active' : ''}`} onClick={() => handleClick("Música")}>
               <span>
               <AudiotrackIcon className="AudiotrackIcon mr-2" />
               </span>
-              <span>Music</span>
+              <span>Música</span>
           </li>
 
           {/* Elemento de la barra lateral: Peliculas */}
-          <li className="nav-link py-3 border-bottom">
+          {/*Cuando el usuario clica en "Peliculas", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
+          <li className={`nav-link py-3 border-bottom ${seccionSeleccionada === 'Films' ? 'active' : ''}`} onClick={() => handleClick('Films')}>
               <span>
               <MovieIcon className="MovieIcon mr-2" />
               </span>
-              <span>Films</span>
+              <span>Películas</span>
           </li>
 
           {/* Elemento de la barra lateral: Series */}
-          <li className="nav-link py-3 border-bottom">
+          {/*Cuando el usuario clica en "Series", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
+          <li className={`nav-link py-3 border-bottom ${seccionSeleccionada === 'Series' ? 'active' : ''}`} onClick={() => handleClick('Series')}>
               <span>
               <SlideshowIcon className="SlideshowIcon mr-2" />
               </span>
@@ -56,19 +67,21 @@ function LeftToolBar({ cambiarTituloPagina }) {
           </li>
 
           {/* Elemento de la barra lateral: Biblioteca */}
-          <li className="nav-link py-3 border-bottom">
+          {/*Cuando el usuario clica en "Biblioteca", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
+          <li className={`nav-link py-3 border-bottom ${seccionSeleccionada === 'Hive' ? 'active' : ''}`} onClick={() => handleClick('Hive')}>
               <span>
               <HiveIcon className="HiveIcon mr-2" />
               </span>
-              <span>Hive</span>
+              <span><br/>Hive</span>
           </li>
 
           {/* Elemento de la barra lateral: Help */}
-          <li className="nav-link py-3 border-bottom mt-auto">
+          {/*Cuando el usuario clica en "Help", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
+          <li className={`nav-link py-3 border-bottom mt-auto ${seccionSeleccionada === 'Help' ? 'active' : ''}`} onClick={() => handleClick('Help')}>
               <span>
-              <HelpOutlineIcon className="mr-2" />
+              <HelpOutlineIcon className="HelpOutIcon mr-2" />
               </span>
-              <span>Help</span>
+              <span>Ayuda</span>
           </li>
         </ul>
       </div>
