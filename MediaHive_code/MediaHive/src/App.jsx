@@ -16,6 +16,7 @@ function App(){
     <>
       <Routes>
         <Route path='/' element={<Inicio/>}/>
+        <Route path='/inicio' element={<Inicio/>}/>
         <Route path='/musica' element={<Musica/>}/>
         <Route path='/peliculas' element={<Peliculas/>}/>
         <Route path='/series' element={<Series/>}/>
