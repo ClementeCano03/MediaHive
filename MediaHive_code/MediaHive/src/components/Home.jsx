@@ -1,9 +1,8 @@
 import React from "react";
-import '../styles/homestyles.css';
+import '../Styles/Homestyles.css';
 
 function Home() {
 
-    cambiarTituloPagina("Home");
     const handleClick = (titulo) => {
         navigate("/CrearCuenta.jsx"); // Utiliza navigate en lugar de history.push
     };

@@ -9,7 +9,7 @@ import SlideshowIcon from "@mui/icons-material/Slideshow";
 import HiveIcon from "@mui/icons-material/Hive";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
-import "../styles/LeftToolBar.css";
+import "../Styles/LeftToolBar.css";
 
 function LeftToolBar({ cambiarTituloPagina }) {
   /*const navigate = useNavigate(); // Usa useNavigate en lugar de useHistory
