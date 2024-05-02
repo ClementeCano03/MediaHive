@@ -56,3 +56,12 @@
     background-color: #50656a;
     color: black;
 }
+
+.contenido {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Asegúrate de que el contenido centrado esté detrás de las barras */
+
+}

@@ -1,13 +1,20 @@
 import React from "react";
+import LeftToolBar from "./LeftToolBar";
+import TopNavBar from "./TopNavBar";
 
-function Inicio({ cambiarTituloPagina }) {
-  cambiarTituloPagina("Inicio"); // Cambia el título de la página al cargar este componente
+function Inicio() {
 
   return (
-    <div>
+    <>
+    <TopNavBar/>
+    <div className="contenido">
       <h1>Página de Inicio</h1>
       <p>Bienvenido a la página de inicio.</p>
     </div>
+    <LeftToolBar/>
+    
+    </>
+    
   );
 }
 
