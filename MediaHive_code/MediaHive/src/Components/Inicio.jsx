@@ -1,7 +1,6 @@
 import React from "react";
 
-function Inicio({ cambiarTituloPagina }) {
-  cambiarTituloPagina("Inicio"); // Cambia el título de la página al cargar este componente
+function Inicio() {
 
   return (
     <div>
