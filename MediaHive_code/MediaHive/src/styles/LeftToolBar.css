@@ -5,12 +5,14 @@
 
 #barraLateral{
     background-color: #283033;
-    width: 5.2rem; 
+    width: 5.5rem; 
     flex-grow: 1;
 }
 
 #barraLateral .nav-link.active {
     background-color: #5DADE2; /* Color de fondo cuando está activo */
+    border-bottom: black;
+    border-color: black;
     color: black; /* Color de texto cuando está activo */
     padding: 0.5rem 1rem;
 }
@@ -43,7 +45,6 @@ span{
     color: white;
 }
 
-
 li:hover .HomeIcon,
 li:hover .AudiotrackIcon,
 li:hover .MovieIcon,
@@ -57,5 +58,19 @@ li:hover span{
 
 .HelpOutlineIcon {
     margin-top: 0px; /* Ajusta este valor según lo necesites */
+}
+
+#seccionInicio,
+#seccionMusica,
+#seccionPeliculas,
+#seccionSeries,
+#seccionBiblioteca,
+#seccionAyuda{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
 }
 

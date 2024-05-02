@@ -23,7 +23,6 @@ function LeftToolBar({ cambiarTituloPagina }) {
 
   const handleClick = (seccion) => {
     setSeccionSeleccionada(seccion);
-    cambiarTituloPagina(seccion);
   };
 
   return (
@@ -34,54 +33,68 @@ function LeftToolBar({ cambiarTituloPagina }) {
           
           {/* Elemento de la barra lateral: Home */}
           {/*Cuando el usuario clica en "Home", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
-          <li className={`nav-link py-3 border-bottom ${seccionSeleccionada === 'Inicio' ? 'active' : ''}`} onClick={() => handleClick("Inicio")}>
-              <HomeIcon className="HomeIcon mr-2" />
-              <span>Inicio</span>
+          <li className={`nav-link py-3 ${seccionSeleccionada === 'Inicio' ? 'active' : ''}`} onClick={() => handleClick("Inicio")}>
+              <button id="seccionInicio">
+                <span>
+                  <HomeIcon className="HomeIcon mr-2" />
+                </span>
+                <span>Inicio</span>
+              </button>
           </li>
 
           {/* Elemento de la barra lateral: Musica */}
           {/*Cuando el usuario clica en "Musica", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
-          <li className={`nav-link py-3 border-bottom ${seccionSeleccionada === 'Música' ? 'active' : ''}`} onClick={() => handleClick("Música")}>
-              <span>
-              <AudiotrackIcon className="AudiotrackIcon mr-2" />
-              </span>
-              <span>Música</span>
+          <li className={`nav-link py-3 ${seccionSeleccionada === 'Música' ? 'active' : ''}`} onClick={() => handleClick("Música")}>
+              <button id="seccionMusica">
+                <span>
+                  <AudiotrackIcon className="AudiotrackIcon mr-2" />
+                </span>
+                <span>Música</span>  
+              </button>              
           </li>
 
           {/* Elemento de la barra lateral: Peliculas */}
           {/*Cuando el usuario clica en "Peliculas", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
-          <li className={`nav-link py-3 border-bottom ${seccionSeleccionada === 'Films' ? 'active' : ''}`} onClick={() => handleClick('Films')}>
-              <span>
-              <MovieIcon className="MovieIcon mr-2" />
-              </span>
-              <span>Películas</span>
+          <li className={`nav-link py-3 ${seccionSeleccionada === 'Films' ? 'active' : ''}`} onClick={() => handleClick('Films')}>
+              <button id="seccionPeliculas">
+                <span>
+                  <MovieIcon className="MovieIcon mr-2" />
+                </span>
+                <span>Películas</span>
+              </button>
           </li>
 
           {/* Elemento de la barra lateral: Series */}
           {/*Cuando el usuario clica en "Series", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
-          <li className={`nav-link py-3 border-bottom ${seccionSeleccionada === 'Series' ? 'active' : ''}`} onClick={() => handleClick('Series')}>
-              <span>
-              <SlideshowIcon className="SlideshowIcon mr-2" />
-              </span>
-              <span>Series</span>
+          <li className={`nav-link py-3 ${seccionSeleccionada === 'Series' ? 'active' : ''}`} onClick={() => handleClick('Series')}>
+              <button id="seccionSeries">
+                <span>
+                  <SlideshowIcon className="SlideshowIcon mr-2" />
+                </span>
+                <span>Series</span>
+              </button>
           </li>
 
           {/* Elemento de la barra lateral: Biblioteca */}
           {/*Cuando el usuario clica en "Biblioteca", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
-          <li className={`nav-link py-3 border-bottom ${seccionSeleccionada === 'Hive' ? 'active' : ''}`} onClick={() => handleClick('Hive')}>
-              <span>
-              <HiveIcon className="HiveIcon mr-2" />
-              </span>
-              <span><br/>Hive</span>
+          <li className={`nav-link py-3 ${seccionSeleccionada === 'Hive' ? 'active' : ''}`} onClick={() => handleClick('Hive')}>
+              <button id="seccionBiblioteca">
+                <span>
+                  <HiveIcon className="HiveIcon mr-2" />
+                </span>
+                <span><br/>Hive</span>
+              </button>
           </li>
 
           {/* Elemento de la barra lateral: Help */}
           {/*Cuando el usuario clica en "Help", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
-          <li className={`nav-link py-3 border-bottom mt-auto ${seccionSeleccionada === 'Help' ? 'active' : ''}`} onClick={() => handleClick('Help')}>
+          <li className={`nav-link py-3 mt-auto ${seccionSeleccionada === 'Help' ? 'active' : ''}`} onClick={() => handleClick('Help')}>
+            <button id="seccionAyuda">
               <span>
-              <HelpOutlineIcon className="HelpOutIcon mr-2" />
+                <HelpOutlineIcon className="HelpOutIcon mr-2" />
               </span>
               <span>Ayuda</span>
+            </button>
           </li>
         </ul>
       </div>
