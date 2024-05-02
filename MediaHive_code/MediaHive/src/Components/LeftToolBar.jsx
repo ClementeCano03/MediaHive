@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Importa useNavigate en lugar de useHistory
-import { Link } from 'react-router-dom';
 
 import HomeIcon from "@mui/icons-material/Home";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
@@ -26,6 +25,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
   };
 
   return (
+    
     <>
       <div id="leftnav" className="d-flex flex-column flex-grow-1">
         {/* Barra lateral */}
