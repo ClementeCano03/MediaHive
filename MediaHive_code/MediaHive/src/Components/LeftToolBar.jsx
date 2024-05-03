@@ -10,7 +10,7 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 import "../Styles/LeftToolBar.css";
 
-function LeftToolBar({ cambiarTituloPagina }) {
+function LeftToolBar() {
   /*const navigate = useNavigate(); // Usa useNavigate en lugar de useHistory
 
   const handleClick = (titulo) => {
@@ -43,7 +43,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
             </li>
           </Link>
           {/* Elemento de la barra lateral: Musica */}
-          <Link to="/musica">
+          <Link to="/Musica">
             {/*Cuando el usuario clica en "Musica", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
             <li className={`nav-link py-3 ${seccionSeleccionada === 'Música' ? 'active' : ''}`} onClick={() => handleClick("Música")}>
                 <button id="seccionMusica">
@@ -56,7 +56,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
           </Link>
           
           {/* Elemento de la barra lateral: Peliculas */}
-          <Link to="/peliculas">
+          <Link to="/Peliculas">
             {/*Cuando el usuario clica en "Peliculas", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
             <li className={`nav-link py-3 ${seccionSeleccionada === 'Films' ? 'active' : ''}`} onClick={() => handleClick('Films')}>
                 <button id="seccionPeliculas">
@@ -69,7 +69,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
           </Link>
           
           {/* Elemento de la barra lateral: Series */}
-          <Link to="/series">
+          <Link to="/Series">
             {/*Cuando el usuario clica en "Series", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
             <li className={`nav-link py-3 ${seccionSeleccionada === 'Series' ? 'active' : ''}`} onClick={() => handleClick('Series')}>
                 <button id="seccionSeries">
@@ -82,7 +82,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
           </Link>
           
           {/* Elemento de la barra lateral: Biblioteca */}
-          <Link to="/bilioteca">
+          <Link to="/Bilioteca">
             {/*Cuando el usuario clica en "Biblioteca", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
             <li className={`nav-link py-3 ${seccionSeleccionada === 'Hive' ? 'active' : ''}`} onClick={() => handleClick('Hive')}>
                 <button id="seccionBiblioteca">
@@ -95,7 +95,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
           </Link>
           
           {/* Elemento de la barra lateral: Help */}
-          <Link to="/ayuda">
+          <Link to="/Ayuda">
             {/*Cuando el usuario clica en "Help", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
             <li className={`nav-link py-3 mt-auto ${seccionSeleccionada === 'Help' ? 'active' : ''}`} onClick={() => handleClick('Help')}>
               <button id="seccionAyuda">
