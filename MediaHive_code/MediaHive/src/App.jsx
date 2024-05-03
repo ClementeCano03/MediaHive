@@ -4,7 +4,7 @@ import Inicio from "./Components/Inicio";
 import Musica from "./Components/Musica";
 import Peliculas from "./Components/Peliculas";
 import Series from "./Components/Series";
-import CrearCuenta from "./Components/CrearCuenta";
+import CrearCuenta from "./components/CrearCuenta";
 
 function App(){
   return(
