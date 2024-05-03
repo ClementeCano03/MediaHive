@@ -1,14 +1,20 @@
 import React from "react";
+import TopNavBar from "./TopNavBar";
+import LeftToolBar from "./LeftToolBar";
+import Home from "./Home";
+import '../Styles/Inicio.css';
 
-function Inicio({ cambiarTituloPagina }) {
-  cambiarTituloPagina("Inicio"); // Cambia el título de la página al cargar este componente
+function Inicio() {
 
-  return (
-    <div>
-      <h1>Página de Inicio</h1>
-      <p>Bienvenido a la página de inicio.</p>
+  return(
+    <div className="app-container">
+      <TopNavBar />
+      <div className="content">
+        <LeftToolBar />
+        <Home />
+      </div>
     </div>
-  );
+  )
 }
 
 export default Inicio;

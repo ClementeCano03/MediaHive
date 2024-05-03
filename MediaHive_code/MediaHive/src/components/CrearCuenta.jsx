@@ -1,13 +1,30 @@
 import React from "react";
+import TopNavBar from "./TopNavBar";
+import LeftToolBar from "./LeftToolBar";
+import '../Styles/CrearCuenta.css';
 
-function CrearCuenta({ cambiarTituloPagina }) {
-  cambiarTituloPagina("CrearCuenta"); // Cambia el título de la página al cargar este componente
+function CrearCuenta() {
 
-  return (
-    <div>
-      <h1>Crear Cuenta</h1>
+  const divStyle = {
+    backgroundColor: '#E3E9EA',
+    backgroundImage: 'none',
+  };
+
+  return(
+    <div className="app-container" style={divStyle}>
+      <TopNavBar />
+      <div className="content">
+        <LeftToolBar />
+        <div className="container">
+          <div className="crear-cuenta-container">
+            <img src="../Images/MediaHive_icon.png"/>
+          </div>
+
+        </div>
+        
+      </div>
     </div>
-  );
+  )
 }
 
 export default CrearCuenta;

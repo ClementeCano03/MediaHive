@@ -1,15 +1,13 @@
 import React from "react";
 import '../Styles/Homestyles.css';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
-
-    const handleClick = (titulo) => {
-        navigate("/CrearCuenta.jsx"); // Utiliza navigate en lugar de history.push
-    };
+    const navigate = useNavigate();
 
     return (
         <>
-        <div class="body">
+        <div>
             <link href='https://fonts.googleapis.com/css?family=Livvic' rel='stylesheet'></link> 
             <div class="cuadro-texto">
                 <h2>¡Bienvenidos a nuestra comunidad sobre multimedia!</h2>
@@ -19,7 +17,7 @@ function Home() {
                     Debate en los diversos foros el últmo capítulo de tu serie en emisión. <br></br>
                 </p>
             </div>
-            <buttom class="boton-crear-cuenta" onClick={() => handleClick("CrearCuenta")}>CREAR CUENTA</buttom>
+            <button className="boton-crear-cuenta" onClick={() => navigate('./CrearCuenta')}>CREAR CUENTA</button>
         </div>
         </>
     );
