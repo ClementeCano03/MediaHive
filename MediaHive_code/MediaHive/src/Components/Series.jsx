@@ -1,7 +1,7 @@
 import React from "react";
 
-function Series({ cambiarTituloPagina }) {
-  cambiarTituloPagina("Series"); // Cambia el título de la página al cargar este componente
+function Series({/* cambiarTituloPagina */}) {
+  //cambiarTituloPagina("Series"); // Cambia el título de la página al cargar este componente
 
   return (
     <div>

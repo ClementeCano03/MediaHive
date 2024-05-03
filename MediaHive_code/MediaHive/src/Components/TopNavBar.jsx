@@ -1,8 +1,7 @@
 import React from "react";
 import imagen from "../Images/MediaHive_icon.png";
-import { Link } from 'react-router-dom';
 
-import './TopNavBar.css';
+import '../styles/TopNavBar.css';
 
 function TopNavBar(){
     return(

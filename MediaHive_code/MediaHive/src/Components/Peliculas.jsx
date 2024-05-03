@@ -1,7 +1,7 @@
 import React from "react";
 
-function Peliculas({ cambiarTituloPagina }) {
-  cambiarTituloPagina("Películas"); // Cambia el título de la página al cargar este componente
+function Peliculas(/*{ cambiarTituloPagina }*/) {
+  //cambiarTituloPagina("Películas"); // Cambia el título de la página al cargar este componente
 
   return (
     <div>

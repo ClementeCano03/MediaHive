@@ -26,50 +26,62 @@ function LeftToolBar({ cambiarTituloPagina }) {
         <ul id="barraLateral" className="nav nav-pills nav-flush flex-column mb-auto text-center">
           
           {/* Elemento de la barra lateral: Home */}
-          <li className="nav-link py-3 border-bottom">
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <li className="nav-link py-3 border-bottom">
               <HomeIcon className="HomeIcon mr-2" /><br/>
               <span>Inicio</span>
-          </li>
+            </li>
+          </Link>
 
           {/* Elemento de la barra lateral: Musica */}
-          <li className="nav-link py-3 border-bottom">
-              <span>
-              <AudiotrackIcon className="AudiotrackIcon mr-2" />
-              </span>
-              <span>Música</span>
-          </li>
+          <Link to="/musica" style={{ textDecoration: 'none' }}>
+            <li className="nav-link py-3 border-bottom">
+                <span>
+                <AudiotrackIcon className="AudiotrackIcon mr-2" />
+                </span>
+                <span>Música</span>
+            </li>
+          </Link>
 
           {/* Elemento de la barra lateral: Peliculas */}
-          <li className="nav-link py-3 border-bottom">
-              <span>
-              <MovieIcon className="MovieIcon mr-2" />
-              </span>
-              <span>Películas</span>
-          </li>
+          <Link to="/peliculas" style={{ textDecoration: 'none' }}>
+            <li className="nav-link py-3 border-bottom">
+                <span>
+                <MovieIcon className="MovieIcon mr-2" />
+                </span>
+                <span>Películas</span>
+            </li>
+          </Link>
 
           {/* Elemento de la barra lateral: Series */}
-          <li className="nav-link py-3 border-bottom">
-              <span>
-              <SlideshowIcon className="SlideshowIcon mr-2" /><br/>
-              </span>
-              <span>Series</span>
-          </li>
+          <Link to="/series" style={{ textDecoration: 'none' }}>
+            <li className="nav-link py-3 border-bottom">
+                <span>
+                <SlideshowIcon className="SlideshowIcon mr-2" /><br/>
+                </span>
+                <span>Series</span>
+            </li>
+          </Link>
 
           {/* Elemento de la barra lateral: Biblioteca */}
-          <li className="nav-link py-3 border-bottom">
-              <span>
-              <HiveIcon className="HiveIcon mr-2" />
-              </span>
-              <span>Biblioteca</span>
-          </li>
+          <Link to="/biblioteca" style={{ textDecoration: 'none' }}>
+            <li className="nav-link py-3 border-bottom">
+                <span>
+                <HiveIcon className="HiveIcon mr-2" />
+                </span>
+                <span>Biblioteca</span>
+            </li>
+          </Link>
 
           {/* Elemento de la barra lateral: Help */}
+          <Link to="/ayuda" style={{ textDecoration: 'none' }}>
           <li className="nav-link py-3 border-bottom mt-auto">
               <span>
               <HelpOutlineIcon className="mr-2" /><br/>
               </span>
               <span>Ayuda</span>
           </li>
+          </Link>
         </ul>
       </div>
     </>
