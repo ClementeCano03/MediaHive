@@ -1,9 +1,11 @@
 import React from "react";
 import TopNavBar from "./TopNavBar";
 import LeftToolBar from "./LeftToolBar";
+import { useNavigate } from "react-router-dom";
 import '../Styles/Inicio.css';
 
 function Inicio() {
+  const navigate = useNavigate();
 
   return(
     <div className="app-container">
