@@ -14,7 +14,7 @@ function CrearCuenta() {
     <div className="app-container" style={divStyle}>
       <TopNavBar />
       <div className="content">
-        <LeftToolBar />
+        <LeftToolBar /> 
         <div className="container">
           <div className="crear-cuenta-container">
             <img src="../Images/MediaHive_icon.png"/>

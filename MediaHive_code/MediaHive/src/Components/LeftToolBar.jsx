@@ -10,7 +10,7 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 import "../Styles/LeftToolBar.css";
 
-function LeftToolBar() {
+function LeftToolBar({ cambiarTituloPagina }) {
   /*const navigate = useNavigate(); // Usa useNavigate en lugar de useHistory
 
   const handleClick = (titulo) => {
@@ -31,7 +31,7 @@ function LeftToolBar() {
         {/* Barra lateral */}
         <ul id="barraLateral" className="nav nav-pills nav-flush flex-column mb-auto text-center">
           {/* Elemento de la barra lateral: Home */}
-          <Link to="/Inicio">
+          <Link to="/inicio">
             {/*Cuando el usuario clica en "Home", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
             <li className={`nav-link py-3 ${seccionSeleccionada === 'Inicio' ? 'active' : ''}`} onClick={() => handleClick("Inicio")}>
                 <button id="seccionInicio">
