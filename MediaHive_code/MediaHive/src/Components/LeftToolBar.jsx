@@ -27,7 +27,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
   return (
     
     <>
-      <div id="leftnav" className="d-flex flex-column flex-grow-1">
+      <div id="leftnav" className="d-flex flex-column ">
         {/* Barra lateral */}
         <ul id="barraLateral" className="nav nav-pills nav-flush flex-column mb-auto text-center">
           {/* Elemento de la barra lateral: Home */}

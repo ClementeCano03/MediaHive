@@ -1,15 +1,23 @@
 import React, { useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Carousel from 'react-bootstrap/Carousel';
 
-import LeftToolBar from "./LeftToolBar";
-import TopNavBar from "./TopNavBar";
+import "../styles/Musica.css"
 
-//import "../styles/Musica.css"
-
-function Musica(/*{ cambiarTituloPagina }*/) {
-  //cambiarTituloPagina("Música"); // Cambia el título de la página al cargar este componente
+function Musica() {
 
   const [cancion, setCancion] = useState('')
   const [canciones, setCanciones] = useState([])
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
 
   function handleSearch(e) {
     e.preventDefault();
@@ -38,37 +46,85 @@ function Musica(/*{ cambiarTituloPagina }*/) {
       let data = await fetch(url, options);
       let res = await data.json();
       setCanciones(res.tracks.items);
+      console.log(res);
 
     } catch (error) {
       console.log(`ERROR: ${error}`);
     }
   };
 
+
   return (
     <>
       {/*Barra de buscador*/}
-      <form onSubmit={handleSearch}>
-        <input type="text" value={cancion} onChange={e => setCancion(e.target.value)}/>
-        <button type="submit">
-          Buscar
-        </button>
+      <form onSubmit={handleSearch} className="formulario"style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <input id="inputBusqueda" type="text" value={cancion} onChange={e => setCancion(e.target.value)} style={{
+          padding: '10px',
+          borderRadius: '5px',
+          border: '2px solid #283033',
+          marginRight: '10px',
+          fontSize: '16px',
+          outline: 'none',
+          width: '500px',
+          height: '45px'
+        }}
+        placeholder="Buscar canción..."
+        />
+        <button id="botonBusqueda" type="submit" style={{
+            padding: '10px 20px',
+            borderRadius: '6px',
+            border: 'none',
+            backgroundColor: '#283033',
+            color: 'white',
+            fontSize: '16px',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s',
+            height: '45px'
+          }}
+        >Buscar</button>
       </form>
 
-      {canciones.map((cancion, index) => (
-        
-          <div key={index}>
-            <img src={cancion.data.albumOfTrack.coverArt.sources[0].url}/>
-            <h2 style={{color:"black"}}>
-              {cancion.data.name}
-            </h2>
-            <a href={cancion.data.uri}>
-              <button>
-                Play Song
-              </button>
-            </a>
-          </div>
-        
-      ))}
+      {/* Resultados */}
+      {canciones.length > 0 && (
+        <Carousel 
+          className="carousel" 
+          interval={null}
+        >
+          {canciones.map((cancion, index) => (
+            <Carousel.Item key={index}>
+              <div className="carousel-content">
+                {/* <img src={cancion.data.albumOfTrack.coverArt.sources[0].url} alt="Portada de la canción" />
+                <h4>{cancion.data.name}</h4> */}
+                <iframe
+                  src={`https://open.spotify.com/embed/track/${cancion.data.id}?utm_source=generator`}
+                  width="100%"
+                  height="300"
+                  frameBorder="0"
+                  allowFullScreen=""
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                ></iframe>
+                <a href={cancion.data.uri}>
+                  <button id="botonSpotify" style={{
+                    padding: '10px 20px',
+                    borderRadius: '5px',
+                    border: 'none',
+                    backgroundColor: '#283033',
+                    color: 'white',
+                    fontSize: '16px',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.3s',
+                  }}>
+                    Abrir canción en Spotify
+                  </button>
+                </a>
+              </div>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      )}
+      {canciones.length === 0 && <p>No se encontraron canciones.</p>}
+      
 
     </>
     

@@ -1,3 +1,7 @@
+.page-background {
+    background-color: #5D787D; /* Cambia el color de fondo según tu preferencia */
+}
+
 .content {
     position: fixed;
     top: 50%;
@@ -5,3 +9,89 @@
     transform: translate(-50%, -50%);
     z-index: 1; /* Asegúrate de que el contenido centrado esté detrás de las barras */
 }
+
+#inputBusqueda  {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-right: 10px; /* Espacio entre los elementos */
+}
+
+#botonBusqueda {
+    position: absolute;
+    top: 15%;
+    left: 67%;
+    transform: translate(-50%, -50%);
+    margin-left: 10px; /* Espacio entre los elementos */
+}
+
+#imgPortada {
+    position: relative; /* Establece la posición relativa */
+    top: 120px; /* Mueve la imagen 20 píxeles desde la parte superior */
+    left: 50px; /* Mueve la imagen 50 píxeles desde la izquierda */
+
+    width: 100px; /* Ancho de la imagen */
+    height: 100px; /* Altura de la imagen */
+    border: 2px solid black; /* Borde sólido de 2 píxeles de ancho y color gris */
+}
+
+#nombreCancion {
+    position: relative; /* Establece la posición relativa */
+    top: 50px;
+    left: 170px; /* Mueve la imagen 50 píxeles desde la izquierda */
+}
+
+#botonSpotify {
+    position: relative; /* Establece la posición relativa */
+    top: -50px; /* Ajusta la distancia vertical hacia abajo según sea necesario */
+
+
+}
+.carousel {
+    position: relative; /* Establece la posición relativa */
+    top: 200px;
+    max-width: 800px; /* Ajusta el tamaño máximo del carrusel según sea necesario */
+    margin: auto; /* Centra el carrusel horizontalmente */
+}
+.carousel-content {
+    text-align: center; /* Centra el contenido dentro del carrusel */
+    padding: 20px; /* Añade espacio alrededor del contenido */
+}
+
+.carousel-content img {
+    max-width: 100%; /* Ajusta el tamaño máximo de la imagen al ancho del contenedor */
+    height: auto; /* Ajusta automáticamente la altura según el ancho */
+}
+
+.carousel-control-prev {
+    position: absolute;
+    top: 35%;
+    left: -10%;
+    transform: translateY(-50%);
+    width: 50px; /* Ancho de las flechas */
+    height: 50px; /* Alto de las flechas */
+    background-color: rgba(0, 0, 0, 0.5); /* Color de fondo de las flechas */
+    border-radius: 50%; /* Borde redondeado */
+    color: white; /* Color del icono de flecha */
+    font-size: 24px; /* Tamaño del icono de flecha */
+    cursor: pointer;
+    margin-right: 20px; /* Espacio entre las flechas */
+}
+
+.carousel-control-next {
+    position: absolute;
+    top: 35%;
+    right: -10%;
+    transform: translateY(-50%);
+    width: 50px; /* Ancho de las flechas */
+    height: 50px; /* Alto de las flechas */
+    background-color: rgba(0, 0, 0, 0.5); /* Color de fondo de las flechas */
+    border-radius: 50%; /* Borde redondeado */
+    color: white; /* Color del icono de flecha */
+    font-size: 24px; /* Tamaño del icono de flecha */
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+
