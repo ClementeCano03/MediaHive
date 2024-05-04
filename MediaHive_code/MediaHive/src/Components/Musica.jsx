@@ -49,7 +49,7 @@ function Musica(/*{ cambiarTituloPagina }*/) {
   return (
     <>
       {/*Barra de buscador*/}
-      <form onSubmit={handleSearch} className="formulario"style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <form onSubmit={handleSearch} className="formulario" style={{display:'flex', alignItems: 'center', justifyContent: 'center' }}>
         <input type="text" value={cancion} onChange={e => setCancion(e.target.value)} style={{
           padding: '10px',
           borderRadius: '5px',
@@ -75,16 +75,11 @@ function Musica(/*{ cambiarTituloPagina }*/) {
 
       {/*Resultados*/}
       {canciones.map((cancion, index) => (
-          <div key={index}>
-            <img src={cancion.data.albumOfTrack.coverArt.sources[0].url}/>
+          <div className="container" key={index}>
+            <img width="100px" height="100px" src={cancion.data.albumOfTrack.coverArt.sources[0].url}/>
             <h2 style={{color:"black"}}>
               {cancion.data.name}
             </h2>
-            <a href={cancion.data.uri}>
-              <button>
-                Abrir canción en spotify
-              </button>
-            </a>
             <iframe
               src={`https://open.spotify.com/embed/track/${cancion.data.id}?utm_source=generator`}
               width="30%"
@@ -93,7 +88,12 @@ function Musica(/*{ cambiarTituloPagina }*/) {
               allowFullScreen=""
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
-            ></iframe>
+            ></iframe><br/>
+            <a href={cancion.data.uri}>
+              <button>
+                Abrir canción en spotify
+              </button>
+            </a>
           </div>
       ))}
 

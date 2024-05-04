@@ -10,6 +10,8 @@ import Peliculas from "./Components/Peliculas";
 import Series from "./Components/Series";
 import Biblioteca from "./Components/Biblioteca";
 
+import "./styles/App.css"
+
 function App(){
   return(
     <>
@@ -19,8 +21,8 @@ function App(){
             <TopNavBar/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
-              <div style={{ flex: 1}}>
-              <Inicio/>
+              <div className="contenido">
+                <Inicio />
               </div>
             </div>
           </>
@@ -30,7 +32,7 @@ function App(){
             <TopNavBar/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
-                  <div style={{ flex: 1}}>
+                  <div className="contenido">
                     <Musica />
                   </div>
               </div>
@@ -41,7 +43,7 @@ function App(){
             <TopNavBar/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
-                  <div style={{ flex: 1}}>
+                  <div className="contenido">
                     <Peliculas />
                   </div>
               </div>
@@ -52,7 +54,7 @@ function App(){
             <TopNavBar/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
-                  <div style={{ flex: 1}}>
+                  <div className="contenido">
                     <Series />
                   </div>
               </div>
@@ -63,7 +65,7 @@ function App(){
             <TopNavBar/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
-                  <div style={{ flex: 1}}>
+                  <div className="contenido">
                     <Biblioteca />
                   </div>
               </div>
