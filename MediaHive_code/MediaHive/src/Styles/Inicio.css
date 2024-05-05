@@ -1,13 +1,13 @@
 .app-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-  }
-  
-.content {
   display: flex;
-  flex-grow: 1;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.content {
+display: flex;
+flex-grow: 1;
 }
 
 body {
@@ -45,28 +45,22 @@ body {
 }
 
 .cuadro-texto h2 {
-  font-size: 2vw;
-  font-weight: bold;
+font-size: 2vw;
+font-weight: bold;
 }
 
 .cuadro-texto p {
-  padding-bottom: 0px;
-  margin-bottom: 0px;
+padding-bottom: 0px;
+margin-bottom: 0px;
 }
 
 
 .boton-crear-cuenta {
   position: relative;
   left: 17vw;
-  width: 12vw;
-  height: 10vh;
-  background-color: #5d787d;
-  border-radius: 15px;
-  color: white;
-  border: black 3px;
 }
 
 .boton-crear-cuenta:hover {
-  background-color: #50656a;
-  color: black;
+background-color: #50656a;
+color: black;
 }

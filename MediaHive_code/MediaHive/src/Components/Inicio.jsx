@@ -1,11 +1,11 @@
 import React from "react";
 import TopNavBar from "./TopNavBar";
 import LeftToolBar from "./LeftToolBar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Button } from '@mui/material';
 import '../Styles/Inicio.css';
 
 function Inicio() {
-  const navigate = useNavigate();
 
   return(
     <div className="app-container">
@@ -23,7 +23,21 @@ function Inicio() {
                     Debate en los diversos foros el últmo capítulo de tu serie en emisión. <br></br>
                 </p>
             </div>
-              <button className="boton-crear-cuenta" onClick={() => navigate('/CrearCuenta')}>CREAR CUENTA</button>
+              <Button 
+                component={Link} 
+                to="/CrearCuenta" 
+                variant="contained" 
+                sx={{
+                  backgroundColor: '#5D787D', 
+                  '&:hover': {
+                    backgroundColor: '#455559', // Change this to your preferred hover color
+                    color: 'black', // Change this to your preferred text color on hover
+                  }
+                }}
+                color="primary" 
+                className="boton-crear-cuenta">
+                  CREAR CUENTA
+                </Button>
         </div>
         </>
       </div>
