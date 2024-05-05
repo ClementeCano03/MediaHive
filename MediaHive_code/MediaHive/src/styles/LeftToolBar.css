@@ -1,5 +1,4 @@
 #leftnav {
-    flex-grow: 1; /* Hace que el contenedor se expanda para ocupar todo el espacio disponible */
     height: calc(100vh - 66px);; /* Hace que el contenedor ocupe toda la altura de la ventana del navegador menos el tamaño de cabecera*/
 }
 

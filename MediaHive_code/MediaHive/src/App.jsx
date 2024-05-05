@@ -1,12 +1,17 @@
 import React from "react";
 import TopNavBar from "./Components/TopNavBar";
 import LeftToolBar from "./Components/LeftToolBar";
+import Peliculas from "./Components/Peliculas";
 
 function App(){
   return(
     <>
       <TopNavBar />
-      <LeftToolBar />
+      <div style={{ display: 'flex'}}>
+        <LeftToolBar />
+        <Peliculas />
+      </div>
+      
     </>
   )
 }

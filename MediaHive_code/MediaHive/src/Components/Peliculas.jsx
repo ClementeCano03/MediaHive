@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from 'axios'
+import { useState } from 'react';
+
 import { Carousel } from "react-bootstrap";
 import { useRef } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,6 +14,34 @@ function Peliculas({ cambiarTituloPagina }) {
 
   // Ref para el carrusel
   const carouselRef = useRef(null);
+
+  //constantes para peticiones a api
+  const API_URL = 'https://api.themoviedb.org/3';
+  const API_KEY = 'fd04580a5174281296d7de8867bc1fa0';
+  const URL_IMAGE = 'https://image.tmdb.org/t/p/original';
+  const language = "es-ES"
+
+  const [movies, setMovies] = useState([]);
+  const [searchKey, setSearchKey] = useState("");
+
+  //funcion para realizar peticion a la api
+  const fetchMovies = async (searchKey) => {
+    const type = searchKey ? "search" : "discover"
+    const { data: { results },
+    } = await axios.get(`${API_URL}/${type}/movie`, {
+      params: {
+        api_key: API_KEY,
+        query: searchKey,
+        language: language,
+      },
+    })
+
+    setMovies(results)
+  }
+
+  useEffect(() => {
+    fetchMovies();
+  }, [])
 
   return (
     <div id="peliculas" className="d-flex flex-column flex-grow-1">
@@ -27,20 +58,20 @@ function Peliculas({ cambiarTituloPagina }) {
         <Carousel ref={carouselRef} interval={null} indicators={false}>
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+              <div className="col d-flex justify-content-center">
+                <img key={movies[0].id} src={`${URL_IMAGE + movies[0].poster_path}`} style={{ height: '200px', width: 'auto' }} />
               </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+              <div className="col d-flex justify-content-center">
+                <img key={movies[1].id} src={`${URL_IMAGE + movies[1].poster_path}`} style={{ height: '200px', width: 'auto' }} />
               </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+              <div className="col d-flex justify-content-center">
+                <img key={movies[2].id} src={`${URL_IMAGE + movies[2].poster_path}`} style={{ height: '200px', width: 'auto' }} />
               </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+              <div className="col d-flex justify-content-center">
+                <img key={movies[3].id} src={`${URL_IMAGE + movies[3].poster_path}`} style={{ height: '200px', width: 'auto' }} />
               </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+              <div className="col d-flex justify-content-center">
+                <img key={movies[4].id} src={`${URL_IMAGE + movies[4].poster_path}`} style={{ height: '200px', width: 'auto' }} />
               </div>
             </div>
           </Carousel.Item>
@@ -48,19 +79,19 @@ function Peliculas({ cambiarTituloPagina }) {
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img key={movies[5].id} src={`${URL_IMAGE + movies[5].poster_path}`} style={{ height: '200px', width: 'auto' }} />
               </div>
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img key={movies[6].id} src={`${URL_IMAGE + movies[6].poster_path}`} style={{ height: '200px', width: 'auto' }} />
               </div>
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img key={movies[7].id} src={`${URL_IMAGE + movies[7].poster_path}`} style={{ height: '200px', width: 'auto' }} />
               </div>
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img key={movies[8].id} src={`${URL_IMAGE + movies[8].poster_path}`} style={{ height: '200px', width: 'auto' }} />
               </div>
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img key={movies[9].id} src={`${URL_IMAGE + movies[9].poster_path}`} style={{ height: '200px', width: 'auto' }} />
               </div>
             </div>
           </Carousel.Item>
@@ -152,7 +183,7 @@ function Peliculas({ cambiarTituloPagina }) {
                 <img src="imagen.jpg" alt="Imagen de la película" />
               </div>
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" style={{ width: '150px', height: 'auto' }}/>
+                <img src="imagen.jpg" alt="Imagen de la película" style={{ width: '150px', height: 'auto' }} />
               </div>
             </div>
           </Carousel.Item>
