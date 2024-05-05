@@ -1,7 +1,7 @@
 import React from "react";
 import TopNavBar from "./TopNavBar";
 import LeftToolBar from "./LeftToolBar";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../Styles/Inicio.css';
 
 function Inicio() {
@@ -23,7 +23,7 @@ function Inicio() {
                     Debate en los diversos foros el últmo capítulo de tu serie en emisión. <br></br>
                 </p>
             </div>
-            <button className="boton-crear-cuenta" onClick={() => navigate('/CrearCuenta')}>CREAR CUENTA</button>
+              <button className="boton-crear-cuenta" onClick={() => navigate('/CrearCuenta')}>CREAR CUENTA</button>
         </div>
         </>
       </div>
