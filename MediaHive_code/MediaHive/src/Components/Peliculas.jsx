@@ -19,18 +19,20 @@ function Peliculas({ cambiarTituloPagina }) {
   const URL_IMAGE = 'https://image.tmdb.org/t/p/original';
   const language = "es-ES"
 
+  //constantes para guardar las peliculas
   const [movies, setMovies] = useState([]);
-  const [searchKey, setSearchKey] = useState("");
+  const [upcoming, setUpcoming] = useState([]);
+  const [top, setTop] = useState([]);
 
-  //funcion para realizar peticion a la api
-  const fetchMovies = async (searchKey) => {
-    const type = searchKey ? "search" : "discover"
+  //funcion para realizar peticion de peliculas populares a la api
+  const fetchMovies = async () => {
     const { data: { results },
     } = await axios.get(`${API_URL}/${type}/movie`, {
       params: {
         api_key: API_KEY,
         query: searchKey,
         language: language,
+        sort_by: 'popularity.desc',
       },
     })
 
@@ -38,14 +40,58 @@ function Peliculas({ cambiarTituloPagina }) {
     setMovies(results)
   }
 
+  //funcion para realizar peticion de top 10 peliculas a la api
+  const fetchTopMovies = async () => {
+    const { data: { results } } = await axios.get(`${API_URL}/movie/popular`, {
+      params: {
+        api_key: API_KEY,
+        language: language,
+        page: 1,
+      },
+    });
+
+    const sortedResults = results.sort((a, b) => b.vote_average - a.vote_average);
+
+    localStorage.setItem('top', JSON.stringify(sortedResults));
+    setTop(sortedResults);
+  };
+
+  //funcion para realizar peticion de estrenos a la api
+  const fetchUpcomingMovies = async () => {
+    const { data: { results } } = await axios.get(`${API_URL}/movie/upcoming`, {
+      params: {
+        api_key: API_KEY,
+        language: language,
+      },
+    });
+
+    localStorage.setItem('upcoming', JSON.stringify(results));
+    setUpcoming(results);
+  };
+
   useEffect(() => {
     const cachedMovies = localStorage.getItem('movies')
+    const cachedUpcoming = localStorage.getItem('upcoming')
+    const cachedTop = localStorage.getItem('top')
 
     if (cachedMovies) {
       setMovies(JSON.parse(cachedMovies))
     } else {
       fetchMovies();
     }
+
+    if (cachedTop) {
+      setTop(JSON.parse(cachedTop))
+    } else {
+      fetchTopMovies();
+    }
+
+    if (cachedUpcoming) {
+      setUpcoming(JSON.parse(cachedUpcoming))
+    } else {
+      fetchUpcomingMovies();
+    }
+
   }, [])
 
   return (
@@ -117,41 +163,49 @@ function Peliculas({ cambiarTituloPagina }) {
         <Carousel ref={carouselRef} interval={null} indicators={false}>
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
+              {top.length > 0 && (
+                <>
+                  <div className="col d-flex justify-content-center">
+                    <img key={top[0].id} src={`${URL_IMAGE + top[0].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={top[1].id} src={`${URL_IMAGE + top[1].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={top[2].id} src={`${URL_IMAGE + top[2].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={top[3].id} src={`${URL_IMAGE + top[3].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={top[4].id} src={`${URL_IMAGE + top[4].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                </>
+              )}
             </div>
           </Carousel.Item>
 
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
+              {top.length > 0 && (
+                <>
+                  <div className="col d-flex justify-content-center">
+                    <img key={top[5].id} src={`${URL_IMAGE + top[5].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={top[6].id} src={`${URL_IMAGE + top[6].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={top[7].id} src={`${URL_IMAGE + top[7].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={top[8].id} src={`${URL_IMAGE + top[8].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={top[9].id} src={`${URL_IMAGE + top[9].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                </>
+              )}
             </div>
           </Carousel.Item>
         </Carousel>
@@ -209,41 +263,49 @@ function Peliculas({ cambiarTituloPagina }) {
         <Carousel ref={carouselRef} interval={null} indicators={false}>
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              <div className="col example-content">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col example-content">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col example-content">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col example-content">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col example-content">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
+              {upcoming.length > 0 && (
+                <>
+                  <div className="col d-flex justify-content-center">
+                    <img key={upcoming[0].id} src={`${URL_IMAGE + upcoming[0].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={upcoming[1].id} src={`${URL_IMAGE + upcoming[1].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={upcoming[2].id} src={`${URL_IMAGE + upcoming[2].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={upcoming[3].id} src={`${URL_IMAGE + upcoming[3].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={upcoming[4].id} src={`${URL_IMAGE + upcoming[4].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                </>
+              )}
             </div>
           </Carousel.Item>
 
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              <div className="col example-content">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col example-content">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col example-content">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col example-content">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col example-content">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
+              {upcoming.length > 0 && (
+                <>
+                  <div className="col d-flex justify-content-center">
+                    <img key={upcoming[5].id} src={`${URL_IMAGE + upcoming[5].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={upcoming[6].id} src={`${URL_IMAGE + upcoming[6].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={upcoming[7].id} src={`${URL_IMAGE + upcoming[7].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={upcoming[8].id} src={`${URL_IMAGE + upcoming[8].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={upcoming[9].id} src={`${URL_IMAGE + upcoming[9].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                </>
+              )}
             </div>
           </Carousel.Item>
         </Carousel>
