@@ -10,6 +10,8 @@ import Musica from "./Components/Musica";
 import Peliculas from "./Components/Peliculas";
 import Series from "./Components/Series";
 import Biblioteca from "./Components/Biblioteca";
+import CrearCuenta from "./Components/CrearCuenta";
+import InicioSesion from "./Components/InicioSesion";
 
 function App(){
   return(
@@ -22,6 +24,39 @@ function App(){
               <LeftToolBar/>
               <div style={{ flex: 1}}>
               <Inicio/>
+              </div>
+            </div>
+          </>
+        }/>
+        <Route path='/inicio' element={
+          <>
+            <TopNavBar/>
+            <div style={{display: "flex"}}>
+              <LeftToolBar/>
+              <div style={{ flex: 1}}>
+              <Inicio/>
+              </div>
+            </div>
+          </>
+        }/>
+        <Route path='/CrearCuenta' element={
+          <>
+            <TopNavBar/>
+            <div style={{display: "flex"}}>
+              <LeftToolBar/>
+              <div style={{ flex: 1}}>
+              <CrearCuenta/>
+              </div>
+            </div>
+          </>
+        }/>
+        <Route path='/InicioSesion' element={
+          <>
+            <TopNavBar/>
+            <div style={{display: "flex"}}>
+              <LeftToolBar/>
+              <div style={{ flex: 1}}>
+              <InicioSesion/>
               </div>
             </div>
           </>

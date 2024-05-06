@@ -19,7 +19,9 @@ function TopNavBar(){
                 <h3 className="tituloPagina">{tituloPagina}</h3>
                 <h5 className="registro">Registrarse</h5>
                 <h5>
+                <Link to="/InicioSesion">
                     <button className="inicioSesion">Iniciar Sesion</button>
+                </Link>
                 </h5>
                 
             </div>

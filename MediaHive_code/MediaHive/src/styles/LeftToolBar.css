@@ -51,7 +51,8 @@ li:hover .SlideshowIcon,
 li:hover .HiveIcon,
 li:hover .HelpOutlineIcon,
 li:hover span{
-    color:  black;
+    color:  #a1a0a0;
+    transition: background-color 0.3s, color 0.3s; /* Agrega transición suave */
 }
 
 
