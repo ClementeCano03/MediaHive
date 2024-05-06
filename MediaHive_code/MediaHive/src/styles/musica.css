@@ -1,0 +1,109 @@
+/* Estilos para el contenedor principal de la página de música */
+.MusicaContainer {
+  display: flex;
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Estilos para el contenedor del reproductor de música */
+.SongContainer {
+  width: 100%; /* Aumentar el ancho del reproductor */
+  height: 100%; /* Aumentar la altura del reproductor */
+  border-width: 1px;
+  border-color: solid black;
+  padding-right: 39px;
+}
+
+/* Estilos para el contenedor de la información de la canción */
+.SongInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 200%; /* Calcula el ancho para ocupar el espacio restante */
+}
+
+/* Estilos para el título de la canción */
+.SongTitle {
+  margin-bottom: 1px  ;
+  display: flex;
+  align-items: center;
+  width: 200%;
+}
+
+/* Estilos para el icono de marcador */
+.BookmarkIcon {
+  margin-left: 0.5rem;
+}
+
+/* Estilos para el contenedor de las estrellas */
+.StarContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20%;
+}
+
+/* Estilos para las estrellas */
+.StarIcon {
+  margin-right: 0.5rem;
+}
+
+/* Estilos para el contenedor de comentarios */
+.CommentContainer {
+  display: flex;
+  flex-direction: column; /* Cambiar la dirección del flexbox a columna */
+  width: 200%;
+  padding-right: 20%;
+}
+
+/* Estilos para los comentarios */
+/* Estilos para los comentarios */
+.CommentBox {
+  width: 100%; /* Cada comentario ocupa todo el ancho disponible */
+  border: 1px solid #ccc; /* Borde para cada comentario */
+  padding: 1rem; /* Espacio interno dentro del comentario */
+  box-sizing: border-box; /* Incluye el borde en el ancho total */
+  margin-bottom: 1rem; /* Espacio entre comentarios */
+  border-radius: 8px; /* Bordes redondeados */
+  background-color: #f9f9f9; /* Color de fondo del comentario */
+}
+
+/* Estilos para el título del comentario */
+.CommentTitle {
+  font-weight: bold; /* Texto en negrita */
+  margin-bottom: 0.5rem; /* Espacio inferior */
+}
+
+/* Estilos para el autor del comentario */
+.CommentAuthor {
+  color: #666; /* Color del texto del autor */
+  font-size: 0.8rem; /* Tamaño del texto del autor */
+}
+
+
+/* Estilos para el cuadro de texto de la opinión del usuario */
+.UserOpinion {
+  width: 250%;
+  height: 200px;
+  margin-bottom: 0.5rem; /* Ajusta el espacio entre el cuadro de texto y el botón */
+}
+
+/* Estilos para el contenedor del cuadro de texto y el botón */
+.UserInputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-left: 70%;
+  padding-top: 18%;
+}
+
+/* Estilos para el botón de añadir comentario */
+.CommentButton {
+  width: 200px;
+}
+
+
+.NextCommentButton {
+  margin-top: 1px;
+}
+    
