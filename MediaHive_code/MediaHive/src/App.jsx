@@ -2,6 +2,7 @@ import React from "react";
 import TopNavBar from "./Components/TopNavBar";
 import LeftToolBar from "./Components/LeftToolBar";
 import Peliculas from "./Components/Peliculas";
+import Series from "./Components/Series";
 
 function App(){
   return(
@@ -9,7 +10,7 @@ function App(){
       <TopNavBar />
       <div style={{ display: 'flex'}}>
         <LeftToolBar />
-        <Peliculas />
+        <Series />
       </div>
       
     </>
