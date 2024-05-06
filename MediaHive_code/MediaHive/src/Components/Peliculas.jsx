@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from 'axios'
-import { useState } from 'react';
 
 import { Carousel } from "react-bootstrap";
-import { useRef } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -36,11 +34,18 @@ function Peliculas({ cambiarTituloPagina }) {
       },
     })
 
+    localStorage.setItem('movies', JSON.stringify(results))
     setMovies(results)
   }
 
   useEffect(() => {
-    fetchMovies();
+    const cachedMovies = localStorage.getItem('movies')
+
+    if (cachedMovies) {
+      setMovies(JSON.parse(cachedMovies))
+    } else {
+      fetchMovies();
+    }
   }, [])
 
   return (
@@ -58,41 +63,49 @@ function Peliculas({ cambiarTituloPagina }) {
         <Carousel ref={carouselRef} interval={null} indicators={false}>
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              <div className="col d-flex justify-content-center">
-                <img key={movies[0].id} src={`${URL_IMAGE + movies[0].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-              </div>
-              <div className="col d-flex justify-content-center">
-                <img key={movies[1].id} src={`${URL_IMAGE + movies[1].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-              </div>
-              <div className="col d-flex justify-content-center">
-                <img key={movies[2].id} src={`${URL_IMAGE + movies[2].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-              </div>
-              <div className="col d-flex justify-content-center">
-                <img key={movies[3].id} src={`${URL_IMAGE + movies[3].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-              </div>
-              <div className="col d-flex justify-content-center">
-                <img key={movies[4].id} src={`${URL_IMAGE + movies[4].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-              </div>
+              {movies.length > 0 && (
+                <>
+                  <div className="col d-flex justify-content-center">
+                    <img key={movies[0].id} src={`${URL_IMAGE + movies[0].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={movies[1].id} src={`${URL_IMAGE + movies[1].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={movies[2].id} src={`${URL_IMAGE + movies[2].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={movies[3].id} src={`${URL_IMAGE + movies[3].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={movies[4].id} src={`${URL_IMAGE + movies[4].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                </>
+              )}
             </div>
           </Carousel.Item>
 
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              <div className="col">
-                <img key={movies[5].id} src={`${URL_IMAGE + movies[5].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-              </div>
-              <div className="col">
-                <img key={movies[6].id} src={`${URL_IMAGE + movies[6].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-              </div>
-              <div className="col">
-                <img key={movies[7].id} src={`${URL_IMAGE + movies[7].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-              </div>
-              <div className="col">
-                <img key={movies[8].id} src={`${URL_IMAGE + movies[8].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-              </div>
-              <div className="col">
-                <img key={movies[9].id} src={`${URL_IMAGE + movies[9].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-              </div>
+              {movies.length > 0 && (
+                <>
+                  <div className="col d-flex justify-content-center">
+                    <img key={movies[5].id} src={`${URL_IMAGE + movies[5].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={movies[6].id} src={`${URL_IMAGE + movies[6].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={movies[7].id} src={`${URL_IMAGE + movies[7].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={movies[8].id} src={`${URL_IMAGE + movies[8].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                    <img key={movies[9].id} src={`${URL_IMAGE + movies[9].poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                  </div>
+                </>
+              )}
             </div>
           </Carousel.Item>
         </Carousel>
