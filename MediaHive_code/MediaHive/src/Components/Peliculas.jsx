@@ -24,6 +24,10 @@ function Peliculas({ cambiarTituloPagina }) {
   const [upcoming, setUpcoming] = useState([]);
   const [top, setTop] = useState([]);
 
+  //constantes para el buscador
+  const [searchKey, setSearchKey] = useState("");
+  const [searchedMovies, setSearchedMovies] = useState([]);
+
   //funcion para realizar peticion de peliculas populares a la api
   const fetchMovies = async () => {
     const { data: { results },
@@ -69,6 +73,21 @@ function Peliculas({ cambiarTituloPagina }) {
     setUpcoming(results);
   };
 
+  //funcion para el buscador
+  const searchMovies = async (event) => {
+    event.preventDefault();
+  
+    const response = await axios.get(`${API_URL}/search/movie`, {
+      params: {
+        api_key: API_KEY,
+        language: language,
+        query: searchKey,
+      },
+    });
+  
+    setSearchedMovies(response.data.results);
+  };
+
   useEffect(() => {
     const cachedMovies = localStorage.getItem('movies')
     const cachedUpcoming = localStorage.getItem('upcoming')
@@ -98,10 +117,20 @@ function Peliculas({ cambiarTituloPagina }) {
     <div id="peliculas" className="d-flex flex-column flex-grow-1">
       <h1 class="visually-hidden">Página de Películas</h1>
 
-      <form id="buscadorPelis" class="d-flex justify-content-center mx-auto py-5 w-75">
-        <input type="search" placeholder="Buscar..." className="flex-grow-1 "></input>
+      {/*Formulario para buscar peliculas*/}
+      <form id="buscadorSeries" className="d-flex justify-content-center mx-auto py-5 w-75" onSubmit={searchMovies}>
+        <input type="text" placeholder="Buscar..." className="flex-grow-1 " onChange={(e) => setSearchKey(e.target.value)} />
         <button type="send">Buscar</button>
       </form>
+
+      {/*Contenedor para el resultado de búsqueda*/}
+      <div className="search-results d-flex justify-content-center align-items-center flex-wrap">
+        {searchedMovies.slice(0, 5).map((movie) => (
+          <div key={movie.id} className="m-3 d-flex flex-column align-items-center">
+            <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+          </div>
+        ))}
+      </div>
 
       {/* Carrusel de peliculas populares*/}
       <div id="populares" className="carousel-container mx-auto px-5 py-3">

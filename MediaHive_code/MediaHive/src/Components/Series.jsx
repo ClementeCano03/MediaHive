@@ -114,15 +114,16 @@ function Series({ cambiarTituloPagina }) {
     <div id="series" className="d-flex flex-column flex-grow-1">
       <h1 className="visually-hidden">Página de Series</h1>
 
+      {/*Formulario para buscar series*/}
       <form id="buscadorSeries" className="d-flex justify-content-center mx-auto py-5 w-75" onSubmit={searchSeries}>
         <input type="text" placeholder="Buscar..." className="flex-grow-1 " onChange={(e) => setSearchKey(e.target.value)} />
         <button type="send">Buscar</button>
       </form>
 
       {/*Contenedor para el resultado de búsqueda*/}
-      <div className="search-results d-flex justify-content-center align-items-center">
-        {searchedSeries.map((serie) => (
-          <div key={serie.id}>
+      <div className="search-results d-flex justify-content-center align-items-center flex-wrap">
+        {searchedSeries.slice(0, 5).map((serie) => (
+          <div key={serie.id} className="m-3 d-flex flex-column align-items-center">
             <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
           </div>
         ))}
