@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import LeftToolBar from "./LeftToolBar";
-import TopNavBar from "./TopNavBar";
+import { Link } from "react-router-dom";
 
 //import "../styles/Musica.css"
 
@@ -80,9 +79,11 @@ function Musica(/*{ cambiarTituloPagina }*/) {
       {canciones.map((cancion, index) => (
           <div className="d-flex border-bottom border-white" key={index}>
             <img src={cancion.data.albumOfTrack.coverArt.sources[0].url} style={{ width: '100px', height: '100px' }}/>
-            <h2 class="align-self-center" style={{color:"black"}}>
-              {cancion.data.name}
-            </h2>
+            <Link to={`/cancion/${cancion.data.id}`} style={{ textDecoration: 'none' }} className="align-self-center">
+              <h2 className="align-self-center" style={{color:"black"}}>
+                {cancion.data.name}
+              </h2>
+            </Link>
             {/* <iframe
               src={`https://open.spotify.com/embed/track/${cancion.data.id}?utm_source=generator`}
               width="30%"

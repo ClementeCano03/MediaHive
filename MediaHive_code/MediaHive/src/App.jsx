@@ -9,6 +9,7 @@ import Musica from "./Components/Musica";
 import Peliculas from "./Components/Peliculas";
 import Series from "./Components/Series";
 import Biblioteca from "./Components/Biblioteca";
+import Cancion from "./Components/Cancion";
 
 import "./styles/App.css"
 
@@ -67,6 +68,17 @@ function App(){
                 <LeftToolBar/>
                   <div className="contenido">
                     <Biblioteca />
+                  </div>
+              </div>
+          </>
+        }/>
+        <Route path='/cancion/:id' element={
+          <>
+            <TopNavBar/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar/>
+                  <div className="contenido">
+                    <Cancion />
                   </div>
               </div>
           </>
