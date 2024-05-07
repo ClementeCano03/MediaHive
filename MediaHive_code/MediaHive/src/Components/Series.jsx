@@ -23,6 +23,10 @@ function Series({ cambiarTituloPagina }) {
   const [top, setTop] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
 
+  //constantes para el buscador
+  const [searchKey, setSearchKey] = useState("");
+  const [searchedSeries, setSearchedSeries] = useState([]);
+
   //funcion para obtener las series populares
   const fetchSeries = async () => {
     const { data: { results } } = await axios.get(`${API_URL}/tv/popular`, {
@@ -65,6 +69,21 @@ function Series({ cambiarTituloPagina }) {
     setUpcoming(results);
   };
 
+  //funcion para el buscador
+  const searchSeries = async (event) => {
+    event.preventDefault();
+  
+    const response = await axios.get(`${API_URL}/search/tv`, {
+      params: {
+        api_key: API_KEY,
+        language: language,
+        query: searchKey,
+      },
+    });
+  
+    setSearchedSeries(response.data.results);
+  };
+
   useEffect(() => {
     const cachedSeries = localStorage.getItem('series')
     const cachedTop = localStorage.getItem('top')
@@ -93,12 +112,21 @@ function Series({ cambiarTituloPagina }) {
 
   return (
     <div id="series" className="d-flex flex-column flex-grow-1">
-      <h1 class="visually-hidden">Página de Series</h1>
+      <h1 className="visually-hidden">Página de Series</h1>
 
-      <form id="buscadorSeries" class="d-flex justify-content-center mx-auto py-5 w-75">
-        <input type="search" placeholder="Buscar..." className="flex-grow-1 "></input>
+      <form id="buscadorSeries" className="d-flex justify-content-center mx-auto py-5 w-75" onSubmit={searchSeries}>
+        <input type="text" placeholder="Buscar..." className="flex-grow-1 " onChange={(e) => setSearchKey(e.target.value)} />
         <button type="send">Buscar</button>
       </form>
+
+      {/*Contenedor para el resultado de búsqueda*/}
+      <div className="search-results d-flex justify-content-center align-items-center">
+        {searchedSeries.map((serie) => (
+          <div key={serie.id}>
+            <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+          </div>
+        ))}
+      </div>
 
       {/* Carrusel de series populares*/}
       <div id="populares" className="carousel-container mx-auto px-5 py-3">
