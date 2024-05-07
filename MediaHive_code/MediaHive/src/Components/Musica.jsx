@@ -187,9 +187,6 @@ function Musica() {
           ))}
         </Carousel>
       )} */}
-      
-
-      
     </>
     
   );
