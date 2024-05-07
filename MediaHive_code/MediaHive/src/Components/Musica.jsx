@@ -56,9 +56,9 @@ function Musica() {
 
   return (
     <>
-      {/*
+      
         <br/>
-      {/*Barra de buscador
+      
       <form onSubmit={handleSearch} className="formulario" style={{display:'flex', alignItems: 'center', justifyContent: 'center' }}>
         <input type="text" value={cancion} onChange={e => setCancion(e.target.value)} style={{
           padding: '10px',
@@ -84,7 +84,7 @@ function Musica() {
       </form>
       <br/>
 
-      {/*Resultados
+      
       <div className="container" style={{backgroundColor: '#F5F5F5'}}>
       {canciones.map((cancion, index) => (
           <div className="d-flex border-bottom border-white" key={index}>
@@ -92,7 +92,7 @@ function Musica() {
             <h2 class="align-self-center" style={{color:"black"}}>
               {cancion.data.name}
             </h2>
-            {/* <iframe
+            {/*<iframe
               src={`https://open.spotify.com/embed/track/${cancion.data.id}?utm_source=generator`}
               width="30%"
               height="352"
@@ -100,7 +100,7 @@ function Musica() {
               allowFullScreen=""
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
-            ></iframe><br/> 
+            ></iframe><br/> */}
             
             <a class="align-self-center" href={cancion.data.uri}>
               <button style={{
@@ -119,10 +119,9 @@ function Musica() {
           </div>
       ))}
       </div>
-      */}
+      
 
-
-      {/*Barra de buscador*/}
+      {/*{/*Barra de buscador}
       <form onSubmit={handleSearch} className="formulario"style={{ alignItems: 'center', justifyContent: 'center' }}>
         <input id="inputBusqueda" type="text" value={cancion} onChange={e => setCancion(e.target.value)} style={{
           padding: '10px',
@@ -149,8 +148,7 @@ function Musica() {
           }}
         >Buscar</button>
       </form>
-
-      {/* Resultados */}
+      {/* Resultados }
       {canciones.length > 0 && (
         <Carousel 
           className="carousel" 
@@ -160,7 +158,7 @@ function Musica() {
             <Carousel.Item key={index}>
               <div className="carousel-content">
                 {/* <img src={cancion.data.albumOfTrack.coverArt.sources[0].url} alt="Portada de la canción" />
-                <h4>{cancion.data.name}</h4> */}
+                <h4>{cancion.data.name}</h4> }
                 <iframe
                   src={`https://open.spotify.com/embed/track/${cancion.data.id}?utm_source=generator`}
                   width="100%"
@@ -188,7 +186,10 @@ function Musica() {
             </Carousel.Item>
           ))}
         </Carousel>
-      )}
+      )} */}
+      
+
+      
     </>
     
   );
