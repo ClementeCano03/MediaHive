@@ -115,6 +115,7 @@ function Musica(/*{ cambiarTituloPagina }*/) {
   };
 
   return (
+    <div>
     <div className="MusicaContainer">
       {/* Contenedor de la canción */}
       <iframe
@@ -150,18 +151,7 @@ function Musica(/*{ cambiarTituloPagina }*/) {
           ))}
         </div>
 
-        {/* Sección de comentarios */}
-        <div className="CommentContainer">
-          <h4 className="CommentTitle">Comentarios:</h4>
-          {comentariosAleatorios.map((comment, index) => (
-            <div key={index} className="CommentBox">
-              <p><strong>{comment.autor}</strong>: {comment.texto}</p>
-            </div>
-          ))}
-          <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
-            Ver comentarios
-          </Button>
-        </div>
+        
       </div>
 
       <div className="UserInputContainer">
@@ -177,7 +167,25 @@ function Musica(/*{ cambiarTituloPagina }*/) {
           Añadir comentario
         </Button>
       </div>
+      
     </div>
+
+    {/* Sección de comentarios */}
+    <div className="CommentContainer">
+          <h4 className="CommentTitle">Comentarios:</h4>
+          <div className="tabla">
+            {comentariosAleatorios.map((comment, index) => (
+              <div key={index} className="CommentBox">
+                <p><strong>{comment.autor}</strong>: {comment.texto}</p>
+              </div>
+          
+          ))}
+          </div>
+          <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
+            Ver comentarios
+          </Button>
+        </div>
+  </div>
   );
 }
 
