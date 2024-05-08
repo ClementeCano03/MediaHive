@@ -1,191 +1,261 @@
-import React, { useState, useEffect } from "react";
-import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
-import StarIcon from '@mui/icons-material/Star';
-import Button from '@mui/material/Button';
+import React, { useRef, useState } from "react";
 
-import '../styles/musica.css';
+import LeftToolBar from "./LeftToolBar";
+import TopNavBar from "./TopNavBar";
+import {Carousel} from "react-bootstrap";
+import "../styles/Musica2.css"
 
 function Musica(/*{ cambiarTituloPagina }*/) {
   //cambiarTituloPagina("Música"); // Cambia el título de la página al cargar este componente
 
-  
+  const [cancion, setCancion] = useState('')
+  const [canciones, setCanciones] = useState([])
+  const carouselRef = useRef(null);
 
-  // Autores de comentarios
-  const autores = [
-    "John Doe", "Alice Smith", "Michael Johnson", "Emily Brown", "David Lee",
-    "Emma Garcia", "Daniel Martinez", "Olivia Wilson", "James Taylor", "Sophia Anderson",
-    "William Clark", "Ava Rodriguez", "Benjamin Hernandez", "Mia Moore", "Jacob Perez",
-    "Charlotte Davis", "Alexander Gonzalez", "Amelia Martinez", "Ethan Wilson", "Harper Lopez",
-    "Liam Thompson", "Isabella Carter", "Christopher Thomas", "Sophia Baker", "Ryan Reed",
-    "Madison Young", "Elijah Scott", "Scarlett Evans", "Nathan Morris", "Grace Turner"
-  ];
+  function handleSearch(e) {
+    e.preventDefault();
 
-  // Comentarios
-  const comentarios = [
-    "¡Qué gran canción!",
-    "Me encanta esta melodía",
-    "La letra es realmente inspiradora",
-    "No puedo dejar de escuchar esta canción",
-    "Este ritmo me hace bailar",
-    "La peor canción que he escuchado en mi vida",
-    "No entiendo por qué esta canción es tan popular",
-    "La letra no tiene sentido",
-    "No me gusta el ritmo de esta canción",
-    "Es aburrida y monótona",
-    "Simplemente genial",
-    "Increíblemente hermosa",
-    "Me hace sentir emociones que no puedo describir",
-    "Es la mejor canción que he escuchado en mucho tiempo",
-    "La recomendaría a todo el mundo",
-    "No puedo parar de escucharla",
-    "Cada vez que la escucho, descubro algo nuevo",
-    "Una obra maestra",
-    "Me inspira a ser mejor cada día",
-    "Simplemente horrible",
-    "No me esperaba menos de esta canción",
-    "Una decepción total",
-    "Le falta algo",
-    "No me hace sentir nada",
-    "Podría mejorar",
-    "Me deja indiferente",
-    "Más de lo mismo",
-    "No la recomendaría",
-    "No es para mí",
-    "Una sorpresa agradable"
-  ];
-
-  // Estado para almacenar los comentarios aleatorios actuales
-  const [comentariosAleatorios, setComentariosAleatorios] = useState([]);
-
-  // Estado para almacenar el comentario del usuario
-  const [userComment, setUserComment] = useState("");
-
-
-  // Estado para rastrear las estrellas resaltadas y seleccionadas
-  const [highlightedStars, setHighlightedStars] = useState(0);
-  const [selectedStars, setSelectedStars] = useState(0);
-
-  // Función para manejar el evento onMouseOver de las estrellas
-  const handleStarHover = (index) => {
-    setHighlightedStars(index); // Resalta hasta el índice especificado
-  };
-
-  // Función para manejar el evento onMouseOut de las estrellas
-  const handleStarMouseOut = () => {
-    setHighlightedStars(selectedStars); // Restaura el resaltado según las estrellas seleccionadas
-  };
-
-  // Función para manejar el clic en una estrella
-  const handleStarClick = (index) => {
-    setSelectedStars(index); // Establece las estrellas seleccionadas
-    setHighlightedStars(index); // Resalta hasta el índice especificado
-  };
-
-  // Función para obtener un elemento aleatorio de un array
-  const obtenerElementoAleatorio = (array) => {
-    const indiceAleatorio = Math.floor(Math.random() * array.length);
-    return array[indiceAleatorio];
-  };
-
-  // Función para generar 5 comentarios aleatorios y únicos
-  const generarComentariosAleatorios = () => {
-    const comentariosAleatorios = [];
-    while (comentariosAleatorios.length < 4) {
-      const comentario = obtenerElementoAleatorio(comentarios);
-      const autor = obtenerElementoAleatorio(autores);
-      if (!comentariosAleatorios.some((com) => com.texto === comentario)) {
-        comentariosAleatorios.push({ texto: comentario, autor });
-      }
+    if(cancion.trim() === ''){
+      alert('Debes ingresar una canción');
+      return;
     }
-    setComentariosAleatorios(comentariosAleatorios);
-  };
 
-  // Función para manejar el envío del comentario del usuario
-  const handleUserCommentSubmit = () => {
-    if (userComment.trim() !== "") {
-      const nuevoComentario = { texto: userComment, autor: "Usuario" };
-      setComentariosAleatorios((prevComments) => [...prevComments, nuevoComentario]);
-      setUserComment(""); // Limpiar el cuadro de texto después de enviar el comentario
+    console.log(cancion);
+    setCancion("");
+    getSong(cancion);
+  }
+
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '733197fdcamsh9fd898d4b4b0d10p1493cdjsn7aa3fb3dcb4d',
+      'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
     }
   };
 
-  // Función para manejar el cambio en el cuadro de texto del comentario del usuario
-  const handleUserCommentChange = (event) => {
-    setUserComment(event.target.value); // Actualiza el comentario del usuario
+  async function getSong(cancion) {
+    try {
+      let url = `https://spotify23.p.rapidapi.com/search/?q=${cancion}&type=multi&offset=0&limit=10&numberOfTopResults=5`;
+      let data = await fetch(url, options);
+      let res = await data.json();
+      setCanciones(res.tracks.items);
+      console.log(res);
+
+    } catch (error) {
+      console.log(`ERROR: ${error}`);
+    }
   };
+
+
 
   return (
-    <div>
-    <div className="MusicaContainer">
-      {/* Contenedor de la canción */}
-      <iframe
-        className="SongContainer"
-        src="https://open.spotify.com/embed/track/3cg2Y9mIiYNdcPTLKaQgK3?utm_source=generator"
-        width="500px"
-        height="500px"
-        frameBorder="0"
-        allowFullScreen="true"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-       
-      ></iframe>
-
-      {/* Contenedor del título y la información */}
-      <div className="SongInfoContainer">
-        {/* Título de la canción con emoticono */}
-        <h3 className="SongTitle">
-          Titulo Cancion <BookmarkAddIcon className="BookmarkIcon"/>
-        </h3>
-
-        {/* Estrellas */}
-        <div className="StarContainer">
-          {[1, 2, 3, 4, 5].map((index) => (
-            <StarIcon
-              key={index}
-              onMouseOver={() => handleStarHover(index)}
-              onMouseOut={handleStarMouseOut}
-              onClick={() => handleStarClick(index)}
-              className="StarIcon"
-              style={{ color: index <= highlightedStars ? 'yellow' : 'inherit' }}
-            />
-          ))}
-        </div>
-
-        
-      </div>
-
-      <div className="UserInputContainer">
-        {/* Cuadro de texto para la opinión del usuario */}
-        <textarea
-          placeholder="Escribe tu opinión aquí..."
-          value={userComment}
-          onChange={handleUserCommentChange}
-          className="UserOpinion"
+    <>
+    <br/>
+      {/*Barra de buscador*/}
+      <form onSubmit={handleSearch} className="formulario d-flex p-12"  style={{alignItems: 'center', justifyContent: 'center' }}>
+        <input type="text" value={cancion} onChange={e => setCancion(e.target.value)} style={{
+          padding: '10px',
+          borderRadius: '5px',
+          border: '2px solid #ccc',
+          marginRight: '10px',
+          fontSize: '16px',
+          outline: 'none',
+        }}
+        placeholder="Buscar canción..."
         />
-        {/* Botón para añadir comentario */}
-        <Button variant="contained" color="primary" className="CommentButton" onClick={handleUserCommentSubmit}>
-          Añadir comentario
-        </Button>
+        <button type="submit" style={{
+            padding: '10px 20px',
+            borderRadius: '5px',
+            border: 'none',
+            backgroundColor: '#455559',
+            color: 'white',
+            fontSize: '16px',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s',
+          }}
+        >Buscar</button>
+      </form>
+      <br/>
+
+      {/*Resultados*/}
+      <div className="container" style={{backgroundColor: '#F5F5F5'}}>
+      {canciones.map((cancion, index) => (
+          <div className="d-flex border-bottom border-white" key={index}>
+            <img src={cancion.data.albumOfTrack.coverArt.sources[0].url} style={{ width: '100px', height: '100px' }}/>
+            <h2 class="align-self-center" style={{color:"black"}}>
+              {cancion.data.name}
+            </h2>
+            {/* <iframe
+              src={`https://open.spotify.com/embed/track/${cancion.data.id}?utm_source=generator`}
+              width="30%"
+              height="352"
+              frameBorder="0"
+              allowFullScreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            ></iframe><br/> */}
+            
+            <a class="align-self-center" href={cancion.data.uri}>
+              <button style={{
+            padding: '10px 20px',
+            borderRadius: '5px',
+            border: 'none',
+            backgroundColor: '#455559',
+            color: 'white',
+            fontSize: '16px',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s',
+          }}>
+                Abrir canción en spotify
+              </button>
+            </a>
+          </div>
+      ))}
       </div>
+
+      <div className="listaCanciones" style={{ marginLeft: '10px', position: 'relative' }}>
+      <div id="populares" className="carousel-container mx-auto px-5 py-3">
+        <h3>Últimos estrenos</h3>
+        <Carousel ref={carouselRef} interval={null} indicators={false}>
+          <Carousel.Item>
+            <div className="carousel-item-content row align-items-center py-2">
+                  <div className="col d-flex justify-content-center">
+                    <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+             </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            </div>
+          </Carousel.Item>
+
+          <Carousel.Item>
+            <div className="carousel-item-content row align-items-center py-2">
+              
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            </div>
+          </Carousel.Item>
+        </Carousel>
+
+        <h3>Más populares</h3>
+        <Carousel ref={carouselRef} interval={null} indicators={false}>
+          <Carousel.Item>
+            <div className="carousel-item-content row align-items-center py-2">
+                  <div className="col d-flex justify-content-center">
+                    <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+             </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            </div>
+          </Carousel.Item>
+
+          <Carousel.Item>
+            <div className="carousel-item-content row align-items-center py-2">
+              
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            </div>
+          </Carousel.Item>
+        </Carousel>
+
+        <h3>Top 10 España</h3>
+        <Carousel ref={carouselRef} interval={null} indicators={false}>
+          <Carousel.Item>
+            <div className="carousel-item-content row align-items-center py-2">
+                  <div className="col d-flex justify-content-center">
+                    <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                  </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+             </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            </div>
+          </Carousel.Item>
+
+          <Carousel.Item>
+            <div className="carousel-item-content row align-items-center py-2">
+              
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+                  <div className="col d-flex justify-content-center">
+                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            </div>
+          </Carousel.Item>
+        </Carousel>
+      </div>
+
       
     </div>
 
-    {/* Sección de comentarios */}
-    <div className="CommentContainer">
-          <h4 className="CommentTitle">Comentarios:</h4>
-          <div className="tabla">
-            {comentariosAleatorios.map((comment, index) => (
-              <div key={index} className="CommentBox">
-                <p><strong>{comment.autor}</strong>: {comment.texto}</p>
-              </div>
-          
-          ))}
-          </div>
-          <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
-            Ver comentarios
-          </Button>
-        </div>
-  </div>
+
+
+
+    </>
+    
   );
 }
 

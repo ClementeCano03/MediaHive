@@ -5,17 +5,24 @@ import LeftToolBar from './Components/LeftToolBar';
 import Musica from './Components/Musica';
 import { Routes, Route } from 'react-router-dom';
 
+import "./styles/App.css"
+
 function App(){
   return(
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', alignItems: 'flex-start' }}>
-      <TopNavBar />
-      <div style={{ display: 'flex', flex: 1 }}>
-        <LeftToolBar />
         <Routes>
-          <Route path="/musica" element={<Musica />} />
+        <Route path='/musica' element={
+          <>
+            <TopNavBar/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar/>
+                  <div className="contenido">
+                    <Musica />
+                  </div>
+              </div>
+          </>
+        }/>
         </Routes>
-      </div>
-    </div>
+  
   );
 }
 
