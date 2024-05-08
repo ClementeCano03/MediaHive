@@ -27,11 +27,11 @@ function CrearCuenta() {
 
             <div className="form-container">
               <label for="nombreUsuario">Nombre de usuario</label>
-              <input type="text" name="nombreUsuario"/>
+              <input type="text" name="nombreUsuario" maxLength={20} required/>
               <label for="correoElectrónico">Correo electrónico</label>
-              <input type="email" name="correoElectrónico"/>
+              <input type="email" name="correoElectrónico" required/>
               <label for="contraseña">Contraseña</label>
-              <input type="password" name="contraseña"/>
+              <input type="password" name="contraseña" required/>
             </div>
 
             <Button 
