@@ -1,74 +1,57 @@
-.app-container {
+.crear-cuenta-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-}
-
-
-
-.container {
-  display: flex;
-  height: 100vh;
-  position: absolute;
-  padding: 10px 10px;
+  justify-content: center;
+  align-items: center;
+  width: 30vw;
+  height: 75vh;
+  background-color: #78939878;
+  border-radius: 45px;
+  font-family: 'livvic';
 }
 
 .form-container {
-display: flex;
-flex-direction: column;
-align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.crear-cuenta-container {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-width: 30vw;
-height: 75vh;
-background-color: #78939882;
-border-radius: 45px;
-font-family: 'livvic';
-position: absolute;
-bottom: 18vh;
-right: 20vw;
+.content-crear-cuenta {
+  background-color: #F5F5F5;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-img {
-margin-top: 0px;
-margin-bottom: 20px;
+.imagen-crear-cuenta{
+  margin-top: 10px;
+  margin-bottom: 2vh;
+  width: 5vw;
 }
 
-form {
-margin-left: 2vw;
-display: flex;
-flex-direction: column;
-font-family: 'livvic';
-font-size: 1.5vw;
-line-height: 1;
+.label-crear-cuenta {
+  margin-bottom: 0.5vh;
 }
 
-label {
-margin-bottom: 0.5vh;
-}
-
-input {
-width: 22vw;
-margin-bottom: 2vh;
-border-radius: 5px;
-border: black 2px;
+.input-crear-cuenta {
+  width: 22vw;
+  margin-bottom: 5vh;
+  border-radius: 5px;
+  border: black 2px;
 }
 
 .boton-aceptar {
-width: 8vw;
-display: block;
-margin: 0 auto;
-margin-top: 10vh;
+  width: 8vw;
+  display: block;
+  margin-top: 10vh;
+  margin-bottom: 5vh;
 }
 
 @media screen and (min-height: 720px) {
-input {
-  margin-bottom: 5vh; /* Adjust this value as needed */
-}
+  input {
+    margin-bottom: 5vh; /* Adjust this value as needed */
+  }
 }

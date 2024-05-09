@@ -6,45 +6,37 @@ import { Link } from "react-router-dom";
 
 function CrearCuenta() {
 
-  const divStyle = {
-    backgroundColor: '#E3E9EA',
-    backgroundImage: 'none',
-  };
-
   return(
-    <>
+    <div className="content-crear-cuenta">
       <link href='https://fonts.googleapis.com/css?family=Livvic' rel='stylesheet'></link>
-      <div className="content" style={divstyle}>
-          <div className="crear-cuenta-container">
-            <img className="imagen" src={imagen} alt="Icono de MediaHive"/>
-
-            <div className="form-container">
-              <label for="nombreUsuario">Nombre de usuario</label>
-              <input type="text" name="nombreUsuario" maxLength={20} required/>
-              <label for="correoElectrónico">Correo electrónico</label>
-              <input type="email" name="correoElectrónico" required/>
-              <label for="contraseña">Contraseña</label>
-              <input type="password" name="contraseña" required/>
-            </div>
-
-            <Button 
-              component={Link} 
-              to="/Inicio" 
-              variant="contained" 
-              sx={{
-                backgroundColor: '#f0cb06', 
-                '&:hover': {
-                  backgroundColor: '#0a6f94', 
-                  color: 'black', 
-                }
-              }}
-              className="boton-aceptar">
-                ACEPTAR
-            </Button>
+      
+        <div className="crear-cuenta-container">
+          <img className="imagen-crear-cuenta" src={imagen} alt="Icono de MediaHive"/>
+          <div class="form-container">
+            <label for="nombreUsuario" class="label-crear-cuenta">Nombre de usuario</label>
+            <input type="text" name="nombreUsuario" maxLength={20} required class="input-crear-cuenta"/>
+            <label for="correoElectrónico" class="label-crear-cuenta">Correo electrónico</label>
+            <input type="email" name="correoElectrónico" required class="input-crear-cuenta"/>
+            <label for="contraseña" class="label-crear-cuenta">Contraseña</label>
+            <input type="password" name="contraseña" required class="input-crear-cuenta"/>
           </div>
+          <Button 
+            component={Link} 
+            to="/Inicio" 
+            variant="contained" 
+            sx={{
+              backgroundColor: '#f0cb06', 
+              '&:hover': {
+                backgroundColor: '#0a6f94', 
+                color: 'black', 
+              }
+            }}
+            className="boton-aceptar">
+              ACEPTAR
+          </Button>
         </div>
-    </>
-  )
+    </div>
+  );
 }
 
 export default CrearCuenta;

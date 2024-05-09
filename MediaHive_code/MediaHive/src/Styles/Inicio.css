@@ -1,19 +1,14 @@
 
-.content {
+.content-inicio {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   width: 93vw;
   margin: 0;
   padding: 0;
   background-image: url("../src/Images/background.jpg");
-  background-size: cover;
-  background-position: center;
-  position: absolute;
-  height: 100vh;
-  overflow: hidden;
 }
 
 

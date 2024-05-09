@@ -14,8 +14,8 @@ function TopNavBar(){
     return(
         <nav className="navbar">
             <div className="container-fluid align-items-center">
-                <img className="imagen" src={imagen} href="home.jsx" alt="Imagen de la web"/>
-                <h2>MediaHive</h2>
+                <img className="imagen" src={imagen} href="home.jsx" alt="Imagen de la web" class="img-navbar"/>
+                <h2 class="h2-navbar">MediaHive</h2>
                 <h3 className="tituloPagina">{tituloPagina}</h3>
                 <h5 className="registro">Registrarse</h5>
                 <h5>

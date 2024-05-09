@@ -1,5 +1,5 @@
 #leftnav {
-    height: 100vh; /* Hace que el contenedor ocupe toda la altura de la ventana del navegador */
+    height: 100%; /* Hace que el contenedor ocupe toda la altura de la ventana del navegador */
 }
 
 #barraLateral{

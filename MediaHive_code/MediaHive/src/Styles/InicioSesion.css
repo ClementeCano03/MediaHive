@@ -5,27 +5,27 @@
     height: 100vh;
 }
 
-.form-container {
+.form-container-iniciosesion {
     background-color: #f2f2f2;
     border-radius: 10px;
     padding: 20px;
 }
 
-.form-container h1 {
+.form-container-iniciosesion h1 {
     text-align: center;
 }
 
-.form-container form {
+.form-container-iniciosesion form {
     display: flex;
     flex-direction: column;
 }
 
-.form-container label {
+.form-container-iniciosesion label {
     margin-bottom: 5px;
     margin-right: 20px; /* Añade un poco de margen a la derecha */
 }
 
-.form-container input {
+.form-container-iniciosesion input {
     padding: 8px;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -33,7 +33,7 @@
 }
 
 
-.form-container button {
+.form-container-iniciosesion button {
     padding: 10px;
     border-radius: 5px;
     background-color: #007bff;
@@ -42,10 +42,10 @@
     cursor: pointer;
 }
 
-.form-container button:hover {
+.form-container-iniciosesion button:hover {
     background-color: #0056b3;
 }
 
-.error-message {
+.error-message-iniciosesion {
     color: red;
 }
