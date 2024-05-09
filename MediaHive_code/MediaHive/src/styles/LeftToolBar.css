@@ -1,7 +1,4 @@
-
-
 #leftnav {
-    flex-grow: 0; 
     height: 100vh; /* Hace que el contenedor ocupe toda la altura de la ventana del navegador */
 }
 
@@ -54,12 +51,13 @@ li:hover .SlideshowIcon,
 li:hover .HiveIcon,
 li:hover .HelpOutlineIcon,
 li:hover span{
-    color:  black;
+    color:  #a1a0a0;
+    transition: background-color 0.3s, color 0.3s; /* Agrega transición suave */
 }
 
 
 .HelpOutlineIcon {
-    margin-top: 0px; /* Ajusta este valor según lo necesites */
+    margin-top: 10px; /* Ajusta este valor según lo necesites */
 }
 
 #seccionInicio,

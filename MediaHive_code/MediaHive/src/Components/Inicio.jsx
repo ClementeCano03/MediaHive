@@ -1,6 +1,4 @@
 import React from "react";
-import TopNavBar from "./TopNavBar";
-import LeftToolBar from "./LeftToolBar";
 import { Link } from "react-router-dom";
 import { Button } from '@mui/material';
 import '../Styles/Inicio.css';
@@ -8,12 +6,8 @@ import '../Styles/Inicio.css';
 function Inicio() {
 
   return(
-    <div className="app-container">
-      <TopNavBar />
-      <div className="content">
-        <LeftToolBar />
-        <>
-        <div>
+      <>
+        <div className="content">
             <link href='https://fonts.googleapis.com/css?family=Livvic' rel='stylesheet'></link> 
             <div class="cuadro-texto">
                 <h2>¡Bienvenidos a nuestra comunidad sobre multimedia!</h2>
@@ -39,9 +33,7 @@ function Inicio() {
                   CREAR CUENTA
                 </Button>
         </div>
-        </>
-      </div>
-    </div>
+      </>
   )
 }
 

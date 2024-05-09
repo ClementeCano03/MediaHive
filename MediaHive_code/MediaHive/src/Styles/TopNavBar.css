@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     padding: 0.5rem 1rem;
-    width: 100%; /* Establece el ancho al 100% */
+    width: 100vw; /* Establece el ancho al 100% */
 }
 
 img {

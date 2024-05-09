@@ -27,7 +27,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
   return (
     
     <>
-      <div id="leftnav" className="d-flex flex-column flex-grow-1">
+      <div id="leftnav" className="d-flex flex-column ">
         {/* Barra lateral */}
         <ul id="barraLateral" className="nav nav-pills nav-flush flex-column mb-auto text-center">
           {/* Elemento de la barra lateral: Home */}
@@ -43,7 +43,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
             </li>
           </Link>
           {/* Elemento de la barra lateral: Musica */}
-          <Link to="/Musica">
+          <Link to="/musica">
             {/*Cuando el usuario clica en "Musica", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
             <li className={`nav-link py-3 ${seccionSeleccionada === 'Música' ? 'active' : ''}`} onClick={() => handleClick("Música")}>
                 <button id="seccionMusica">
@@ -56,7 +56,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
           </Link>
           
           {/* Elemento de la barra lateral: Peliculas */}
-          <Link to="/Peliculas">
+          <Link to="/peliculas">
             {/*Cuando el usuario clica en "Peliculas", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
             <li className={`nav-link py-3 ${seccionSeleccionada === 'Films' ? 'active' : ''}`} onClick={() => handleClick('Films')}>
                 <button id="seccionPeliculas">
@@ -69,7 +69,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
           </Link>
           
           {/* Elemento de la barra lateral: Series */}
-          <Link to="/Series">
+          <Link to="/series">
             {/*Cuando el usuario clica en "Series", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
             <li className={`nav-link py-3 ${seccionSeleccionada === 'Series' ? 'active' : ''}`} onClick={() => handleClick('Series')}>
                 <button id="seccionSeries">
@@ -82,7 +82,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
           </Link>
           
           {/* Elemento de la barra lateral: Biblioteca */}
-          <Link to="/Bilioteca">
+          <Link to="/bilioteca">
             {/*Cuando el usuario clica en "Biblioteca", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
             <li className={`nav-link py-3 ${seccionSeleccionada === 'Hive' ? 'active' : ''}`} onClick={() => handleClick('Hive')}>
                 <button id="seccionBiblioteca">
@@ -95,7 +95,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
           </Link>
           
           {/* Elemento de la barra lateral: Help */}
-          <Link to="/Ayuda">
+          <Link to="/ayuda">
             {/*Cuando el usuario clica en "Help", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
             <li className={`nav-link py-3 mt-auto ${seccionSeleccionada === 'Help' ? 'active' : ''}`} onClick={() => handleClick('Help')}>
               <button id="seccionAyuda">

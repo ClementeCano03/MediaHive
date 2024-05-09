@@ -1,6 +1,4 @@
 import React from "react";
-import TopNavBar from "./TopNavBar";
-import LeftToolBar from "./LeftToolBar";
 import '../Styles/CrearCuenta.css';
 import imagen from "../Images/MediaHive_icon.png";
 import { Button } from '@mui/material';
@@ -14,14 +12,9 @@ function CrearCuenta() {
   };
 
   return(
-    
-    <div className="app-container" style={divStyle}>
+    <>
       <link href='https://fonts.googleapis.com/css?family=Livvic' rel='stylesheet'></link>
-      <TopNavBar />
-      <div className="content">
-        <LeftToolBar /> 
-        <div className="container">
-
+      <div className="content" style={divstyle}>
           <div className="crear-cuenta-container">
             <img className="imagen" src={imagen} alt="Icono de MediaHive"/>
 
@@ -39,20 +32,18 @@ function CrearCuenta() {
               to="/Inicio" 
               variant="contained" 
               sx={{
-                backgroundColor: '#00A9D3', 
+                backgroundColor: '#f0cb06', 
                 '&:hover': {
-                  backgroundColor: '##0a6f94', // Change this to yourpreferred hover color
-                  color: 'black', // Change this to your preferredtext color on hover
+                  backgroundColor: '#0a6f94', 
+                  color: 'black', 
                 }
               }}
-              color="primary" 
               className="boton-aceptar">
                 ACEPTAR
             </Button>
           </div>
         </div>
-      </div>
-    </div>
+    </>
   )
 }
 
