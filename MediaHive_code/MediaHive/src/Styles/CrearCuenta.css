@@ -1,10 +1,15 @@
+.span-crearcuenta {
+  margin: 0 0 0 0;
+  color: red;
+  font-size: 10px;
+}
 .crear-cuenta-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 30vw;
-  height: 75vh;
+  width: 30%;
+  height: 75%;
   background-color: #78939878;
   border-radius: 45px;
   font-family: 'livvic';
@@ -29,7 +34,7 @@
 .imagen-crear-cuenta{
   margin-top: 10px;
   margin-bottom: 2vh;
-  width: 5vw;
+  width: 4vw;
 }
 
 .label-crear-cuenta {
@@ -38,7 +43,7 @@
 
 .input-crear-cuenta {
   width: 22vw;
-  margin-bottom: 5vh;
+  margin-bottom: 2vh;
   border-radius: 5px;
   border: black 2px;
 }
@@ -46,8 +51,9 @@
 .boton-aceptar {
   width: 8vw;
   display: block;
-  margin-top: 10vh;
-  margin-bottom: 5vh;
+  margin-top: 1.5vh;
+  margin-inline: auto;
+  margin-bottom: 2vh;
 }
 
 @media screen and (min-height: 720px) {
