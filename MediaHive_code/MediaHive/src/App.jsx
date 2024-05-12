@@ -1,4 +1,3 @@
-
 import React, {useEffect, useState} from "react";
 import { Routes, Route } from 'react-router-dom';
 
@@ -10,8 +9,14 @@ import Musica from "./Components/Musica";
 import Peliculas from "./Components/Peliculas";
 import Series from "./Components/Series";
 import Biblioteca from "./Components/Biblioteca";
-import CrearCuenta from "./Components/CrearCuenta";
+import Cancion from "./Components/Cancion";
 import InicioSesion from "./Components/InicioSesion";
+import CrearCuenta from "./Components/CrearCuenta";
+import Ayuda from "./Components/Ayuda";
+
+
+import "./styles/App.css"
+
 
 function App(){
   return(
@@ -22,8 +27,8 @@ function App(){
             <TopNavBar/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
-              <div style={{ flex: 1}}>
-              <Inicio/>
+              <div className="contenido">
+                <Inicio />
               </div>
             </div>
           </>
@@ -33,19 +38,19 @@ function App(){
             <TopNavBar/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
-              <div style={{ flex: 1}}>
-              <Inicio/>
+              <div className="contenido">
+                <Inicio />
               </div>
             </div>
           </>
         }/>
-        <Route path='/CrearCuenta' element={
+        <Route path='/inicio/:nombreUsuario' element={
           <>
             <TopNavBar/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
-              <div style={{ flex: 1}}>
-              <CrearCuenta/>
+              <div className="contenido">
+                <Inicio />
               </div>
             </div>
           </>
@@ -55,8 +60,19 @@ function App(){
             <TopNavBar/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
-              <div style={{ flex: 1}}>
-              <InicioSesion/>
+              <div className="contenido">
+                <InicioSesion />
+              </div>
+            </div>
+          </>
+        }/>
+        <Route path='/CrearCuenta' element={
+          <>
+            <TopNavBar/>
+            <div style={{display: "flex"}}>
+              <LeftToolBar/>
+              <div className="contenido">
+                <CrearCuenta />
               </div>
             </div>
           </>
@@ -66,7 +82,7 @@ function App(){
             <TopNavBar/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
-                  <div style={{ flex: 1, backgroundColor: '#5D787D'}}>
+                  <div className="contenido">
                     <Musica />
                   </div>
               </div>
@@ -77,7 +93,7 @@ function App(){
             <TopNavBar/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
-                  <div style={{ flex: 1}}>
+                  <div className="contenido">
                     <Peliculas />
                   </div>
               </div>
@@ -88,7 +104,7 @@ function App(){
             <TopNavBar/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
-                  <div style={{ flex: 1}}>
+                  <div className="contenido">
                     <Series />
                   </div>
               </div>
@@ -99,8 +115,30 @@ function App(){
             <TopNavBar/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
-                  <div style={{ flex: 1}}>
+                  <div className="contenido">
                     <Biblioteca />
+                  </div>
+              </div>
+          </>
+        }/>
+        <Route path='/ayuda' element={
+          <>
+            <TopNavBar/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar/>
+                  <div className="contenido">
+                    <Ayuda />
+                  </div>
+              </div>
+          </>
+        }/>
+        <Route path='/cancion/:id' element={
+          <>
+            <TopNavBar/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar/>
+                  <div className="contenido">
+                    <Cancion />
                   </div>
               </div>
           </>

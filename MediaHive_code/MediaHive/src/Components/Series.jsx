@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import React from "react";
 
-function Series() {
+function Series({/* cambiarTituloPagina */}) {
+  //cambiarTituloPagina("Series"); // Cambia el título de la página al cargar este componente
 
   return (
-    <h1>Hola</h1>
+    <div>
+      <h1>Página de Series</h1>
+      <p>Aquí puedes ver nuestras series disponibles.</p>
+    </div>
   );
 }
 

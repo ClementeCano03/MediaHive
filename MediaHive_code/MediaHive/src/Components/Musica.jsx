@@ -1,23 +1,14 @@
 import React, { useState } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Carousel from 'react-bootstrap/Carousel';
 
-import "../styles/Musica.css"
+import { Link } from "react-router-dom";
 
-function Musica() {
+//import "../styles/Musica.css"
+
+function Musica(/*{ cambiarTituloPagina }*/) {
+  //cambiarTituloPagina("Música"); // Cambia el título de la página al cargar este componente
 
   const [cancion, setCancion] = useState('')
   const [canciones, setCanciones] = useState([])
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
 
   function handleSearch(e) {
     e.preventDefault();
@@ -56,9 +47,8 @@ function Musica() {
 
   return (
     <>
-      
-        <br/>
-      
+    <br/>
+      {/*Barra de buscador*/}
       <form onSubmit={handleSearch} className="formulario" style={{display:'flex', alignItems: 'center', justifyContent: 'center' }}>
         <input type="text" value={cancion} onChange={e => setCancion(e.target.value)} style={{
           padding: '10px',
@@ -84,15 +74,17 @@ function Musica() {
       </form>
       <br/>
 
-      
+      {/*Resultados*/}
       <div className="container" style={{backgroundColor: '#F5F5F5'}}>
       {canciones.map((cancion, index) => (
           <div className="d-flex border-bottom border-white" key={index}>
             <img src={cancion.data.albumOfTrack.coverArt.sources[0].url} style={{ width: '100px', height: '100px' }}/>
-            <h2 class="align-self-center" style={{color:"black"}}>
-              {cancion.data.name}
-            </h2>
-            {/*<iframe
+            <Link to={`/cancion/${cancion.data.id}`} style={{ textDecoration: 'none' }} className="align-self-center">
+              <h2 className="align-self-center" style={{color:"black"}}>
+                {cancion.data.name}
+              </h2>
+            </Link>
+            {/* <iframe
               src={`https://open.spotify.com/embed/track/${cancion.data.id}?utm_source=generator`}
               width="30%"
               height="352"
@@ -119,74 +111,6 @@ function Musica() {
           </div>
       ))}
       </div>
-      
-
-      {/*{/*Barra de buscador}
-      <form onSubmit={handleSearch} className="formulario"style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <input id="inputBusqueda" type="text" value={cancion} onChange={e => setCancion(e.target.value)} style={{
-          padding: '10px',
-          borderRadius: '5px',
-          border: '2px solid #283033',
-          marginRight: '10px',
-          fontSize: '16px',
-          outline: 'none',
-          width: '500px',
-          height: '45px'
-        }}
-        placeholder="Buscar canción..."
-        />
-        <button id="botonBusqueda" type="submit" style={{
-            padding: '10px 20px',
-            borderRadius: '6px',
-            border: 'none',
-            backgroundColor: '#283033',
-            color: 'white',
-            fontSize: '16px',
-            cursor: 'pointer',
-            transition: 'background-color 0.3s',
-            height: '45px'
-          }}
-        >Buscar</button>
-      </form>
-      {/* Resultados }
-      {canciones.length > 0 && (
-        <Carousel 
-          className="carousel" 
-          interval={null}
-        >
-          {canciones.map((cancion, index) => (
-            <Carousel.Item key={index}>
-              <div className="carousel-content">
-                {/* <img src={cancion.data.albumOfTrack.coverArt.sources[0].url} alt="Portada de la canción" />
-                <h4>{cancion.data.name}</h4> }
-                <iframe
-                  src={`https://open.spotify.com/embed/track/${cancion.data.id}?utm_source=generator`}
-                  width="100%"
-                  height="300"
-                  frameBorder="0"
-                  allowFullScreen=""
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                ></iframe>
-                <a href={cancion.data.uri}>
-                  <button id="botonSpotify" style={{
-                    padding: '10px 20px',
-                    borderRadius: '5px',
-                    border: 'none',
-                    backgroundColor: '#283033',
-                    color: 'white',
-                    fontSize: '16px',
-                    cursor: 'pointer',
-                    transition: 'background-color 0.3s',
-                  }}>
-                    Abrir canción en Spotify
-                  </button>
-                </a>
-              </div>
-            </Carousel.Item>
-          ))}
-        </Carousel>
-      )} */}
     </>
     
   );
