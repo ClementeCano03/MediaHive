@@ -2,12 +2,18 @@ import React from "react";
 import '../Styles/CrearCuenta.css';
 import imagen from "../Images/MediaHive_icon.png";
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom';
 
 function CrearCuenta() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }} = useForm();
   console.log(errors);
+  const navigate = useNavigate();
   const onSubmit = handleSubmit(data => {
     console.log(data)
+    if (Object.keys(errors).length === 0) {
+      // Si no hay errores, redireccionamos a /Inicio
+      navigate("/Inicio");
+    }
   })
 
   return (
@@ -88,9 +94,7 @@ function CrearCuenta() {
                 className="boton-aceptar">
                 ACEPTAR
               </button>
-          
           </form>
-        
       </div>
     </div>
   );
