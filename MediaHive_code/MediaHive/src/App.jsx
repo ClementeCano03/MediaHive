@@ -27,7 +27,7 @@ function App(){
             </div>
           </>
         }/>
-        <Route path='/Inicio' element={
+        <Route path='/Inicio/:nomreUsuario' element={
           <>
             <TopNavBar/>
             <div style={{display: "flex"}}>
