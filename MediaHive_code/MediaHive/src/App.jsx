@@ -6,6 +6,7 @@ import TopNavBar from "./Components/TopNavBar";
 
 import Inicio from "./Components/Inicio";
 import Musica from "./Components/Musica";
+import MusicaResultados from "./Components/MusicaResultados";
 import Peliculas from "./Components/Peliculas";
 import Series from "./Components/Series";
 import Biblioteca from "./Components/Biblioteca";
@@ -19,7 +20,7 @@ function App(){
       <Routes>
         <Route path='/' element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Inicio"/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
               <div className="contenido">
@@ -30,18 +31,29 @@ function App(){
         }/>
         <Route path='/musica' element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Música"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">
-                    <Musica />
+                    <Musica/>
+                  </div>
+              </div>
+          </>
+        }/>
+        <Route path='/musica/:busqueda' element={
+          <>
+            <TopNavBar name="Resultados"/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar/>
+                  <div className="contenido">
+                    <MusicaResultados />
                   </div>
               </div>
           </>
         }/>
         <Route path='/peliculas' element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Películas"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">
@@ -52,7 +64,7 @@ function App(){
         }/>
         <Route path='/series' element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Series"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">
@@ -63,7 +75,7 @@ function App(){
         }/>
         <Route path='/biblioteca' element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Biblioteca"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">
@@ -74,7 +86,7 @@ function App(){
         }/>
         <Route path='/cancion/:id' element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Canción"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">
