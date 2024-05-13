@@ -5,7 +5,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 import '../styles/TopNavBar.css';
 
-function TopNavBar(){
+function TopNavBar(props){
     const username = localStorage.getItem('username');
     const [tituloPagina, setTituloPagina] = useState("Inicio");
 
@@ -18,10 +18,12 @@ function TopNavBar(){
             <div className="container-fluid align-items-center">
                 <img className="imagen" src={imagen} href="home.jsx" alt="Imagen de la web"/>
                 <h2 className="nombre">MediaHive</h2>
-                <h3 className="tituloPagina">{tituloPagina}</h3>
+                <h3 className="tituloPagina">{props.name}</h3>
                 {username ? (
                     <div className="usuario">
-                        <AccountBoxIcon className="icono-usuario"/>
+                        <Link to="/perfil">
+                            <AccountBoxIcon className="icono-usuario"/>
+                        </Link>
                         <h5 className="username">{username}</h5>
                     </div>
                 ) : (

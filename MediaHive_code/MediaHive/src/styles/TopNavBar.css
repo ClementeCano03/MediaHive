@@ -37,4 +37,13 @@ img {
     border-radius: 5px; /* Añade un poco de redondez al botón */
 }
 
+.username {
+    color: white;
+    margin-right: 1rem; /* Ajusta el margen a tu preferencia */
+}
+
+.icono-usuario {
+    color: white;
+}
+
 
