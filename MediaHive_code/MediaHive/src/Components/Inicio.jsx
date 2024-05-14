@@ -6,7 +6,7 @@ import '../Styles/Inicio.css';
 function Inicio() {
   
   const username = localStorage.getItem('username');
-  localStorage.clear();
+  //localStorage.clear();
 
   return(
       <div className="content-inicio">

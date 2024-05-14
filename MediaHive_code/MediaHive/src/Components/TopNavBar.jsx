@@ -7,7 +7,7 @@ import '../Styles/TopNavBar.css';
 
 function TopNavBar(props){
     const username = localStorage.getItem('username');
-    localStorage.clear();
+    //localStorage.clear();
 
 
     return(
