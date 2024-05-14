@@ -56,75 +56,77 @@ function Musica() {
       <br/>
     
 
-      <div
-        className="listaCanciones"
-        style={{ marginLeft: "10px", position: "relative" }}
-      >
-        <div id="populares" className="carousel-container mx-auto px-5 py-3">
-          <h3>Últimos estrenos</h3>
-          <Carousel ref={carouselRef} interval={null} indicators={false}>
-            <Carousel.Item>
-              <div className="carousel-item-content row align-items-center py-2">
-                <div className="col d-flex justify-content-center">
-                  <div>
-                    <iframe
-                      src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator"
-                      width="245"
-                      height="200"
-                      frameBorder="0"
-                      allowFullScreen=""
-                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                      loading="lazy"
-                    ></iframe>
-                    <h6>Nombre de la canción</h6>
-                  </div>
-                </div>
-                {/* Repeat for other columns */}
-              </div>
-            </Carousel.Item>
-          </Carousel>
-
-          {/* Repeat for other carousels */}
-        </div>
-      </div>
-
-
       <div className="listaCanciones" style={{ marginLeft: '10px', position: 'relative' }}>
       <div id="populares" className="carousel-container mx-auto px-5 py-3">
         <h3>Últimos estrenos</h3>
         <Carousel ref={carouselRef} interval={null} indicators={false}>
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-                  <div className="col d-flex justify-content-center">
-                    <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-             </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/3is7Ej9fnZLhJD9pNOy4cI" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e02975fd5bf28d6eb6454b5c3ff" style={{ width: '180px', height: '180px' }}/>  
+                 <h5 style={{textAlign: "center"}}>Toki</h5>
+                </Link>                  
+              </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/7221xIgOnuakPdLqT0F3nP" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e0297306976e3eb8aad53b754eb" style={{ width: '180px', height: '180px' }}/>  
+                 <h5 style={{textAlign: "center"}}>I Had Some Help</h5>
+                </Link>                  
+              </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/1l66Vx6g2i50WdeH6VU658" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e027e8a331d38946e24647a3df7" style={{ width: '180px', height: '180px' }}/>  
+                 <h5 style={{textAlign: "center"}}>PUEBLO DE MEDALLO</h5>
+                </Link>                  
+              </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/68qjM8nSoUj8YQOJuu6hZ8" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e02e346fc6f767ca2ac8365fe60" style={{ width: '180px', height: '180px' }}/>  
+                 <h5 style={{textAlign: "center"}}>YO LO SOÑÉ</h5>
+                </Link>                  
+              </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/1IqkIEAKwZknVHpxjT7Vbq" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e026a78a042e38096089d60841a" style={{ width: '180px', height: '180px' }}/>  
+                 <h5 style={{textAlign: "center"}}>a new star (2 0 2 4)</h5>
+                </Link>                  
+              </div>
             </div>
           </Carousel.Item>
 
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/33VIvWmmCUgix6Htm1WdOJ" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e0244d0e103124e96e727eb54e7" style={{ width: '180px', height: '180px' }}/>  
+                 <h5 style={{textAlign: "center"}}>FARDOS</h5>
+                </Link>                  
+              </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/43PiEypaceH339CSNiggyj" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e025f516e13e1b417769a0a7cdd" style={{ width: '180px', height: '180px' }}/>  
+                 <h5 style={{textAlign: "center"}}>BBY BOO - REMIX</h5>
+                </Link>                  
+              </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/6RqD0fpAaKEZvQd0QrTj7j" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e0245e6bba1ac0c5b54a9ee8121" style={{ width: '180px', height: '180px' }}/>  
+                 <h5 style={{textAlign: "center"}}>Lo Que Tiene</h5>
+                </Link>                  
+              </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/4Dvkj6JhhA12EX05fT7y2e" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e022e8ed79e177ff6011076f5f0" style={{ width: '180px', height: '180px' }}/>  
+                 <h5 style={{textAlign: "center"}}>As It Was</h5>
+                </Link>                  
+              </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/0mWVScJbxO3tbXuiZOxYZE" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e0208c74a3a99b01a6d3933b169" style={{ width: '180px', height: '180px' }}/>  
+                 <h5 style={{textAlign: "center"}}>So Long, London</h5>
+                </Link>                  
+              </div>
             </div>
           </Carousel.Item>
         </Carousel>
@@ -151,27 +153,53 @@ function Musica() {
                   <h5 style={{textAlign: "center"}}>Lágrimas desordenadas</h5>
                 </Link>                    
               </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/0PtLrH95CQ2lKf6pym5LmA" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e02531164360cf8cd7c95b6df79" style={{ width: '180px', height: '180px' }}/>  
+                  <h5 style={{textAlign: "center"}}>El Patio</h5>
+                </Link>                    
+              </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/3BFh8rR6aMexy7ELu2UQy3" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e021a176de75067ededc26ad96d" style={{ width: '180px', height: '180px' }}/>  
+                  <h5 style={{textAlign: "center"}}>Manos Rotas</h5>
+                </Link>                    
+              </div>
             </div>
           </Carousel.Item>
 
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/1kqH58eGh2ZTOHwqBIB2tM" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e02d7e3250bc4b38c29a68a8af9" style={{ width: '180px', height: '180px' }}/>  
+                  <h5 style={{textAlign: "center"}}>Una Foto Remix</h5>
+                </Link>                    
+              </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/4HnuPc5Cng3tbwunyqSMNi" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e020acf414348b3ca9a6f538690" style={{ width: '180px', height: '180px' }}/>  
+                  <h5 style={{textAlign: "center"}}>Espectacular</h5>
+                </Link>                    
+              </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/20CozgjF6bshBw8cLhN23B" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e0243eb3794977db60bced5ad16 " style={{ width: '180px', height: '180px' }}/>  
+                  <h5 style={{textAlign: "center"}}>Nochentera</h5>
+                </Link>                    
+              </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/3k3NWokhRRkEPhCzPmV8TW" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72  " style={{ width: '180px', height: '180px' }}/>  
+                  <h5 style={{textAlign: "center"}}>Ojitos Lindos</h5>
+                </Link>                    
+              </div>
+              <div className="col d-flex justify-content-center">
+                <Link to="/cancion/2dcFfC6dq4E7jlaSzM6agR" style={{ textDecoration: 'none' }}>
+                  <img src="https://i.scdn.co/image/ab67616d00001e02fa195c767dc3c14e7261ddec  " style={{ width: '180px', height: '180px' }}/>  
+                  <h5 style={{textAlign: "center"}}>Diabólica</h5>
+                </Link>                    
+              </div>
             </div>
           </Carousel.Item>
         </Carousel>
@@ -242,7 +270,7 @@ function Musica() {
               <div className="col d-flex flex-column justify-content-center align-items-center">
                 <Link to="/cancion/6m5pxtjGX5rEzvGS1SUTVt" style={{ textDecoration: 'none' }}>
                   <img src="https://i.scdn.co/image/ab67616d00001e02ff85dfac3e0e346580f42910" style={{ width: '180px', height: '180px' }}/>  
-                  <h5 style={{textAlign: "center"}}>LA RANGER (feat. Myke Towers</h5>
+                  <h5 style={{textAlign: "center"}}>LA RANGER</h5>
                 </Link>                  
               </div>
             </div>
