@@ -1,8 +1,8 @@
 .perfil-image{
     width: 230px;
     height: 230px;
-    margin-left: 420px;
-    margin-top: 50px;
+    margin-left: 460px;
+    margin-top: 70px;
 }
 .nombre{
     color: black;
@@ -14,11 +14,11 @@
 
 .descripcion {
     margin-top: 50px;
-    margin-left: 50px;
+    margin-left: 80px;
 }
 
 .descripcion-text{
-    margin-left: 50px;
+    margin-left: 80px;
     
 }
 
