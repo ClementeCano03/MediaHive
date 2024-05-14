@@ -36,3 +36,23 @@
     padding: 0.5rem 1rem;
     border-radius: 5px; /* Añade un poco de redondez al botón */
 }
+
+.usuario-container-topnav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 3vw;
+    margin-top: 1.5vh;
+}
+
+.username-topnav {
+    display: block;
+    color:white;
+    font-size: 2vh;
+}
+
+.h2-topnav {
+    color: white;
+    box-shadow: #283033;
+}

@@ -28,7 +28,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
 .imagen-crear-cuenta{
@@ -54,6 +53,10 @@
   margin-top: 1.5vh;
   margin-inline: auto;
   margin-bottom: 2vh;
+  border-radius: 10px;
+  background-color: #00A9D3;
+  color: white;
+  border-color: #00A9D3;
 }
 
 @media screen and (min-height: 720px) {

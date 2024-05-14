@@ -4,11 +4,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100%;
-  width: 93vw;
+  height:92%;
+  width: 100%;
   margin: 0;
   padding: 0;
   background-image: url("../src/Images/background.jpg");
+  background-size: auto; /* add this line */
+  background-repeat: no-repeat; /* add this line to prevent the image from repeating */
+  overflow: hidden;
 }
 
 

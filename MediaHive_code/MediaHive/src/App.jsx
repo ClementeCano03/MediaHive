@@ -6,11 +6,15 @@ import TopNavBar from "./Components/TopNavBar";
 
 import Inicio from "./Components/Inicio";
 import Musica from "./Components/Musica";
+import MusicaResultados from "./Components/MusicaResultados";
 import Peliculas from "./Components/Peliculas";
 import Series from "./Components/Series";
 import Biblioteca from "./Components/Biblioteca";
+import Cancion from "./Components/Cancion";
 import CrearCuenta from "./Components/CrearCuenta";
-import InicioSesion from "./Components/InicioSesion";
+import DetallesPeliculas from "./Components/detallesPeliculas";
+import DetallesSeries from "./Components/detallesSeries";
+import "./Styles/App.css"
 
 function App(){
   return(
@@ -18,88 +22,135 @@ function App(){
       <Routes>
         <Route path='/' element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Inicio"/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
-              <div style={{ flex: 1}}>
-              <Inicio/>
+              <div className="contenido">
+                <Inicio />
               </div>
             </div>
           </>
         }/>
-        <Route path='/Inicio/:nomreUsuario' element={
+        <Route path='/Inicio' element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Inicio"/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
-              <div style={{ flex: 1}}>
-              <Inicio/>
+              <div className="contenido">
+                <Inicio />
+              </div>
+            </div>
+          </>
+        }/>
+        <Route path='/Inicio/:nombreUsuario' element={
+          <>
+            <TopNavBar name="Inicio"/>
+            <div style={{display: "flex"}}>
+              <LeftToolBar/>
+              <div className="contenido">
+                <Inicio />
               </div>
             </div>
           </>
         }/>
         <Route path='/CrearCuenta' element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Inicio"/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
-              <div style={{ flex: 1}}>
-              <CrearCuenta/>
+              <div className="contenido">
+                <CrearCuenta />
               </div>
             </div>
           </>
         }/>
-        <Route path='/InicioSesion' element={
+        <Route path='/musica' element={
           <>
-            <TopNavBar/>
-            <div style={{display: "flex"}}>
-              <LeftToolBar/>
-              <div style={{ flex: 1}}>
-              <InicioSesion/>
-              </div>
-            </div>
-          </>
-        }/>
-        <Route path='/Musica' element={
-          <>
-            <TopNavBar/>
+            <TopNavBar name="Música"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
-                  <div style={{ flex: 1, backgroundColor: '#5D787D'}}>
-                    <Musica />
+                  <div className="contenido">
+                    <Musica/>
                   </div>
               </div>
           </>
         }/>
-        <Route path='/Peliculas' element={
+        <Route path='/musica/:busqueda' element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Resultados"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
-                  <div style={{ flex: 1}}>
+                  <div className="contenido">
+                    <MusicaResultados />
+                  </div>
+              </div>
+          </>
+        }/>
+        <Route path='/peliculas' element={
+          <>
+            <TopNavBar name="Películas"/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar/>
+                  <div className="contenido">
                     <Peliculas />
                   </div>
               </div>
           </>
         }/>
-        <Route path='/Series' element={
+
+        <Route path="/detallesPeliculas/:id" element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Peliculas"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
-                  <div style={{ flex: 1}}>
+                <div className="contenido">
+                  <DetallesPeliculas />
+                </div>
+              </div>
+          </> 
+        }/>
+        <Route path="/detallesSeries/:id" element={
+          <>
+            <TopNavBar name="Series"/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar/>
+                <div className="contenido">
+                  <DetallesSeries />
+                </div>
+              </div>
+
+          </> 
+        }/>
+
+        <Route path='/series' element={
+          <>
+            <TopNavBar name="Series"/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar/>
+                  <div className="contenido">
                     <Series />
                   </div>
               </div>
           </>
         }/>
-        <Route path='/Biblioteca' element={
+        <Route path='/biblioteca' element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Biblioteca"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
-                  <div style={{ flex: 1}}>
+                  <div className="contenido">
                     <Biblioteca />
+                  </div>
+              </div>
+          </>
+        }/>
+        <Route path='/cancion/:id' element={
+          <>
+            <TopNavBar name="Canción"/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar/>
+                  <div className="contenido">
+                    <Cancion />
                   </div>
               </div>
           </>

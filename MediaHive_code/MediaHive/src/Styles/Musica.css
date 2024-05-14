@@ -1,0 +1,25 @@
+.carousel-container {
+  position: relative;
+  width: 95%;
+  overflow: hidden; /* Evita que los botones se desborden fuera del contenedor */
+}
+
+/* Estilos para los botones de navegación */
+.carousel-control{
+  width: 0%;
+
+}
+
+/* Estilos para el botón de retroceso */
+.carousel-control-prev {
+  filter: invert(100%);
+  width: 40px;
+  margin-left: -50px;
+}
+
+/* Estilos para el botón de avance */
+.carousel-control-next {
+  filter: invert(100%);
+  width: 40px;
+  margin-right: -50px;
+}

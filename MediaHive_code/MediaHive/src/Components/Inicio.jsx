@@ -4,6 +4,9 @@ import { Button } from '@mui/material';
 import '../Styles/Inicio.css';
 
 function Inicio() {
+  
+  const username = localStorage.getItem('username');
+  localStorage.clear();
 
   return(
       <div className="content-inicio">
@@ -16,21 +19,26 @@ function Inicio() {
                   Debate en los diversos foros el últmo capítulo de tu serieen emisión. <br></br>
               </p>
           </div>
-            <Button 
-              component={Link} 
-              to="/CrearCuenta" 
-              variant="contained" 
-              sx={{
-                backgroundColor: '#5D787D', 
-                '&:hover': {
-                  backgroundColor: '#455559', // Change this to yourpreferred hover color
-                  color: 'black', // Change this to your preferred textcolor on hover
-                }
-              }}
-              color="primary" 
-              className="boton-crear-cuenta">
-                CREAR CUENTA
-              </Button>
+          {username ? (
+                    <></>
+                ) : (
+                  <Button 
+                  component={Link} 
+                  to="/CrearCuenta" 
+                  variant="contained" 
+                  sx={{
+                    backgroundColor: '#5D787D', 
+                    '&:hover': {
+                      backgroundColor: '#455559', // Change this to yourpreferred hover color
+                      color: 'black', // Change this to your preferred textcolor on hover
+                    }
+                  }}
+                  color="primary" 
+                  className="boton-crear-cuenta">
+                    CREAR CUENTA
+                  </Button>
+                )}
+            
       </div>
   )
 }

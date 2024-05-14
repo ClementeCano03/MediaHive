@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 
 function CrearCuenta() {
+  
   const { register, handleSubmit, formState: { errors }} = useForm();
   console.log(errors);
   const navigate = useNavigate();
