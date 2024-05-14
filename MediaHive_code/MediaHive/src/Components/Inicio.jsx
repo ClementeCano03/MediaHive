@@ -17,17 +17,13 @@ function Inicio() {
               Debate en los diversos foros el último capítulo de tu serie en emisión. <br></br>
           </p>
           
-          <Link to="/CrearCuenta">
-            <Button id="botonCrearCuenta" variant="contained">
-              Registrarse
-            </Button>
-          </Link>
+          <Button id="botonCrearCuenta" variant="contained" component={Link} to="/CrearCuenta">
+            Registrarse
+          </Button>
           
-          <Link to="/InicioSesion">
-            <Button id="botonInicioSesion" component={Link} to="/InicioSesion" variant="contained">
-              Iniciar Sesión
-            </Button>
-          </Link>
+          <Button id="botonInicioSesion" variant="contained" component={Link} to="/InicioSesion">
+            Iniciar Sesión
+          </Button>
         </div>
       </div>
     </>

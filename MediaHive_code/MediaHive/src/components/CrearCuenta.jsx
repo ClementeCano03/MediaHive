@@ -1,8 +1,9 @@
 import React from "react";
-import '../styles/CrearCuenta.css';
-import imagen from "../Images/MediaHive_icon.png";
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
+
+import '../styles/CrearCuenta.css';
+import imagen from "../Images/MediaHive_icon.png";
 
 function CrearCuenta() {
   const { register, handleSubmit, formState: { errors }} = useForm();
@@ -73,15 +74,15 @@ function CrearCuenta() {
                 required: {
                   value: true, 
                   message: 'Contraseña obligatoria'
-               },
-               minLength: {
-                 value: 4,
-                 message: 'Contraseña debe tener al menos 4 caracteres'
-               },
-               maxLength: {
-                  value: 20,
-                  message: 'Contraseña debe tener menos de 20 caracteres'
-               }
+              },
+              minLength: {
+                value: 4,
+                message: 'Contraseña debe tener al menos 4 caracteres'
+              },
+              maxLength: {
+                value: 20,
+                message: 'Contraseña debe tener menos de 20 caracteres'
+              }
               })}
               className="input-crear-cuenta"
             />
