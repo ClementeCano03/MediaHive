@@ -8,7 +8,9 @@ import Inicio from "./Components/Inicio";
 import Musica from "./Components/Musica";
 import MusicaResultados from "./Components/MusicaResultados";
 import Peliculas from "./Components/Peliculas";
+import DetallesPeliculas from "./Components/detallesPeliculas";
 import Series from "./Components/Series";
+import DetallesSeries from "./Components/detallesSeries";
 import Biblioteca from "./Components/Biblioteca";
 import Cancion from "./Components/Cancion";
 import InicioSesion from "./Components/InicioSesion";
@@ -122,6 +124,17 @@ function App(){
               </div>
           </>
         }/>
+        <Route path='/detallesPeliculas/:id' element={
+          <>
+            <TopNavBar name="Película"/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar/>
+                  <div className="contenido">
+                    <DetallesPeliculas />
+                  </div>
+              </div>
+          </>
+        }/>
         <Route path='/series' element={
           <>
             <TopNavBar name="Series"/>
@@ -129,6 +142,17 @@ function App(){
                 <LeftToolBar/>
                   <div className="contenido">
                     <Series />
+                  </div>
+              </div>
+          </>
+        }/>
+        <Route path='/detallesSeries/:id' element={
+          <>
+            <TopNavBar name="Serie"/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar/>
+                  <div className="contenido">
+                    <DetallesSeries />
                   </div>
               </div>
           </>
@@ -146,7 +170,7 @@ function App(){
         }/>
         <Route path='/ayuda' element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Ayuda"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">
@@ -157,7 +181,7 @@ function App(){
         }/>
         <Route path='/cancion/:id' element={
           <>
-            <TopNavBar/>
+            <TopNavBar name="Canción"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">

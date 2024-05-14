@@ -52,7 +52,7 @@ const InicioSesion = () => {
     }, [formErrors]);
 
     return (
-        <div className="container">
+        <div className="container" id="inicioSesioncontainer">
             <div className="form-container-iniciosesion">
                 <h1>Inicia sesión para continuar</h1>
                 {Object.keys(formErrors).length === 0 && isSubmitting && (

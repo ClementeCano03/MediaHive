@@ -56,10 +56,6 @@
     margin-inline: auto;
     margin-bottom: 2vh;
   }
-  
-  @media screen and (min-height: 720px) {
-    input {
-      margin-bottom: 5vh; /* Adjust this value as needed */
-    }
-  }
+
+
   

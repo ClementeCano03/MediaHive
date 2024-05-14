@@ -120,8 +120,8 @@ function Cancion(props) {
   const options = {
     method: 'GET',
     headers: {
-        'X-RapidAPI-Key': 'deb3d0d461mshe58223b57415d0bp176b59jsna0efe449c75e',
-        'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+      'X-RapidAPI-Key': '85d1a8011cmsh82f87c4d3f58a27p11fb8djsnf7255cec3dce',
+      'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
     }
     };
 
@@ -170,7 +170,6 @@ function Cancion(props) {
         allowFullScreen="true"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
-       
       ></iframe>
 
       {/* Contenedor del título y la información */}
@@ -193,10 +192,9 @@ function Cancion(props) {
             />
           ))}
         </div>
-
-        
       </div>
 
+      {/* Contenedor de la imagen y el artista */}
       <img src={imagen} style={{ width: '100px', height: '100px' }}/>
       <h3>{artista}</h3>
 
@@ -218,19 +216,18 @@ function Cancion(props) {
 
     {/* Sección de comentarios */}
     <div className="CommentContainer">
-          <h4 className="CommentTitle">Comentarios:</h4>
-          <div className="tabla">
-            {comentariosAleatorios.map((comment, index) => (
-              <div key={index} className="CommentBox">
-                <p><strong>{comment.autor}</strong>: {comment.texto}</p>
-              </div>
-          
-          ))}
+      <h4 className="CommentTitle">Comentarios:</h4>
+      <div className="tabla">
+        {comentariosAleatorios.map((comment, index) => (
+          <div key={index} className="CommentBox">
+            <p><strong>{comment.autor}</strong>: {comment.texto}</p>
           </div>
-          <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
-            Ver comentarios
-          </Button>
-        </div>
+        ))}
+      </div>
+      <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
+        Ver comentarios
+      </Button>
+    </div>
   </div>
   );
 }

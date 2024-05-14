@@ -1,3 +1,8 @@
+#musica {
+  background-color: #E3E9EA;
+  z-index: -1;
+}
+
 .carousel-container {
     position: relative;
     width: 95%;

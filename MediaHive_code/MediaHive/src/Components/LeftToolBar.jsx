@@ -82,7 +82,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
           </Link>
           
           {/* Elemento de la barra lateral: Biblioteca */}
-          <Link to="/bilioteca">
+          <Link to="/biblioteca">
             {/*Cuando el usuario clica en "Biblioteca", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}
             <li className={`nav-link py-3 ${seccionSeleccionada === 'Hive' ? 'active' : ''}`} onClick={() => handleClick('Hive')}>
                 <button id="seccionBiblioteca">

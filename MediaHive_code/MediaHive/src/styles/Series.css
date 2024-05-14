@@ -1,61 +1,51 @@
+#series{
+  background-color: #E3E9EA;
+  z-index: -1;
+}
+
+#series img {
+  border-radius: 5px; /* Ajusta este valor para cambiar el grado de redondeo de los bordes */
+  border: 2px solid #333; /* Añade un borde más grueso y de un color oscuro */
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5); /* Añade una sombra para darle profundidad */
+}
 .carousel-container {
-    position: relative;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+  position: relative;
+  width: 95%;
+  overflow: hidden; /* Evita que los botones se desborden fuera del contenedor */
+}
+
+/* Estilos para los botones de navegación */
+.carousel-control{
+  width: 0%;
   
-  .carousel-slide {
-    display: none;
-  }
-  
-  .carousel-slide img {
-    width: 100%;
-  }
-  
-  .carousel-caption {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-  }
-  
-  .carousel-prev,
-  .carousel-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    z-index: 1;
-  }
-  
-  .carousel-prev {
-    left: 10px;
-  }
-  
-  .carousel-next {
-    right: 10px;
-  }
-  
-  .carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-  }
-  
-  .indicator {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #bbb;
-    margin: 0 5px;
-    cursor: pointer;
-  }
-  
-  .indicator.active {
-    background-color: #333;
-  }
+}
+
+/* Estilos para el botón de retroceso */
+.carousel-control-prev {
+  filter: invert(100%);
+  width: 40px;
+  margin-left: -50px;
+}
+
+/* Estilos para el botón de avance */
+.carousel-control-next {
+  filter: invert(100%);
+  width: 40px;
+  margin-right: -50px;
+}
+
+#populares h2 {
+  margin-left: 0; /* Elimina el margen izquierdo */
+}
+
+#top10 h2 {
+  margin-left: 0; /* Elimina el margen izquierdo */
+}
+
+#guardadas h2 {
+  margin-left: 0; /* Elimina el margen izquierdo */
+}
+
+#estrenos h2 {
+  margin-left: 0; /* Elimina el margen izquierdo */
+}
