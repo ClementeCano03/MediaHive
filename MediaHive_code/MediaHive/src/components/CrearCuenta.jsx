@@ -8,7 +8,9 @@ import imagen from "../Images/MediaHive_icon.png";
 function CrearCuenta() {
   const { register, handleSubmit, formState: { errors }} = useForm();
   console.log(errors);
+  
   const navigate = useNavigate();
+
   const onSubmit = handleSubmit(data => {
     console.log(data)
     if (Object.keys(errors).length === 0) {
