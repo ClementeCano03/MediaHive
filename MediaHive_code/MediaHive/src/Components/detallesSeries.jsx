@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from 'axios'
 import { useParams } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "../styles/detallesPeliculasSeries-style.css";
@@ -10,6 +10,7 @@ function detallesSeries({ cambiarTituloPagina }) {
     const { id } = useParams();
     const [serie, setSerie] = useState(null);
     const language = 'es-ES';
+    const [similarSeries, setSimilarSeries] = useState([]);
 
     useEffect(() => {
         const fetchSerie = async () => {
@@ -19,7 +20,13 @@ function detallesSeries({ cambiarTituloPagina }) {
             setSerie(data);
         };
 
+        const fetchSimilarSeries = async () => {
+            const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}/similar?api_key=fd04580a5174281296d7de8867bc1fa0&language=~${language}`);
+            setSimilarSeries(response.data.results);
+        };
+
         fetchSerie();
+        fetchSimilarSeries();
     }, [id]);
 
     if (!serie) {
@@ -33,24 +40,38 @@ function detallesSeries({ cambiarTituloPagina }) {
     return (
         <div id="detallesSeries">
             <div className="mx-auto px-5 py-5 d-flex align-items-start">
-                
+
                 <div>
-                    <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.title} style={{ height: '400px', width: 'auto' }}/>
-                </div> 
+                    <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.title} style={{ height: '400px', width: 'auto' }} />
+                </div>
                 <div className="mx-auto px-5 py-3">
                     <h3>{serie.name}</h3>
                     <div>
                         {'⭐'.repeat(fullStars)}
                         {'☆'.repeat(halfStar)}
                         {'☆'.repeat(emptyStars)}
-                        <span style={{color: 'black'}}> {serie.vote_average}</span>
+                        <span style={{ color: 'black' }}> {serie.vote_average}</span>
                     </div>
                     <div className="py-4">
                         <p style={{ fontSize: '20px' }}>{serie.overview}</p>
                     </div>
                 </div>
-                
-            </div> 
+
+                <div>
+                    <h3 className="mx-auto py-2" style={{ textAlign: 'center' }}>Series similares</h3>
+                    <div className="mx-auto px-5 py-3" style={{ display: 'flex', flexWrap: 'wrap', width: '350px' }}>
+                        {similarSeries.slice(0, 4).map(similarSerie => (
+                            <div key={similarSerie.id} style={{ width: '50%', padding: '10px' }}>
+                                <Link to={`/detallesSeries/${similarSerie.id}`}>
+                                    <img src={`https://image.tmdb.org/t/p/w500${similarSerie.poster_path}`} alt={similarSerie.title} style={{ width: '100%', height: 'auto' }} />
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+
+            </div>
         </div>
     )
 }

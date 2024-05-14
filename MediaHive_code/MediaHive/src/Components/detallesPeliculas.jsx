@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from 'axios'
 import { useParams } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "../styles/detallesPeliculasSeries-style.css";
@@ -10,6 +10,7 @@ function detallesPeliculas({ cambiarTituloPagina }) {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
     const language = 'es-ES';
+    const [similarMovies, setSimilarMovies] = useState([]);
 
     useEffect(() => {
         const fetchMovie = async () => {
@@ -19,7 +20,13 @@ function detallesPeliculas({ cambiarTituloPagina }) {
             setMovie(data);
         };
 
+        const fetchSimilarMovies = async () => {
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=fd04580a5174281296d7de8867bc1fa0&language=~${language}`);
+            setSimilarMovies(response.data.results);
+        };
+
         fetchMovie();
+        fetchSimilarMovies();
     }, [id]);
 
     if (!movie) {
@@ -49,8 +56,19 @@ function detallesPeliculas({ cambiarTituloPagina }) {
                         <p style={{ fontSize: '20px' }}>{movie.overview}</p>
                     </div>
                 </div>
+                <div>
+                    <h3 className="mx-auto py-3" style={{ textAlign: 'center' }}>Películas similares</h3>
+                    <div className="mx-auto px-5 py-3" style={{ display: 'flex', flexWrap: 'wrap', width: '300px' }}>
+                        {similarMovies.slice(0, 4).map(similarMovie => (
+                            <div key={similarMovie.id} style={{ width: '50%', padding: '10px' }}>
+                                <Link to={`/detallesPeliculas/${similarMovie.id}`}>
+                                    <img src={`https://image.tmdb.org/t/p/w500${similarMovie.poster_path}`} alt={similarMovie.title} style={{ width: '100%', height: 'auto' }} />
+                                </Link>
+                            </div>
+                        ))}
+                    </div>
 
-
+                </div>
             </div>
         </div>
     )
