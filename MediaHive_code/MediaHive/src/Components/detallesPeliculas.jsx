@@ -12,6 +12,16 @@ function detallesPeliculas({ cambiarTituloPagina }) {
     const language = 'es-ES';
     const [similarMovies, setSimilarMovies] = useState([]);
 
+    const [comments, setComments] = useState([]);
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const comment = event.target.elements[0].value;
+        setComments([comment, ...comments]);
+        event.target.reset();
+    };
+
     useEffect(() => {
         const fetchMovie = async () => {
             const { data } = await axios.get(
@@ -69,6 +79,21 @@ function detallesPeliculas({ cambiarTituloPagina }) {
                     </div>
 
                 </div>
+            </div>
+            <div>
+                <h3 className="mx-auto py-3 px-5">Comentarios</h3>
+                <div className="mx-auto px-5 py-3">
+                    {comments.map((comment, index) => (
+                        <div key={index} style={{ border: '1px solid black', margin: '10px 0', padding: '10px' }}>
+                            {comment}
+                        </div>
+                    ))}
+                </div>
+                <h3 className="mx-auto py-3" style={{ textAlign: 'center' }}>Añadir un comentario</h3>
+                <form onSubmit={handleSubmit} style={{ padding: '0 50px' }}>
+                    <textarea placeholder="Escribe tu comentario aquí..." style={{ width: '100%', height: '100px', padding: '10px', resize: 'none' }}></textarea>
+                    <button type="submit" style={{ display: 'block', margin: '10px auto' }}>Enviar</button>
+                </form>
             </div>
         </div>
     )
