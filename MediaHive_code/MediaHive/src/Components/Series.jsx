@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import { Carousel } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 
 import "../styles/series-styles.css";
 
@@ -20,8 +21,8 @@ function Series({ cambiarTituloPagina }) {
 
   //constantes para guardar las peliculas
   const [series, setSeries] = useState([]);
-  const [top, setTop] = useState([]);
-  const [upcoming, setUpcoming] = useState([]);
+  const [topSeries, setTopSeries] = useState([]);
+  const [upcomingSeries, setUpcomingSeries] = useState([]);
 
   //constantes para el buscador
   const [searchKey, setSearchKey] = useState("");
@@ -52,8 +53,8 @@ function Series({ cambiarTituloPagina }) {
 
     const sortedResults = results.sort((a, b) => b.vote_average - a.vote_average);
 
-    localStorage.setItem('top', JSON.stringify(sortedResults));
-    setTop(sortedResults);
+    localStorage.setItem('topSeries', JSON.stringify(sortedResults));
+    setTopSeries(sortedResults);
   };
 
   //funcion para realizar peticion de estrenos a la api
@@ -65,8 +66,8 @@ function Series({ cambiarTituloPagina }) {
       },
     });
 
-    localStorage.setItem('upcoming', JSON.stringify(results));
-    setUpcoming(results);
+    localStorage.setItem('upcomingSeries', JSON.stringify(results));
+    setUpcomingSeries(results);
   };
 
   //funcion para el buscador
@@ -86,8 +87,8 @@ function Series({ cambiarTituloPagina }) {
 
   useEffect(() => {
     const cachedSeries = localStorage.getItem('series')
-    const cachedTop = localStorage.getItem('top')
-    const cachedUpcoming = localStorage.getItem('upcoming')
+    const cachedTopSeries = localStorage.getItem('top')
+    const cachedUpcomingSeries = localStorage.getItem('upcoming')
 
     if (cachedSeries) {
       setSeries(JSON.parse(cachedSeries))
@@ -95,14 +96,14 @@ function Series({ cambiarTituloPagina }) {
       fetchSeries();
     }
 
-    if (cachedTop) {
-      setTop(JSON.parse(cachedTop))
+    if (cachedTopSeries) {
+      setTopSeries(JSON.parse(cachedTopSeries))
     } else {
       fetchTopSeries();
     }
 
-    if (cachedUpcoming) {
-      setUpcoming(JSON.parse(cachedUpcoming))
+    if (cachedUpcomingSeries) {
+      setUpcomingSeries(JSON.parse(cachedUpcomingSeries))
     }
     else {
       fetchUpcomingSeries();
@@ -137,21 +138,13 @@ function Series({ cambiarTituloPagina }) {
             <div className="carousel-item-content row align-items-center py-2">
               {series.length > 0 && (
                 <>
-                  <div className="col d-flex justify-content-center">
-                    <img key={series[0].id} src={`${URL_IMAGE + series[0].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={series[1].id} src={`${URL_IMAGE + series[1].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={series[2].id} src={`${URL_IMAGE + series[2].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={series[3].id} src={`${URL_IMAGE + series[3].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={series[4].id} src={`${URL_IMAGE + series[4].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
+                  {series.slice(0, 5).map((serie, index) => (
+                    <div key={serie.id} className="col d-flex justify-content-center">
+                      <Link to={`/detallesSeries/${serie.id}`}>
+                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                      </Link>
+                    </div>
+                  ))}
                 </>
               )}
             </div>
@@ -161,21 +154,13 @@ function Series({ cambiarTituloPagina }) {
             <div className="carousel-item-content row align-items-center py-2">
               {series.length > 0 && (
                 <>
-                  <div className="col d-flex justify-content-center">
-                    <img key={series[5].id} src={`${URL_IMAGE + series[5].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={series[6].id} src={`${URL_IMAGE + series[6].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={series[7].id} src={`${URL_IMAGE + series[7].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={series[8].id} src={`${URL_IMAGE + series[8].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={series[9].id} src={`${URL_IMAGE + series[9].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
+                  {series.slice(5, 10).map((serie, index) => (
+                    <div key={serie.id} className="col d-flex justify-content-center">
+                      <Link to={`/detallesSeries/${serie.id}`}>
+                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                      </Link>
+                    </div>
+                  ))}
                 </>
               )}
             </div>
@@ -189,23 +174,15 @@ function Series({ cambiarTituloPagina }) {
         <Carousel ref={carouselRef} interval={null} indicators={false}>
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              {top.length > 0 && (
+              {topSeries.length > 0 && (
                 <>
-                  <div className="col d-flex justify-content-center">
-                    <img key={top[0].id} src={`${URL_IMAGE + top[0].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={top[1].id} src={`${URL_IMAGE + top[1].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={top[2].id} src={`${URL_IMAGE + top[2].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={top[3].id} src={`${URL_IMAGE + top[3].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={top[4].id} src={`${URL_IMAGE + top[4].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
+                  {topSeries.slice(0, 5).map((serie, index) => (
+                    <div key={serie.id} className="col d-flex justify-content-center">
+                      <Link to={`/detallesSeries/${serie.id}`}>
+                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                      </Link>
+                    </div>
+                  ))}
                 </>
               )}
             </div>
@@ -213,23 +190,15 @@ function Series({ cambiarTituloPagina }) {
 
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              {top.length > 0 && (
+              {topSeries.length > 0 && (
                 <>
-                  <div className="col d-flex justify-content-center">
-                    <img key={top[5].id} src={`${URL_IMAGE + top[5].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={top[6].id} src={`${URL_IMAGE + top[6].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={top[7].id} src={`${URL_IMAGE + top[7].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={top[8].id} src={`${URL_IMAGE + top[8].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={top[9].id} src={`${URL_IMAGE + top[9].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
+                  {topSeries.slice(5, 10).map((serie, index) => (
+                    <div key={serie.id} className="col d-flex justify-content-center">
+                      <Link to={`/detallesSeries/${serie.id}`}>
+                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                      </Link>
+                    </div>
+                  ))}
                 </>
               )}
             </div>
@@ -289,23 +258,15 @@ function Series({ cambiarTituloPagina }) {
         <Carousel ref={carouselRef} interval={null} indicators={false}>
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              {upcoming.length > 0 && (
+              {upcomingSeries.length > 0 && (
                 <>
-                  <div className="col d-flex justify-content-center">
-                    <img key={upcoming[0].id} src={`${URL_IMAGE + upcoming[0].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={upcoming[1].id} src={`${URL_IMAGE + upcoming[1].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={upcoming[2].id} src={`${URL_IMAGE + upcoming[2].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={upcoming[3].id} src={`${URL_IMAGE + upcoming[3].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={upcoming[4].id} src={`${URL_IMAGE + upcoming[4].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
+                  {upcomingSeries.slice(0, 5).map((serie, index) => (
+                    <div key={serie.id} className="col d-flex justify-content-center">
+                      <Link to={`/detallesSeries/${serie.id}`}>
+                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                      </Link>
+                    </div>
+                  ))}
                 </>
               )}
             </div>
@@ -313,23 +274,15 @@ function Series({ cambiarTituloPagina }) {
 
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              {upcoming.length > 0 && (
+              {upcomingSeries.length > 0 && (
                 <>
-                  <div className="col d-flex justify-content-center">
-                    <img key={upcoming[5].id} src={`${URL_IMAGE + upcoming[5].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={upcoming[6].id} src={`${URL_IMAGE + upcoming[6].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={upcoming[7].id} src={`${URL_IMAGE + upcoming[7].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={upcoming[8].id} src={`${URL_IMAGE + upcoming[8].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
-                  <div className="col d-flex justify-content-center">
-                    <img key={upcoming[9].id} src={`${URL_IMAGE + upcoming[9].poster_path}`} style={{ height: '200px', width: 'auto' }} />
-                  </div>
+                  {upcomingSeries.slice(5, 10).map((serie, index) => (
+                    <div key={serie.id} className="col d-flex justify-content-center">
+                      <Link to={`/detallesSeries/${serie.id}`}>
+                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                      </Link>
+                    </div>
+                  ))}
                 </>
               )}
             </div>

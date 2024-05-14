@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import TopNavBar from "./Components/TopNavBar";
 import LeftToolBar from "./Components/LeftToolBar";
 import Peliculas from "./Components/Peliculas";
-import Detalles from "./Components/detalles";
+import DetallesPeliculas from "./Components/detallesPeliculas";
+import DetallesSeries from "./Components/detallesSeries";
 import Series from "./Components/Series";
 
 function App() {
@@ -13,8 +14,9 @@ function App() {
       <div style={{ display: 'flex' }}>
         <LeftToolBar />
         <Routes>
-          <Route path="/detalles/:id" element={<Detalles />} />
-          <Route path="/" element={<Peliculas />} />
+          <Route path="/detallesPeliculas/:id" element={<DetallesPeliculas />} />
+          <Route path="/detallesSeries/:id" element={<DetallesSeries />} />
+          <Route path="/" element={<Series />} />
         </Routes>
       </div>
     </Router>
