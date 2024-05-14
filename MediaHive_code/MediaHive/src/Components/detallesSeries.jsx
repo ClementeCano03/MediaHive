@@ -27,8 +27,18 @@ function detallesSeries({ cambiarTituloPagina }) {
     }
 
     return (
-        <div>
-            <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.title} />
+        <div id="detallesSeries">
+            <div className="mx-auto px-5 py-5 d-flex align-items-start">
+                
+                <div>
+                    <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.title} style={{ height: '400px', width: 'auto' }}/>
+                </div> 
+                <div className="mx-auto px-5 py-3">
+                    <h3>{serie.name}</h3>
+                    <p>{serie.overview}</p>
+                </div>
+                
+            </div> 
         </div>
     )
 }

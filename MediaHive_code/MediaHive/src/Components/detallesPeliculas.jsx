@@ -27,8 +27,18 @@ function detallesPeliculas({ cambiarTituloPagina }) {
     }
 
     return (
-        <div>
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+        <div id="detallesPeliculas">
+            <div className="mx-auto px-5 py-5 d-flex align-items-start">
+                
+                <div>
+                    <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} style={{ height: '400px', width: 'auto' }}/>
+                </div> 
+                <div className="mx-auto px-5 py-3">
+                    <h3>{movie.title}</h3>
+                    <p>{movie.overview}</p>
+                </div>
+                
+            </div> 
         </div>
     )
 }
