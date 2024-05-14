@@ -129,7 +129,9 @@ function Peliculas({ cambiarTituloPagina }) {
       <div className="search-results d-flex justify-content-center align-items-center flex-wrap">
         {searchedMovies.slice(0, 5).map((movie) => (
           <div key={movie.id} className="m-3 d-flex flex-column align-items-center">
-            <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+            <Link to={`/detallesPeliculas/${movie.id}`}>
+              <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+            </Link>
           </div>
         ))}
       </div>

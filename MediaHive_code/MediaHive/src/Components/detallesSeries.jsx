@@ -26,6 +26,10 @@ function detallesSeries({ cambiarTituloPagina }) {
         return <div>Cargando...</div>
     }
 
+    const fullStars = Math.floor(serie.vote_average / 2);
+    const halfStar = serie.vote_average % 2 === 0 ? 0 : 1;
+    const emptyStars = 5 - fullStars - halfStar;
+
     return (
         <div id="detallesSeries">
             <div className="mx-auto px-5 py-5 d-flex align-items-start">
@@ -35,7 +39,15 @@ function detallesSeries({ cambiarTituloPagina }) {
                 </div> 
                 <div className="mx-auto px-5 py-3">
                     <h3>{serie.name}</h3>
-                    <p>{serie.overview}</p>
+                    <div>
+                        {'⭐'.repeat(fullStars)}
+                        {'☆'.repeat(halfStar)}
+                        {'☆'.repeat(emptyStars)}
+                        <span style={{color: 'black'}}> {serie.vote_average}</span>
+                    </div>
+                    <div className="py-4">
+                        <p style={{ fontSize: '20px' }}>{serie.overview}</p>
+                    </div>
                 </div>
                 
             </div> 

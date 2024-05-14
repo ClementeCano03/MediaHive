@@ -73,7 +73,7 @@ function Series({ cambiarTituloPagina }) {
   //funcion para el buscador
   const searchSeries = async (event) => {
     event.preventDefault();
-  
+
     const response = await axios.get(`${API_URL}/search/tv`, {
       params: {
         api_key: API_KEY,
@@ -81,7 +81,7 @@ function Series({ cambiarTituloPagina }) {
         query: searchKey,
       },
     });
-  
+
     setSearchedSeries(response.data.results);
   };
 
@@ -125,7 +125,9 @@ function Series({ cambiarTituloPagina }) {
       <div className="search-results d-flex justify-content-center align-items-center flex-wrap">
         {searchedSeries.slice(0, 5).map((serie) => (
           <div key={serie.id} className="m-3 d-flex flex-column align-items-center">
-            <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+            <Link to={`/detallesSeries/${serie.id}`}>
+              <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+            </Link>
           </div>
         ))}
       </div>
