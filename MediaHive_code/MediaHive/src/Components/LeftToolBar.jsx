@@ -11,13 +11,7 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 import "../styles/LeftToolBar.css";
 
-function LeftToolBar({ cambiarTituloPagina }) {
-  /*const navigate = useNavigate(); // Usa useNavigate en lugar de useHistory
-
-  const handleClick = (titulo) => {
-    cambiarTituloPagina(titulo);
-    navigate(`/${titulo.toLowerCase()}`); // Utiliza navigate en lugar de history.push
-  };*/
+function LeftToolBar() {
 
   return (
     <>

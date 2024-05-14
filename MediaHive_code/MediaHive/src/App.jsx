@@ -44,7 +44,7 @@ function App(){
           <>
             <TopNavBar name="Resultados"/>
               <div style={{display: "flex"}}>
-                <LeftToolBar/>
+                <LeftToolBar />
                   <div className="contenido">
                     <MusicaResultados />
                   </div>
