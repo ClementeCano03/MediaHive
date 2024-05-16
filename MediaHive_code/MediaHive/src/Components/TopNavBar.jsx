@@ -7,6 +7,7 @@ import '../Styles/TopNavBar.css';
 
 function TopNavBar(props){
     const username = localStorage.getItem('username');
+    const profileImage = localStorage.getItem('profileImage');
     //localStorage.clear();
 
 
@@ -19,7 +20,11 @@ function TopNavBar(props){
                 {username ? (
                     <Link to="/Perfil">
                         <div className="usuario-container-topnav">
-                            <AccountBoxIcon style={{fill: "white"}}/>
+                        {profileImage ? (  
+                            <img src={profileImage} className="imagenPerfil-topnav"/>  
+                        ) : (
+                            <AccountBoxIcon style={{fill: "white"}} className="imagenPerfil-topnav"/>
+                        )}
                             <h5 className="username-topnav">{username}</h5>
                         </div>
                     </Link>

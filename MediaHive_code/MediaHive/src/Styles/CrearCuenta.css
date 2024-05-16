@@ -59,6 +59,18 @@
   border-color: #00A9D3;
 }
 
+.boton-aceptar:hover {
+  width: 8vw;
+  display: block;
+  margin-top: 1.5vh;
+  margin-inline: auto;
+  margin-bottom: 2vh;
+  border-radius: 10px;
+  background-color: #038ab7;
+  color: white;
+  border-color: #00A9D3;
+}
+
 @media screen and (min-height: 720px) {
   input {
     margin-bottom: 5vh; /* Adjust this value as needed */

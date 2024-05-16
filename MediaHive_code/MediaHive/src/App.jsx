@@ -14,6 +14,7 @@ import Cancion from "./Components/Cancion";
 import CrearCuenta from "./Components/CrearCuenta";
 import DetallesPeliculas from "./Components/detallesPeliculas";
 import DetallesSeries from "./Components/detallesSeries";
+import Perfil from "./Components/Perfil";
 import "./Styles/App.css"
 
 function App(){
@@ -60,6 +61,17 @@ function App(){
               <LeftToolBar/>
               <div className="contenido">
                 <CrearCuenta />
+              </div>
+            </div>
+          </>
+        }/>
+         <Route path='/perfil' element={
+          <>
+            <TopNavBar name="Tu Perfil"/>
+            <div style={{display: "flex"}}>
+              <LeftToolBar/>
+              <div className="contenido">
+                <Perfil />
               </div>
             </div>
           </>

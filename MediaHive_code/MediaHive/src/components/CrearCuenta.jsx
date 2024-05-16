@@ -14,6 +14,7 @@ function CrearCuenta() {
     if (Object.keys(errors).length === 0) {
       // Si no hay errores, redireccionamos a /Inicio y guardamos el nombre de usuario en localStorage
       localStorage.setItem('username', data.nombreUsuario);
+      localStorage.setItem('profileImage', '');
       navigate(`/Inicio/${data.nombreUsuario}`);
     }
   })
