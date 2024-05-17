@@ -12,7 +12,14 @@ import HiveIcon from '@mui/icons-material/Hive';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 //-------------------------------------------------------------//
+// Importar imágenes de las secciones
+import barranav from "../Images/Ayuda/barra.png";
+import Ultimosestrenos from "../Images/Ayuda/estrenos.png";
+import Maspopulares from "../Images/Ayuda/popu.png";
+import Top10 from "../Images/Ayuda/top.png";
 
+
+//-------------------------------------------------------------//
 function Ayuda() {
     
 
@@ -22,7 +29,7 @@ return (
             <Accordion.Item eventKey="0" className="quienes-somos">
                 <Accordion.Header>
                     <GroupsIcon id="icono-grupo"/>
-                    ¿Quiénes somos?
+                    <strong>¿Quiénes somos?</strong>
                 </Accordion.Header>
                 <Accordion.Body>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -38,7 +45,7 @@ return (
             <Accordion.Item eventKey="1" className="manual-novato">
                 <Accordion.Header>
                     <MenuBookIcon id="icono-manual"/>    
-                    Manual para novatos
+                    <strong>Manual para novatos</strong>
                 </Accordion.Header>
                 <Accordion.Body>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -54,27 +61,136 @@ return (
                 <Accordion.Item eventKey="2" className="musica">
                 <Accordion.Header>
                     <AudiotrackIcon id="icono-musica"/>
-                    Sección Música
+                    <strong>Sección Música</strong>
                 </Accordion.Header>
                 <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                
                     <Accordion defaultActiveKey="0" flush className="sub-items-musica">
                         <Accordion.Item eventKey="1">
                             <Accordion.Header>
-                                ¿Qué aparece al inicio de la seccion?
+                                <strong>¿Qué aparece al inicio de la seccion?</strong>
+                            </Accordion.Header>
+                            <Accordion.Body>
+                            En nuestra sección de música podrás encontrar las últimas novedades, los temas más populares y el top 10 de España. 
+                            Además, podrás buscar tus canciones favoritas y escucharlas online o reproducirlas en Spotify.
+                
+                                <Accordion defaultActiveKey="0" flush className="sub-items-musica">
+                                    <Accordion.Item eventKey="1">
+                                    <Accordion.Header>
+                                        <strong>Barra de navegación</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={barranav} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                        En la barra de navegación podrás buscar la canción que desees.
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="2">
+                                    <Accordion.Header>
+                                        <strong>Últimos estrenos</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={Ultimosestrenos} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                        Aquí podrás descubrir las últimas canciones que se han lanzado.
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="3">
+                                    <Accordion.Header>
+                                    <strong>Más populares</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={Maspopulares} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                        Aquí podrás ver las canciones más escuchadas del momento.
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="4">
+                                    <Accordion.Header>
+                                    <strong>Top 10 España</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={Top10} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                        Aquí podrás ver las 10 canciones más escuchadas en España.
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header>
+                                <strong>Buscar una canción</strong>
                             </Accordion.Header>
                             <Accordion.Body>
                                 <Accordion defaultActiveKey="0" flush className="sub-items-musica">
                                     <Accordion.Item eventKey="1">
                                     <Accordion.Header>
-                                        Barra de navegación
+                                    <strong>Buscar una canción por artista</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="2">
+                                    <Accordion.Header>
+                                    <strong>Buscar una canción por álbum</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="3">
+                            <Accordion.Header>
+                            <strong>¿Qué veo cuando busco una canción?</strong>
+                            </Accordion.Header>
+                            <Accordion.Body>
+                                <Accordion defaultActiveKey="0" flush className="sub-items-musica">
+                                    <Accordion.Item eventKey="1">
+                                    <Accordion.Header>
+                                    <strong>Reproductor de la canción online</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="2">
+                                    <Accordion.Header>
+                                    <strong>Posibilidad de abrir la canción en Spotify</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="3">
+                                    <Accordion.Header>
+                                    <strong>Título de la canción</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="4">
+                                    <Accordion.Header>
+                                    <strong>Valorar la canción</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="5">
+                                    <Accordion.Header>
+                                    <strong>Guardar en favoritos</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="5">
+                                    <Accordion.Header>
+                                    <strong>Comentarios</strong>
                                     </Accordion.Header>
                                     <Accordion.Body>
 
@@ -90,7 +206,7 @@ return (
                 <Accordion.Item eventKey="3" className="peliculas">
                 <Accordion.Header>
                     <MovieIcon id="icono-peliculas"/>
-                    Sección Películas
+                    <strong>Sección Películas</strong>
                 </Accordion.Header>
                 <Accordion.Body>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -106,7 +222,7 @@ return (
                 <Accordion.Item eventKey="4" className="series">
                 <Accordion.Header>
                     <SlideshowIcon id="icono-series"/>
-                    Sección Series
+                    <strong>Sección Series</strong>
                 </Accordion.Header>
                 <Accordion.Body>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -122,7 +238,7 @@ return (
                 <Accordion.Item eventKey="5" className="biblioteca">
                 <Accordion.Header>
                     <HiveIcon id="icono-biblioteca"/>
-                    Tu Biblioteca
+                    <strong>Tu Biblioteca</strong>
                 </Accordion.Header>
                 <Accordion.Body>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -138,7 +254,7 @@ return (
                 <Accordion.Item eventKey="6" className="perfil">
                 <Accordion.Header>
                     <AccountBoxIcon id="icono-perfil"/>
-                    Tu Perfil
+                    <strong>Tu Perfil</strong>
                 </Accordion.Header>
                 <Accordion.Body>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
