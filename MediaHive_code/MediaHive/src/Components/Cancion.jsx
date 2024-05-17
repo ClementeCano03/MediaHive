@@ -152,6 +152,19 @@ function Cancion(props) {
         }
     };
 
+    /* Función para guardar la canción */
+    const handleCancionSave = () => {
+        if (localStorage.getItem('cancionesSaved') === null) {
+          localStorage.setItem('cancionesSaved', JSON.stringify([id]));
+        } else {
+          let cancionesSaved = JSON.parse(localStorage.getItem('cancionesSaved'));
+          if (!cancionesSaved.includes(id)) {
+            cancionesSaved.push(id);
+            localStorage.setItem('cancionesSaved', JSON.stringify(cancionesSaved));
+          }
+        }
+      }
+
     useEffect(() => {
         // Esta función se llamará directamente después de abrir la página
         getSong();
@@ -176,7 +189,10 @@ function Cancion(props) {
       <div className="SongInfoContainer">
         {/* Título de la canción con emoticono */}
         <h3 className="SongTitle">
-          {titulo} <BookmarkAddIcon className="BookmarkIcon"/>
+          {titulo}
+          <button onClick={handleCancionSave} style={{ border: 'none', background: 'transparent' }}>
+            <BookmarkAddIcon className="BookmarkIcon" style={{ marginLeft: '10px', color: 'black' }} />
+        </button>
         </h3>
 
         {/* Estrellas */}

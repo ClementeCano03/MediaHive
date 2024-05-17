@@ -11,12 +11,12 @@ import Peliculas from "./Components/Peliculas";
 import DetallesPeliculas from "./Components/detallesPeliculas";
 import Series from "./Components/Series";
 import DetallesSeries from "./Components/detallesSeries";
-import Biblioteca from "./Components/Biblioteca";
 import Cancion from "./Components/Cancion";
 import InicioSesion from "./Components/InicioSesion";
 import CrearCuenta from "./Components/CrearCuenta";
 import Perfil from "./Components/Perfil";
 import Ayuda from "./Components/Ayuda";
+import Biblioteca from "./Components/Biblioteca";
 
 
 import "./styles/App.css"
