@@ -16,8 +16,9 @@ function Hive() {
     const URL_IMAGE = 'https://image.tmdb.org/t/p/original';
     const language = "es-ES"
 
-    /*Estado para guardar las películas*/
+    /*Estado para guardar las películas y series*/
     const [moviesSaved, setMoviesSaved] = useState([]);
+    const [seriesSaved, setSeriesSaved] = useState([]);
 
     const fetchMovieDetails = async (movieId) => {
         const response = await fetch(`${API_URL}/movie/${movieId}?api_key=${API_KEY}&language=${language}`);
@@ -25,13 +26,26 @@ function Hive() {
         return movieDetails;
     };
 
+    const fetchSerieDetails = async (serieId) => {
+        const response = await fetch(`${API_URL}/tv/${serieId}?api_key=${API_KEY}&language=${language}`);
+        const serieDetails = await response.json();
+        return serieDetails;
+    };
+
     useEffect(() => {
-        // Recupera las películas del almacenamiento local cuando el componente se monta
+        // Recupera las películas y series del almacenamiento local cuando el componente se monta
         const savedMovies = JSON.parse(localStorage.getItem('moviesSaved'));
+        const savedSeries = JSON.parse(localStorage.getItem('seriesSaved'));
+
         if (savedMovies) {
             setMoviesSaved(savedMovies);
             console.log(savedMovies);
         }
+
+        if (savedSeries) {
+            setSeriesSaved(savedSeries);
+        }
+        console.log(savedSeries);
         console.log(savedMovies);
     }, []);
 
@@ -45,7 +59,17 @@ function Hive() {
             }
         };
 
+        const fetchSavedSeries = async () => {
+            const savedSeries = JSON.parse(localStorage.getItem('seriesSaved'));
+            if (savedSeries) {
+                const serieDetailsPromises = savedSeries.map(fetchSerieDetails);
+                const serieDetails = await Promise.all(serieDetailsPromises);
+                setSeriesSaved(serieDetails);
+            }
+        };
+
         fetchSavedMovies();
+        fetchSavedSeries();
     }, []);
 
     return (
@@ -98,31 +122,33 @@ function Hive() {
                         <Carousel ref={carouselRef} interval={null} indicators={false}>
                             <Carousel.Item>
                                 <div className="carousel-item-content row align-items-center py-2">
-                                    <div className="col-4 justify-content-center">
-                                        <h3>Serie 1</h3>
-                                    </div>
-                                    <div className="col-4 justify-content-center">
-                                        <h3>Serie 2</h3>
-                                    </div>
-                                    <div className="col-4 justify-content-center">
-                                        <h3>Serie 3</h3>
-                                    </div>
-
+                                    {seriesSaved.length > 0 && (
+                                        <>
+                                            {seriesSaved.slice(0, 5).map((serie, index) => (
+                                                <div key={serie.id ? `serie-${serie.id}` : `serie-index-${index}`} className="col d-flex justify-content-center">
+                                                    <Link to={`/detallesSeries/${serie.id}`}>
+                                                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                                                    </Link>
+                                                </div>
+                                            ))}
+                                        </>
+                                    )}
                                 </div>
                             </Carousel.Item>
 
                             <Carousel.Item>
                                 <div className="carousel-item-content row align-items-center py-2">
-                                    <div className="col-4 justify-content-center">
-                                        <h3>Serie 4</h3>
-                                    </div>
-                                    <div className="col-4 justify-content-center">
-                                        <h3>Serie 5</h3>
-                                    </div>
-                                    <div className="col-4 justify-content-center">
-                                        <h3>Serie 6</h3>
-                                    </div>
-
+                                    {seriesSaved.length > 0 && (
+                                        <>
+                                            {seriesSaved.slice(5, 10).map((serie, index) => (
+                                                <div key={serie.id ? `serie-${serie.id}` : `serie-index-${index}`} className="col d-flex justify-content-center">
+                                                    <Link to={`/detallesSeries/${serie.id}`}>
+                                                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                                                    </Link>
+                                                </div>
+                                            ))}
+                                        </>
+                                    )}
                                 </div>
                             </Carousel.Item>
                         </Carousel>
@@ -137,7 +163,7 @@ function Hive() {
                                     {moviesSaved.length > 0 && (
                                         <>
                                             {moviesSaved.slice(0, 5).map((movie, index) => (
-                                                <div key={movie.id} className="col d-flex justify-content-center">
+                                                <div key={movie.id ? `pelicula-${movie.id}` : `pelicula-index-${index}`} className="col d-flex justify-content-center">
                                                     <Link to={`/detallesPeliculas/${movie.id}`}>
                                                         <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
                                                     </Link>
@@ -153,7 +179,7 @@ function Hive() {
                                     {moviesSaved.length > 0 && (
                                         <>
                                             {moviesSaved.slice(5, 10).map((movie, index) => (
-                                                <div key={movie.id} className="col d-flex justify-content-center">
+                                                <div key={movie.id ? `pelicula-${movie.id}` : `pelicula-index-${index}`} className="col d-flex justify-content-center">
                                                     <Link to={`/detallesPeliculas/${movie.id}`}>
                                                         <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
                                                     </Link>
