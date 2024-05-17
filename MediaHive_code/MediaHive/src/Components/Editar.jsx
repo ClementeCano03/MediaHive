@@ -11,7 +11,7 @@ function Editar() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+            <input style={{color: "black"}} type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
             <button type="submit">Guardar</button>
         </form>
     );

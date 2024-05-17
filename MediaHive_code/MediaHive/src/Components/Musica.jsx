@@ -1,7 +1,4 @@
 import React, { useRef, useState } from "react";
-
-import LeftToolBar from "./LeftToolBar";
-import TopNavBar from "./TopNavBar";
 import {Carousel} from "react-bootstrap";
 import "../styles/Musica2.css"
 
@@ -131,9 +128,7 @@ function Musica(/*{ cambiarTituloPagina }*/) {
                   <div className="col d-flex justify-content-center">
                   <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
+                
             </div>
           </Carousel.Item>
 
@@ -152,9 +147,7 @@ function Musica(/*{ cambiarTituloPagina }*/) {
                   <div className="col d-flex justify-content-center">
                   <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
+                  
             </div>
           </Carousel.Item>
         </Carousel>
@@ -175,9 +168,7 @@ function Musica(/*{ cambiarTituloPagina }*/) {
                   <div className="col d-flex justify-content-center">
                   <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
+                
             </div>
           </Carousel.Item>
 
@@ -196,9 +187,7 @@ function Musica(/*{ cambiarTituloPagina }*/) {
                   <div className="col d-flex justify-content-center">
                   <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
+                  
             </div>
           </Carousel.Item>
         </Carousel>
@@ -217,11 +206,8 @@ function Musica(/*{ cambiarTituloPagina }*/) {
                   <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
                   <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
+                  <iframe src="https://open.spotify.com/embed/track/1jPff2HChF9ZahcdogUaCX?utm_source=generator" width="245" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
+                  
             </div>
           </Carousel.Item>
 
@@ -240,9 +226,7 @@ function Musica(/*{ cambiarTituloPagina }*/) {
                   <div className="col d-flex justify-content-center">
                   <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
-                  <div className="col d-flex justify-content-center">
-                  <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
+                  
             </div>
           </Carousel.Item>
         </Carousel>
