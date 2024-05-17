@@ -1,3 +1,5 @@
+
+
 .seccionPerfil-container {
     display: flex;
     flex-direction: column;
@@ -6,78 +8,147 @@
     width: 100%;
     height: 100%;
     background-color: #F5F5F5;
+    padding: 1rem;
 }
 
+/* Contenedor del formulario */
 .form-seccionPerfil-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 50%;
+    max-width: 600px;
+    height: 90%;
     background-color: #78939878;
     border-radius: 45px;
-    font-family: 'livvic';
-    padding: 6vh;
+    padding: 2.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.form-perfil{
+/* Estilos del formulario */
+.form-perfil {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 100%;
-
 }
 
-.perfil-image{
-    align-self: center;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-    border-radius: 10px;
-    width: 130px;
-    height: 130px;
+/* Imagen de perfil */
+.perfil-image {
+    width: 10vh;
+    height: 10vh;
+    border-radius: 25%;
+    margin-bottom: 1.3rem;
 }
 
+/* Estilos de los grupos de input */
 .inline-group {
-    display: inline-block;
-    margin-bottom: 1vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.6rem;
 }
 
+/* Etiquetas */
+.label-perfil {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+/* Inputs */
+.input-perfil {
+    width: 100%;
+    height: 45%;
+    padding: 0.6rem;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.seleccionar-imagen-perfil {
+    cursor: pointer;
+}
+
+/* Botones */
 .boton-perfil {
-    width: 12vw;
-    display: block;
-    margin-top: 1.5vh;
-    margin-inline: auto;
-    margin-bottom: 2vh;
+    align-self: center;
+    width: 40%;
+    height: 2rem;
     border-radius: 10px;
     background-color: #00A9D3;
     color: white;
-    border-color: #00A9D3;
+    border: none;
+    font-size: 3vh;
+    margin-top: 0.7rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-.boton-perfil:hover {
-    width: 12vw;
-    display: block;
-    margin-top: 1.5vh;
-    margin-inline: auto;
-    margin-bottom: 2vh;
+
+.boton-cerrar-sesion-perfil {
+    align-self: center;
+    width: 40%;
+    height: 2rem;
     border-radius: 10px;
+    background-color: #455559;
+    color: white;
+    border: none;
+    font-size: 3vh;
+    margin-top: 0.7rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.boton-eliminarImagen-perfil {
+    height: 2rem;
+    border-radius: 3px;
+    border: 1px solid #808080;
+    margin-top: 0;
+    margin-bottom: 2vh;
+    cursor: pointer;
+}
+
+.boton-perfil:hover {
     background-color: #038ab7;
     color: black;
-    border-color: #00A9D3;
 }
 
-.input-perfil {
-    width: 22vw;
-  margin-bottom: 2vh;
-  border-radius: 5px;
-  border: black 2px;
+.boton-cerrar-sesion-perfil:hover {
+    background-color: #e7e7e7;
+    color: black;
 }
 
-.label-perfil {
-    margin-right: 1vh;
+.boton-eliminarImagen-perfil:hover {
+    background-color: #DCDCDC;
+    color: black;
 }
 
-.span-perfil {
-    margin: 0;
+
+
+/* Mensajes de error */
+.span-crearcuenta {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
 }
+
+/*
+media queries responsive design
+@media (min-width: 768px) {
+    .form-seccionPerfil-container {
+        width: 70%;
+    }
+
+    .input-perfil, .boton-perfil {
+        font-size: 1.125rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .form-seccionPerfil-container {
+        width: 50%;
+    }
+
+    .input-perfil, .boton-perfil {
+        font-size: 1.25rem;
+    }
+}
+*/
