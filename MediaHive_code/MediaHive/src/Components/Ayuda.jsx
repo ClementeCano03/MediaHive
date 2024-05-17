@@ -1,73 +1,75 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../styles/Ayuda.css";
+import Accordion from 'react-bootstrap/Accordion';
+
+// Importar iconos de Material-UI
+import GroupsIcon from '@mui/icons-material/Groups';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import AudiotrackIcon from '@mui/icons-material/Audiotrack';
+import MovieIcon from '@mui/icons-material/Movie';
+import SlideshowIcon from '@mui/icons-material/Slideshow';
+import HiveIcon from '@mui/icons-material/Hive';
+
+//-------------------------------------------------------------//
 
 function Ayuda() {
+    
+
     return (
+        <Accordion defaultActiveKey="0" flush>
+            <Accordion.Item eventKey="0">
+                <Accordion.Header>Accordion Item #1</Accordion.Header>
+                <Accordion.Body>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </Accordion.Body>
+            </Accordion.Item>
 
-        <div className="ayuda">
-            <a href="#quienes-somos" className="section-link">
-                <section id="1quienes-somos">
-                    <h2>1. ¿Quiénes somos?</h2>
-                    {/* Contenido de "Quiénes somos" */}
-                </section>
-            </a>
+            <Accordion.Item eventKey="1">
+                <Accordion.Header>Accordion Item #2</Accordion.Header>
+                <Accordion.Body>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </Accordion.Body>
+                </Accordion.Item>
 
-            <a href="#manual-instruccion" className="section-link">
-                <section id="2manual-instruccion">
-                    <h2>2. Manual de instrucción para el novato</h2>
-                    {/* Contenido del manual */}
-                </section>
-            </a>
+                <Accordion.Item eventKey="2">
+                <Accordion.Header>Accordion Item #3</Accordion.Header>
+                <Accordion.Body>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </Accordion.Body>
+                </Accordion.Item>
 
-            <a href="#musica" className="section-link">
-                <section id="3musica">
-                    <h2>3. Música</h2>
-                    {/* Contenido de la sección de música */}
-                </section>
-            </a>
-
-            {/* Más secciones con hipervínculos similares */}
-            <a href="#peliculas" className="section-link">
-                <section id="4peliculas">
-                    <h2>4. Películas</h2>
-                    {/* Contenido de la sección de películas */}
-                    
-                </section>
-            </a>
-            
-
-            {/* Secciones de películas, como búsqueda y visualización de películas */}
-
-            <a href="#series" className="section-link">
-                <section id="5series">
-                    <h2>5. Series</h2>
-                    {/* Contenido de la sección de películas */}
-                    
-                </section>
-            </a>
-
-            {/* Secciones de series, como búsqueda y visualización de series */}
-            <a href="#biblioteca" className="section-link">
-                <section id="6biblioteca">
-                    <h2>6. Biblioteca</h2>
-                    {/* Contenido de la sección de películas */}
-                    
-                </section>
-            </a>
-
-            {/* Secciones de biblioteca, como visualización de libros */}
-            <a href="#perfil" className="section-link">
-                <section id="7perfil">
-                    <h2>7. Perfil</h2>
-                    {/* Contenido de la sección de películas */}
-                    
-                </section>
-            </a>
-        
-
-        {/* Secciones de perfil, como visualización de información de perfil */}
-    </div>
+                <Accordion.Item eventKey="3">
+                <Accordion.Header>Accordion Item #4</Accordion.Header>
+                <Accordion.Body>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </Accordion.Body>
+                </Accordion.Item>
+        </Accordion>
     );
 }
-    
+
 export default Ayuda;
