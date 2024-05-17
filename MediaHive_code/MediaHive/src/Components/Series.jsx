@@ -5,7 +5,7 @@ import { Carousel } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 
-import "../styles/series-styles.css";
+import "../styles/Series.css";
 
 function Series({ cambiarTituloPagina }) {
   //cambiarTituloPagina("Series"); // Cambia el título de la página al cargar este componente
