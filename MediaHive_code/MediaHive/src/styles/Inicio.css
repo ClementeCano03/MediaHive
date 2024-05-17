@@ -1,4 +1,4 @@
-.content {
+.content-inicio {
     position: relative; /* Add this line */
     display: flex;
     justify-content: center; /* Centra horizontalmente */
@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-.content::before { /* Add this block */
+.content-inicio::before {
     content: "";
     position: absolute;
     top: 0;
@@ -23,46 +23,39 @@
 }
 
 .cuadro-texto {
+    display: flex ;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
     padding: 10px;
     width: 70vw; 
-    background-color:rgba(92, 107, 110, .7);
+    height: auto;
+    background-color:rgba(92, 107, 110, .95);
     border-radius: 45px;
     border: black 3px;
     color: white;
+  
     font-family: 'livvic';
     font-size: 1.5vw;
     line-height: 1.9;
-}
-
-.cuadro-texto h2 {
+    margin-bottom: 30px;
+  }
+  
+  .cuadro-texto h2 {
     font-size: 2vw;
     font-weight: bold;
-}
-
-.cuadro-texto p {
+  }
+  
+  .cuadro-texto p {
     padding-bottom: 0px;
     margin-bottom: 0px;
-}
-
-#botonCrearCuenta {
-    margin-top: 20px; /* Espacio entre el texto y el botón */
-    background-color: white;
-    color: black;
-    margin-right: 20px; /* Espacio entre los botones */
-}
-
-#botonCrearCuenta:hover {
-    background-color: #455559;
-    color: black;
-}
-
-#botonInicioSesion {
+  }
+  
+  .boton-crear-cuenta {
     margin-top: 20px;
-    background-color: #00A9D3;
-    color: white;
-}
-
-#botonInicioSesion:hover {
+  }
+  
+  .boton-crear-cuenta:hover {
+    background-color: #50656a;
     color: black;
-}
+  }

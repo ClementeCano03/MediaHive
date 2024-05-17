@@ -23,8 +23,13 @@ img {
 }
 
 .registro {
-    color: white;
-    margin-right: 1rem; /* Ajusta el margen a tu preferencia */
+    font-size: 23px;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-right: 10px;
+    border-radius: 5px;
 }
 
 .inicioSesion {
@@ -42,10 +47,24 @@ img {
     margin-right: 1rem; /* Ajusta el margen a tu preferencia */
 }
 
-.icono-usuario {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+.username-topnav {
+    display: flex;
+    color:white;
+    font-size: 2vh;
+}
+
+.h2-topnav {
+    color: white;
+    box-shadow: #283033;
+}
+
+.imagenPerfil-topnav {
+    width: 6vh;
+    height: 6vh;
+    border-radius: 10px;
+    border: 2px solid white;
+    margin-top: 1vh;
+    
 }
 
 

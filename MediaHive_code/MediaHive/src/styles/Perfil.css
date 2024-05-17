@@ -1,64 +1,83 @@
-.seccionPerfil {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.seccionPerfil img {
-    height: 150px;
-    border-radius: 100px;
-    margin-top: -75px;
-    padding: 5px;
-    background: white;
-}
-
-.nombreActualizado {
-    color: black;
-}
-
-.form-seccionPerfil {
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    padding: 20px;
-}
-
-.form-seccionPerfil h1 {
-    text-align: center;
-}
-
-.form-seccionPerfil form {
+.seccionPerfil-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #F5F5F5;
 }
 
-.form-seccionPerfil label {
-    margin-bottom: 5px;
-    margin-right: 20px; /* Añade un poco de margen a la derecha */
+.form-seccionPerfil-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    background-color: #78939878;
+    border-radius: 45px;
+    font-family: 'livvic';
+    padding: 6vh;
 }
 
-.form-seccionPerfil input {
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+.form-perfil{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
 }
 
+.perfil-image{
+    align-self: center;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+}
 
-.form-container-iniciosesion button {
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #007bff;
+.inline-group {
+    display: inline-block;
+    margin-bottom: 1vh;
+}
+
+.boton-perfil {
+    width: 12vw;
+    display: block;
+    margin-top: 1.5vh;
+    margin-inline: auto;
+    margin-bottom: 2vh;
+    border-radius: 10px;
+    background-color: #00A9D3;
     color: white;
-    border: none;
-    cursor: pointer;
+    border-color: #00A9D3;
+}
+.boton-perfil:hover {
+    width: 12vw;
+    display: block;
+    margin-top: 1.5vh;
+    margin-inline: auto;
+    margin-bottom: 2vh;
+    border-radius: 10px;
+    background-color: #038ab7;
+    color: black;
+    border-color: #00A9D3;
 }
 
-.form-container-iniciosesion button:hover {
-    background-color: #0056b3;
+.input-perfil {
+    width: 22vw;
+  margin-bottom: 2vh;
+  border-radius: 5px;
+  border: black 2px;
 }
 
-.error-message-iniciosesion {
-    color: red;
+.label-perfil {
+    margin-right: 1vh;
 }
 
+.span-perfil {
+    margin: 0;
+}
