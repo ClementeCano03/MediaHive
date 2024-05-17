@@ -11,7 +11,7 @@ img {
     height: 50px;
 }
 
-h2 {
+.nombre {
     margin-left: 0.5rem;
     color: white;
     flex-grow: 1;
@@ -24,7 +24,26 @@ h2 {
 
 .registro {
     color: white;
-     /* Añade un margen a la derecha */
+    margin-right: 1rem; /* Ajusta el margen a tu preferencia */
 }
 
+.inicioSesion {
+    font-weight: bold;
+    font-size: 23px;
+    background-color: #00A9D3;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px; /* Añade un poco de redondez al botón */
+}
 
+.username {
+    color: white;
+    margin-right: 1rem; /* Ajusta el margen a tu preferencia */
+}
+
+.icono-usuario {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}

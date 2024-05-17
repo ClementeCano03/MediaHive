@@ -1,4 +1,4 @@
- .contenido{
+.contenido{
     flex-grow: 1;
     justify-content: center;
     height: 100vh; /* Establece la altura del contenedor para que ocupe toda la ventana */

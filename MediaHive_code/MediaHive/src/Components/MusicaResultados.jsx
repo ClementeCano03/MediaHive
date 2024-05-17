@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 
 import { Link, useParams } from "react-router-dom";
@@ -28,7 +29,7 @@ function MusicaResultados() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '733197fdcamsh9fd898d4b4b0d10p1493cdjsn7aa3fb3dcb4d',
+      'X-RapidAPI-Key': '85d1a8011cmsh82f87c4d3f58a27p11fb8djsnf7255cec3dce',
       'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
     }
   };
@@ -86,11 +87,13 @@ function MusicaResultados() {
       <div className="container" style={{backgroundColor: '#F5F5F5'}}>
       {canciones.map((cancion, index) => (
           <div className="d-flex border-bottom border-white" key={index}>
-            <img src={cancion.data.albumOfTrack.coverArt.sources[0].url} style={{ width: '100px', height: '100px' }}/>
             <Link to={`/cancion/${cancion.data.id}`} style={{ textDecoration: 'none' }} className="align-self-center">
-              <h2 className="align-self-center" style={{color:"black"}}>
-                {cancion.data.name}
-              </h2>
+              <div className="d-flex">
+                <img src={cancion.data.albumOfTrack.coverArt.sources[0].url} style={{ width: '100px', height: '100px' }}/> 
+                <h2 className="align-self-center" style={{color:"black", marginLeft:'20px'}}>
+                  {cancion.data.name}
+                </h2>
+              </div>
             </Link>
             {/* <iframe
               src={`https://open.spotify.com/embed/track/${cancion.data.id}?utm_source=generator`}
@@ -102,17 +105,18 @@ function MusicaResultados() {
               loading="lazy"
             ></iframe><br/> */}
             
-            <a className="align-self-center" href={cancion.data.uri}>
+            <a className="ms-auto p-3" href={cancion.data.uri}>
               <button style={{
-            padding: '10px 20px',
-            borderRadius: '5px',
-            border: 'none',
-            backgroundColor: '#455559',
-            color: 'white',
-            fontSize: '16px',
-            cursor: 'pointer',
-            transition: 'background-color 0.3s',
-          }}>
+                padding: '10px 20px',
+                borderRadius: '5px',
+                border: 'none',
+                backgroundColor: '#455559',
+                color: 'white',
+                fontSize: '16px',
+                cursor: 'pointer',
+                transition: 'background-color 0.3s',
+                
+              }}>
                 Abrir canción en spotify
               </button>
             </a>
