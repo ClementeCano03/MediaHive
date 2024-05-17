@@ -1,33 +1,98 @@
 import React, { useEffect, useState } from "react";
-import EditIcon from '@mui/icons-material/Edit';
-import { Link } from 'react-router-dom';
-import "../styles/Perfil.css";
-import Imagen from "../images/Perfil.png";
+import { useNavigate } from 'react-router-dom';
+import { useForm } from "react-hook-form";
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import "../Styles/Perfil.css";
 
-function Perfil(){
-    const [nombre, setNombre] = useState("NOMBRE DE USUARIO");
-    const [descripcion, setDescripcion] = useState("Hola, soy Pedro y tengo 17 años. Me gusta escribir opiniones sobre películas o series para ayudar a decidir que esa noche que no os poneis de acuerdo");
+function Perfil() {
+    const { handleSubmit, formState: { errors }, register, setValue } = useForm();
+    const navigate = useNavigate();
+
+    const storedUsername = localStorage.getItem('username') || '';
+    const storedProfileImage = localStorage.getItem('profileImage') || '';
+    
+    const [nombreUsuarioTemp, setNombreUsuarioTemp] = useState(storedUsername);
+    const [perfilURLTemp, setPerfilURLTemp] = useState(storedProfileImage);
 
     useEffect(() => {
-        const nombreGuardado = localStorage.getItem('nombre');
-        if (nombreGuardado) {
-            setNombre(nombreGuardado);
+        setValue('nombreUsuario', storedUsername);
+    }, [storedUsername, setValue]);
+
+    const onSubmit = handleSubmit(data => {
+        if (Object.keys(errors).length === 0) {
+            localStorage.setItem('username', data.nombreUsuario);
+            localStorage.setItem('profileImage', perfilURLTemp);
+            navigate(`/Inicio/${data.nombreUsuario}`);
         }
-    }, []);
+    });
+
+    const handleChange = (e) => {
+        const file = e.target.files[0];
+        const imageURL = URL.createObjectURL(file);
+        setPerfilURLTemp(imageURL);
+    };
+
+    const handleDeleteProfileImage = () => {
+        setPerfilURLTemp('');
+    };
+
+    const handleLogout = () => {
+        localStorage.clear();
+        navigate('/Inicio');
+    };
 
     return (
-        <>
-            <img src={Imagen} alt="Perfil" className="perfil-image" />
-            <div className="nombre">
-                <h2>{nombre} <Link to="/editar"><EditIcon /></Link></h2>
-            </div>
+        <div className="seccionPerfil-container">
+            <link href='https://fonts.googleapis.com/css?family=Livvic' rel='stylesheet'></link>
 
-            <div className="descripcion">
-                <h2>Descripción:</h2>
-            </div>
+            <div className="form-seccionPerfil-container">
+                <h1 className="h1-perfil">Perfil de {storedUsername}</h1>
 
-            <p className="descripcion-text">{descripcion}</p>
-        </>
+                <form onSubmit={onSubmit} className="form-perfil">
+
+                    {perfilURLTemp !== '' ? <img src={perfilURLTemp} alt="Foto de perfil" className="perfil-image" /> : <AccountBoxIcon style={{ fill: "white" }} class="perfil-image"/>}
+                    <div className="inline-group">
+                        <label htmlFor="profile-image" className="label-perfil">Seleccionar nueva imagen de perfil:</label>
+                        <input type="file" onChange={handleChange} className="seleccionar-imagen-perfil"/>
+                    </div>
+
+                    <div className="inline-group">
+                        <button type="button" onClick={handleDeleteProfileImage} className="boton-eliminarImagen-perfil">Eliminar imagen de perfil</button>
+                    </div>
+
+                    <div className="inline-group">
+                        <label htmlFor="username" className="label-perfil">Cambiar nombre de usuario:</label>
+                        <input
+                            type="text"
+                            id="username"
+                            {...register("nombreUsuario", {
+                                required: {
+                                    value: true,
+                                    message: 'Nombre de usuario obligatorio'
+                                },
+                                maxLength: {
+                                    value: 20,
+                                    message: 'Nombre de usuario demasiado largo'
+                                },
+                                minLength: {
+                                    value: 4,
+                                    message: 'Nombre de usuario demasiado corto'
+                                }
+                            })}
+                            className="input-perfil"
+                        />
+                        {
+                            errors.nombreUsuario && <span className='span-crearcuenta'>{errors.nombreUsuario.message}</span>
+                        }
+                    </div>
+
+                    <div className="inline-group">
+                        <button type="submit" className="boton-perfil">Guardar cambios</button>
+                        <button type="button" onClick={handleLogout} className="boton-cerrar-sesion-perfil">Cerrar sesión</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     );
 }
 

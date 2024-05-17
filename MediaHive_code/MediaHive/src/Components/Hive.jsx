@@ -1,12 +1,21 @@
 import  React, { useRef } from "react";
-/*import imagen from '../images/Hive.png';*/
+/*import imagen from '../mages/Hive.png';*/
 import {Carousel} from "react-bootstrap";
-import "../styles/Hive.css";
+import "../Styles/Hive.css";
 
 
 
 function Hive() {
     const carouselRef = useRef(null);
+    const canciones = [
+        "5UoT7c2R5nadqdwidFhZxa",
+        "4bTZeO72FwMa6wKOiqoynL",
+        "6K5BsR04ijf3FHNzjbaagD",
+        "0RDgqtvOHLwcI6yz9bjsZV",
+        "2tVxwJfffbJOAUgSx01eKl",
+        "3EPIt4FqsVQLM48HozrcFr",
+        "0stKSegkdrfLTDvm5sIO38",
+    ];
     /*<div style={{ backgroundImage: `url(${imagen})`, backgroundSize: 'cover', height: '100vh' }}/>*/
     return (
         <>
@@ -20,35 +29,18 @@ function Hive() {
                 <h2>Canciones</h2>
                 <div className="cancion">
                     <Carousel ref={carouselRef} interval={null} indicators={false}>
-                        <Carousel.Item>
-                            <div className="carousel-item-content row align-items-center py-2">
-                                <div className="col-4 justify-content-center">
-                                    <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        {Array(Math.ceil(canciones.length / 3)).fill().map((_, i) => (
+                            <Carousel.Item key={i}>
+                                <div className="carousel-item-content row align-items-center py-2">
+                                    {canciones.slice(i * 3, i * 3 + 3).map((cancion, index) => (
+                                        <div className="col-4 justify-content-center" key={index}>
+                                            <iframe src={`https://open.spotify.com/embed/track/${cancion}?utm_source=generator`} width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                        </div>
+                                    ))}
                                 </div>
-                                <div className="col-4 justify-content-center">
-                                    <iframe src="https://open.spotify.com/embed/track/0Cn8NxJZz7zUlsaA3rXoIU?utm_source=generator" width="245" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>                                
-                                    </div>
-                                <div className="col-4 justify-content-center">
-                                    <iframe src="https://open.spotify.com/embed/track/59PYgzOiOjGDzjDT5N5oOX?utm_source=generator" width="245" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>                                
-                                </div>
-                                
-                            </div>
-                        </Carousel.Item>
+                            </Carousel.Item>
+                        ))}
 
-                        <Carousel.Item>
-                            <div className="carousel-item-content row align-items-center py-2">
-                                <div className="col-4 justify-content-center">
-                                    <iframe src="https://open.spotify.com/embed/track/4bTZeO72FwMa6wKOiqoynL?utm_source=generator" width="245" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>                                
-                                </div>
-                                <div className="col-4 justify-content-center">
-                                    <iframe src="https://open.spotify.com/embed/track/6K5BsR04ijf3FHNzjbaagD?utm_source=generator" width="245" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                                </div>
-                                <div className="col-4 justify-content-center">
-                                    <iframe src="https://open.spotify.com/embed/track/0RDgqtvOHLwcI6yz9bjsZV?utm_source=generator" width="245" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                                </div>
-                               
-                            </div>
-                        </Carousel.Item>
                     </Carousel>
                 </div>
 

@@ -1,14 +1,46 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Button } from '@mui/material';
+import '../Styles/Inicio.css';
 
-function Inicio({ cambiarTituloPagina }) {
-  cambiarTituloPagina("Inicio"); // Cambia el título de la página al cargar este componente
+function Inicio() {
+  
+  const username = localStorage.getItem('username');
+  //localStorage.clear();
 
-  return (
-    <div>
-      <h1>Página de Inicio</h1>
-      <p>Bienvenido a la página de inicio.</p>
-    </div>
-  );
+  return(
+      <div className="content-inicio">
+          <link href='https://fonts.googleapis.com/css?family=Livvic'rel='stylesheet'></link> 
+          <div class="cuadro-texto">
+              <h2>¡Bienvenidos a nuestra comunidad sobre multimedia!</h2>
+              <p class="text-wrap">
+                  Organiza tus series, películas o música favoritos en unsolo lugar de forma sencilla. <br></br>
+                  Descubre cuáles son los contenidos en tendencia y vota portu contenido favorito. <br></br>
+                  Debate en los diversos foros el últmo capítulo de tu serieen emisión. <br></br>
+              </p>
+          </div>
+          {username ? (
+                    <></>
+                ) : (
+                  <Button 
+                  component={Link} 
+                  to="/CrearCuenta" 
+                  variant="contained" 
+                  sx={{
+                    backgroundColor: '#5D787D', 
+                    '&:hover': {
+                      backgroundColor: '#455559', // Change this to yourpreferred hover color
+                      color: 'black', // Change this to your preferred textcolor on hover
+                    }
+                  }}
+                  color="primary" 
+                  className="boton-crear-cuenta">
+                    CREAR CUENTA
+                  </Button>
+                )}
+            
+      </div>
+  )
 }
 
 export default Inicio;
