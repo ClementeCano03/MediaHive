@@ -1,0 +1,28 @@
+.ayuda {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: #5D787D;
+}
+
+.section-link {
+    text-decoration: none; /* Quitar subrayado de los hipervínculos */
+}
+
+.ayuda h2 {
+    margin-left: 20px; /* Añade margen izquierdo a los títulos */
+    transition: color 0.3s; /* Agrega transición suave para el cambio de color */
+    color: black
+}
+
+/* Cambia el color del título cuando el ratón está encima */
+.ayuda h2:hover {
+    color: #ffffff; /* Cambia el color del texto al pasar el ratón */
+}
+
+/* Estilos para cada sección */
+.section {
+    margin: 20px; /* Espacio entre secciones */
+    padding: 20px;
+    width: 80%; /* Ancho máximo de las secciones */
+}

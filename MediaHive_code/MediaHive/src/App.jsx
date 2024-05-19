@@ -15,6 +15,8 @@ import DetallesPeliculas from "./Components/detallesPeliculas";
 import DetallesSeries from "./Components/detallesSeries";
 import Perfil from "./Components/Perfil";
 import Hive from "./Components/Hive";
+import Biblioteca from "./Components/Biblioteca";
+import Ayuda from "./Components/Ayuda";
 import "./Styles/App.css"
 
 function App(){
@@ -164,6 +166,28 @@ function App(){
                 <LeftToolBar/>
                   <div className="contenido">
                     <Hive />
+                  </div>
+              </div>
+          </>
+        }/>
+        <Route path='/biblioteca' element={
+          <>
+            <TopNavBar name="Biblioteca"/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar/>
+                  <div className="contenido">
+                    <Biblioteca />
+                  </div>
+              </div>
+          </>
+        }/>
+        <Route path='/ayuda' element={
+          <>
+            <TopNavBar name="Ayuda"/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar/>
+                  <div className="contenido">
+                    <Ayuda />
                   </div>
               </div>
           </>
