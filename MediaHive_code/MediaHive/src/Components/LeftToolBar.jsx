@@ -10,14 +10,7 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 import "../styles/LeftToolBar.css";
 
-function LeftToolBar({ cambiarTituloPagina }) {
-  /*const navigate = useNavigate(); // Usa useNavigate en lugar de useHistory
-
-  const handleClick = (titulo) => {
-    cambiarTituloPagina(titulo);
-    navigate(`/${titulo.toLowerCase()}`); // Utiliza navigate en lugar de history.push
-  };*/
-
+function LeftToolBar(props) {
   const [seccionSeleccionada, setSeccionSeleccionada] = useState(null);
 
   const handleClick = (seccion) => {
@@ -27,7 +20,7 @@ function LeftToolBar({ cambiarTituloPagina }) {
   return (
     
     <>
-      <div id="leftnav" className="d-flex flex-column ">
+      <div id="leftnav" className="d-flex flex-column" style={{ height: `${props.altura}vh`}}>
         {/* Barra lateral */}
         <ul id="barraLateral" className="nav nav-pills nav-flush flex-column mb-auto text-center">
           {/* Elemento de la barra lateral: Home */}
