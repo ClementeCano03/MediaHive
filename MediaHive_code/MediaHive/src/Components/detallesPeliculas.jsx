@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from 'axios'
 import { useParams } from "react-router-dom";
-
-//import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { Link } from 'react-router-dom';
 import "../Styles/detallesPeliculasSeries-style.css";
 
 function detallesPeliculas({ cambiarTituloPagina }) {

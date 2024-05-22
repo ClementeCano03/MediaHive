@@ -17,7 +17,7 @@ import Perfil from "./Components/Perfil";
 import Hive from "./Components/Hive";
 import Biblioteca from "./Components/Biblioteca";
 import Ayuda from "./Components/Ayuda";
-import "./Styles/App.css"
+import "./styles/App.css"
 
 function App(){
   return(
