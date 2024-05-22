@@ -4,6 +4,8 @@
     align-items: center;
     padding: 0.5rem 1rem;
     width: 100vw; /* Establece el ancho al 100% */
+    z-index: 2; /* Asegura que el navbar esté por encima de otros elementos */
+ /* Fija el navbar en la parte superior de la ventana */
 }
 
 .img-navbar {
