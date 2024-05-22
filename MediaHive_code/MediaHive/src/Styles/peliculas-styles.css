@@ -1,5 +1,7 @@
-#peliculas {
+  #peliculas {
     background-color: #E3E9EA;
+    margin-left: 5.5rem; 
+    margin-top: 50px;   
   }
 
   #peliculas img {

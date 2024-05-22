@@ -4,7 +4,11 @@
   padding: 1rem;
   max-width: 200%;
   max-height: 200%;
-  margin: 0 auto;
+}
+
+.parent-container-cancion {
+  margin-left: 5.5rem;
+  margin-top: 11.5vh;
 }
 
 /* Estilos para el contenedor del reproductor de música */

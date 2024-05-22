@@ -23,7 +23,7 @@ function App(){
       <Routes>
         <Route path='/' element={
           <>
-            <TopNavBar name="Inicio"/>
+            <TopNavBar name="Inicio" className="top-nav-bar-app"/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
               <div className="contenido">
@@ -34,7 +34,7 @@ function App(){
         }/>
         <Route path='/Inicio' element={
           <>
-            <TopNavBar name="Inicio"/>
+            <TopNavBar name="Inicio" className="top-nav-bar-app"/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
               <div className="contenido">
@@ -45,7 +45,7 @@ function App(){
         }/>
         <Route path='/Inicio/:nombreUsuario' element={
           <>
-            <TopNavBar name="Inicio"/>
+            <TopNavBar name="Inicio" className="top-nav-bar-app"/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
               <div className="contenido">
@@ -56,7 +56,7 @@ function App(){
         }/>
         <Route path='/CrearCuenta' element={
           <>
-            <TopNavBar name="Inicio"/>
+            <TopNavBar name="Inicio" className="top-nav-bar-app"/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
               <div className="contenido">
@@ -67,7 +67,7 @@ function App(){
         }/>
          <Route path='/perfil' element={
           <>
-            <TopNavBar name="Tu Perfil"/>
+            <TopNavBar name="Tu Perfil" className="top-nav-bar-app"/>
             <div style={{display: "flex"}}>
               <LeftToolBar/>
               <div className="contenido">
@@ -78,7 +78,7 @@ function App(){
         }/>
         <Route path='/musica' element={
           <>
-            <TopNavBar name="Música"/>
+            <TopNavBar name="Música" className="top-nav-bar-app"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">
@@ -89,7 +89,7 @@ function App(){
         }/>
         <Route path='/musica/:busqueda' element={
           <>
-            <TopNavBar name="Resultados"/>
+            <TopNavBar name="Resultados" className="top-nav-bar-app"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">
@@ -100,7 +100,7 @@ function App(){
         }/>
         <Route path='/peliculas' element={
           <>
-            <TopNavBar name="Películas"/>
+            <TopNavBar name="Películas" className="top-nav-bar-app"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">
@@ -112,7 +112,7 @@ function App(){
 
         <Route path="/detallesPeliculas/:id" element={
           <>
-            <TopNavBar name="Peliculas"/>
+            <TopNavBar name="Peliculas" className="top-nav-bar-app"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                 <div className="contenido">
@@ -123,7 +123,7 @@ function App(){
         }/>
         <Route path="/detallesSeries/:id" element={
           <>
-            <TopNavBar name="Series"/>
+            <TopNavBar name="Series" className="top-nav-bar-app"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                 <div className="contenido">
@@ -136,7 +136,7 @@ function App(){
 
         <Route path='/series' element={
           <>
-            <TopNavBar name="Series"/>
+            <TopNavBar name="Series" className="top-nav-bar-app"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">
@@ -147,7 +147,7 @@ function App(){
         }/>
         <Route path='/biblioteca' element={
           <>
-            <TopNavBar name="Biblioteca"/>
+            <TopNavBar name="Biblioteca" className="top-nav-bar-app"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">
@@ -158,7 +158,7 @@ function App(){
         }/>
         <Route path='/cancion/:id' element={
           <>
-            <TopNavBar name="Canción"/>
+            <TopNavBar name="Canción" className="top-nav-bar-app"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">

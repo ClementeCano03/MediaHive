@@ -1,6 +1,8 @@
 #leftnav {
     height: 100vh; /* Hace que el contenedor ocupe toda la altura de la ventana del navegador */
-    z-index: 1;;
+    margin-top: 11.5vh;
+    position: fixed;
+    z-index: 1000;
 }
 
 #barraLateral{
