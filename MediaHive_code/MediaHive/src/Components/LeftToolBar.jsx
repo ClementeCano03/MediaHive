@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importa useNavigate en lugar de useHistory
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import AudiotrackIcon from "@mui/icons-material/Audiotrack";
@@ -10,14 +9,7 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 import "../styles/LeftToolBar.css";
 
-function LeftToolBar({ cambiarTituloPagina }) {
-  /*const navigate = useNavigate(); // Usa useNavigate en lugar de useHistory
-
-  const handleClick = (titulo) => {
-    cambiarTituloPagina(titulo);
-    navigate(`/${titulo.toLowerCase()}`); // Utiliza navigate en lugar de history.push
-  };*/
-
+function LeftToolBar(props) {
   const [seccionSeleccionada, setSeccionSeleccionada] = useState(null);
 
   const handleClick = (seccion) => {
@@ -27,9 +19,9 @@ function LeftToolBar({ cambiarTituloPagina }) {
   return (
     
     <>
-      <div id="leftnav" className="d-flex flex-column ">
+      <div id="leftnav" className="d-flex flex-column" style={{ height: `${props.altura}vh`}}>
         {/* Barra lateral */}
-        <ul id="barraLateral" className="nav nav-pills nav-flush flex-column mb-auto text-center">
+        <ul id="barraLateral" className="nav nav-flush flex-column mb-auto text-center">
           {/* Elemento de la barra lateral: Home */}
           <Link to="/inicio">
             {/*Cuando el usuario clica en "Home", el contenedor queda marcado y cambia el titulo de la barra de navegación superior*/}

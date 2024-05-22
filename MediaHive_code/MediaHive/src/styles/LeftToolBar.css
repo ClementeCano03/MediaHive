@@ -1,10 +1,6 @@
-#leftnav {
-    height: 100vh; /* Hace que el contenedor ocupe toda la altura de la ventana del navegador */
-}
-
 #barraLateral{
     background-color: #283033;
-    width: 5.5rem; 
+    width: 6.3rem; 
     flex-grow: 1;
 }
 

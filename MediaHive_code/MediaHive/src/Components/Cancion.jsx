@@ -3,10 +3,10 @@ import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import StarIcon from '@mui/icons-material/Star';
 import Button from '@mui/material/Button';
 import Modal from 'react-bootstrap/Modal';
+import { Link } from 'react-router-dom';
 
 import '../styles/Cancion.css';
-import { Link, useParams } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 
 /* Función para mostrar cuadro de error si el usuario no tiene cuenta */
 function MyVerticallyCenteredModal(props) {
@@ -98,7 +98,6 @@ function Cancion(props) {
   // Estado para almacenar el comentario del usuario
   const [userComment, setUserComment] = useState("");
 
-
   // Estado para rastrear las estrellas resaltadas y seleccionadas
   const [highlightedStars, setHighlightedStars] = useState(0);
   const [selectedStars, setSelectedStars] = useState(0);
@@ -160,100 +159,144 @@ function Cancion(props) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '85d1a8011cmsh82f87c4d3f58a27p11fb8djsnf7255cec3dce',
+      'X-RapidAPI-Key': 'cf42432a51mshc59efc010eefd05p1b512djsn94445674b732',
       'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
     }
-    };
+  };
 
-    async function getSong() {
-        try {
-          let url = `https://spotify23.p.rapidapi.com/tracks/?ids=${id}`;
-          let data = await fetch(url, options);
-          let res = await data.json();
-          setTitulo(res.tracks[0].name);
-          getArtist(res.tracks[0].artists[0].id);
-          console.log(res);
-        } catch (error) {
-          console.log(`ERROR: ${error}`);
-        }
-    };
-      
-    async function getArtist(idArtista) {
-        try {
-          let url2 = `https://spotify23.p.rapidapi.com/artists/?ids=${idArtista}`;
-          let data2 = await fetch(url2, options);
-          let res2 = await data2.json();
-          setArtista(res2.artists[0].name);
-          setImagen(res2.artists[0].images[0].url);
-          console.log(res2);
-    
-        } catch (error) {
-          console.log(`ERROR: ${error}`);
-        }
-    };
+  async function getSong() {
+    try {
+      let url = `https://spotify23.p.rapidapi.com/tracks/?ids=${id}`;
+      let data = await fetch(url, options);
+      let res = await data.json();
+      setTitulo(res.tracks[0].name);
+      getArtist(res.tracks[0].artists[0].id);
+      console.log(res);
+    } catch (error) {
+      console.log(`ERROR: ${error}`);
+    }
+  };
 
-    useEffect(() => {
-        // Esta función se llamará directamente después de abrir la página
-        getSong();
-    }, []);
+  async function getArtist(idArtista) {
+    try {
+      let url2 = `https://spotify23.p.rapidapi.com/artists/?ids=${idArtista}`;
+      let data2 = await fetch(url2, options);
+      let res2 = await data2.json();
+      setArtista(res2.artists[0].name);
+      setImagen(res2.artists[0].images[0].url);
+      console.log(res2);
 
-    // Obtener el nombre del usuario
-    const usuario = localStorage.getItem('username');
+    } catch (error) {
+      console.log(`ERROR: ${error}`);
+    }
+  };
+
+      // Obtener el nombre del usuario
+      const usuario = localStorage.getItem('username');
+
+  /* Función para guardar la canción */
+  const handleCancionSave = () => {
+    if (localStorage.getItem('cancionesSaved') === null) {
+      localStorage.setItem('cancionesSaved', JSON.stringify([id]));
+    } else {
+      let cancionesSaved = JSON.parse(localStorage.getItem('cancionesSaved'));
+      if (!cancionesSaved.includes(id)) {
+        cancionesSaved.push(id);
+        localStorage.setItem('cancionesSaved', JSON.stringify(cancionesSaved));
+      }
+    }
+  }
+
+  useEffect(() => {
+    // Esta función se llamará directamente después de abrir la página
+    getSong();
+    generarComentariosAleatorios();
+  }, []);
 
   return (
     <div>
-    <div className="MusicaContainer">
-      {/* Contenedor de la canción */}
-      <iframe
-        className="SongContainer"
-        src={`https://open.spotify.com/embed/track/${id}?utm_source=generator`}
-        width="500px"
-        height="500px"
-        frameBorder="0"
-        allowFullScreen="true"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-      ></iframe>
-
-      {/* Contenedor del título y la información */}
-      <div className="SongInfoContainer">
-        {/* Título de la canción con emoticono */}
-        <h3 className="SongTitle">
-          {titulo} <BookmarkAddIcon className="BookmarkIcon"/>
-        </h3>
-
-        {/* Estrellas */}
-        <div className="StarContainer">
-          {[1, 2, 3, 4, 5].map((index) => (
-            <StarIcon
-              key={index}
-              onMouseOver={() => handleStarHover(index)}
-              onMouseOut={handleStarMouseOut}
-              onClick={() => handleStarClick(index)}
-              className="StarIcon"
-              style={{ color: index <= highlightedStars ? 'yellow' : 'inherit' }}
-            />
-          ))}
+      <div>
+        <div className="row">
+          <div className="MusicaContainer col-md-7">
+            {/* Contenedor de la canción */}
+            <iframe
+              src={`https://open.spotify.com/embed/track/${id}?utm_source=generator`}
+              width="80%"
+              height="400px"
+              frameBorder="0"
+              allowFullScreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div className="col-md-5" style={{ paddingTop: '30px' }}>
+            {/* Contenedor del título y la información */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+              {/* Título de la canción con emoticono */}
+              <div>
+                <h3 className="SongTitle">
+                  {titulo}
+                  <button onClick={handleCancionSave} style={{ border: 'none', background: 'transparent' }}>
+                    <BookmarkAddIcon className="BookmarkIcon" style={{ marginLeft: '10%', marginBottom: '7%', color: 'black' }} />
+                  </button>
+                </h3>
+              </div>
+              {/* Estrellas */}
+              <div className="StarContainer">
+                {[1, 2, 3, 4, 5].map((index) => (
+                  <StarIcon
+                    key={index}
+                    onMouseOver={() => handleStarHover(index)}
+                    onMouseOut={handleStarMouseOut}
+                    onClick={() => handleStarClick(index)}
+                    className="StarIcon"
+                    style={{ color: index <= highlightedStars ? 'yellow' : 'inherit' }}
+                  />
+                ))}
+              </div>
+              {/* Contenedor de la imagen y el artista */}
+              <div className="Artista"> 
+                <img src={imagen} />
+                <h3>{artista}</h3>
+              </div>
+            </div>
+          </div>   
         </div>
       </div>
 
-      {/* Contenedor de la imagen y el artista */}
-      <img src={imagen} style={{ width: '100px', height: '100px' }}/>
-      <h3>{artista}</h3>
-
-      <div className="UserInputContainer">
-        {/* Cuadro de texto para la opinión del usuario */}
-        <textarea
-          placeholder="Escribe tu opinión aquí..."
-          value={userComment}
-          onChange={handleUserCommentChange}
-          className="UserOpinion"
-        />
-        {/* Botón para añadir comentario */}
-        {usuario ? (
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6">
+            <h4 className="CommentTitle">Comentarios:</h4>
+            <div className="tabla">
+              {comentariosAleatorios.map((comment, index) => (
+                <div key={index} className="CommentBox">
+                  <p><strong>{comment.autor}</strong>: {comment.texto}</p>
+                </div>
+              ))}
+            </div>
+            <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
+              Ver más comentarios
+            </Button>
+          </div>
+          <div className="col-md-2"></div>
+          <div className="col-md-4">
+            <div className="UserInputContainer">
+                {/* Cuadro de texto para la opinión del usuario */}
+                <textarea
+                  placeholder="Escribe tu opinión aquí..."
+                  value={userComment}
+                  onChange={handleUserCommentChange}
+                  className="UserOpinion"
+                  style={{ width: '100%', height: '100px' }}
+                />
+                {/* Botón para añadir comentario */}
+                
+              </div>
+              {usuario ? (
           <>
           <Button variant="contained" color="primary" className="CommentButton" onClick={handleUserCommentSubmit}>
-          Añadir comentario
+            Añadir comentario
           </Button>
           </>
         ) : (
@@ -267,26 +310,11 @@ function Cancion(props) {
           />
         </>
         )}
-        
-      </div>
-      
-    </div>
-
-    {/* Sección de comentarios */}
-    <div className="CommentContainer">
-      <h4 className="CommentTitle">Comentarios:</h4>
-      <div className="tabla">
-        {comentariosAleatorios.map((comment, index) => (
-          <div key={index} className="CommentBox">
-            <p><strong>{comment.autor}</strong>: {comment.texto}</p>
+            </div>
           </div>
-        ))}
-      </div>
-      <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
-        Ver comentarios
-      </Button>
+        </div>
+        
     </div>
-  </div>
   );
 }
 

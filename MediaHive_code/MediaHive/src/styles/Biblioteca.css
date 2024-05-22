@@ -1,24 +1,21 @@
-body {
-    background-image: url("../src/Images/fondobiblioteca.png");
-    background-size: cover;
-    z-index: -1;
-}
-
 .encabezado{
+    background-color: darkgoldenrod;
     padding: 10px;
     margin-bottom: 10px;
-    border-bottom: 3px solid #e3e3e3;
+    border-radius: 5px;
+    border: 1px solid #e3e3e3;
 }
 
 .carousel-container {
     position: relative;
     width: 95%;
     overflow: hidden; /* Evita que los botones se desborden fuera del contenedor */
-}
+  }
 
 /* Estilos para los botones de navegación */
 .carousel-control{
     width: 0%;
+
 }
 
 /* Estilos para el botón de retroceso */
@@ -27,7 +24,6 @@ body {
     width: 40px;
     margin-left: -50px;
     margin-top: -50px;
-    color: white;
 }
 
 /* Estilos para el botón de avance */
@@ -36,5 +32,4 @@ body {
     width: 40px;
     margin-right: -0px;
     margin-top: -50px;
-    color: white;
 }

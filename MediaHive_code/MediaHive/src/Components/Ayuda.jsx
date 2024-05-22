@@ -13,10 +13,22 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 //-------------------------------------------------------------//
 // Importar imágenes de las secciones
+    //
 import barranav from "../Images/Ayuda/barra.png";
 import Ultimosestrenos from "../Images/Ayuda/estrenos.png";
 import Maspopulares from "../Images/Ayuda/popu.png";
 import Top10 from "../Images/Ayuda/top.png";
+    // 
+import resultados from "../Images/Ayuda/resultados.png";
+import artista from "../Images/Ayuda/artista.png";
+    //
+import reproductor from "../Images/Ayuda/repro.png";
+import titulo from "../Images/Ayuda/titulo.png";
+import artis from "../Images/Ayuda/artis.png";
+import valorar from "../Images/Ayuda/valorar.png";
+import favoritos from "../Images/Ayuda/fav.png";
+import comentarios from "../Images/Ayuda/comen.png";
+import vercomentarios from "../Images/Ayuda/coments.png";
 
 
 //-------------------------------------------------------------//
@@ -122,21 +134,28 @@ return (
                                 <strong>Buscar una canción</strong>
                             </Accordion.Header>
                             <Accordion.Body>
+                                Podrás buscar una canción por título o por artista.
                                 <Accordion defaultActiveKey="0" flush className="sub-items-musica">
                                     <Accordion.Item eventKey="1">
                                     <Accordion.Header>
-                                    <strong>Buscar una canción por artista</strong>
+                                    <strong>Buscar una canción por título</strong>
                                     </Accordion.Header>
                                     <Accordion.Body>
-
+                                        <img src={resultados} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                        <strong>1.</strong> Cuando buscas el título de una canción, aparecerán los resultados de la búsqueda.
+                                        El primer resultado será la canción que buscas, y los demás serán canciones relacionadas.<br/>
+                                        <strong>2.</strong> Puedes escuchar la canción online o abrirla en Spotify.<br/>
                                     </Accordion.Body>
                                     </Accordion.Item>
                                     <Accordion.Item eventKey="2">
                                     <Accordion.Header>
-                                    <strong>Buscar una canción por álbum</strong>
+                                    <strong>Buscar una canción por artista</strong>
                                     </Accordion.Header>
                                     <Accordion.Body>
-
+                                        <img src={artista} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                        Cuando buscas un artista, aparecerán sus canciones más populares y podrás escucharlas online o abrirlas en Spotify.
                                     </Accordion.Body>
                                     </Accordion.Item>
                                 </Accordion>
@@ -153,23 +172,26 @@ return (
                                     <strong>Reproductor de la canción online</strong>
                                     </Accordion.Header>
                                     <Accordion.Body>
-
+                                        <img src={reproductor} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
                                     </Accordion.Body>
                                     </Accordion.Item>
                                     <Accordion.Item eventKey="2">
                                     <Accordion.Header>
-                                    <strong>Posibilidad de abrir la canción en Spotify</strong>
+                                    <strong>Título de la canción</strong>
                                     </Accordion.Header>
                                     <Accordion.Body>
-
+                                        <img src={titulo} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
                                     </Accordion.Body>
                                     </Accordion.Item>
                                     <Accordion.Item eventKey="3">
                                     <Accordion.Header>
-                                    <strong>Título de la canción</strong>
+                                    <strong>Artista</strong>
                                     </Accordion.Header>
                                     <Accordion.Body>
-
+                                        <img src={artis} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
                                     </Accordion.Body>
                                     </Accordion.Item>
                                     <Accordion.Item eventKey="4">
@@ -177,7 +199,8 @@ return (
                                     <strong>Valorar la canción</strong>
                                     </Accordion.Header>
                                     <Accordion.Body>
-
+                                        <img src={valorar} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
                                     </Accordion.Body>
                                     </Accordion.Item>
                                     <Accordion.Item eventKey="5">
@@ -185,15 +208,26 @@ return (
                                     <strong>Guardar en favoritos</strong>
                                     </Accordion.Header>
                                     <Accordion.Body>
-
+                                        <img src={favoritos} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
                                     </Accordion.Body>
                                     </Accordion.Item>
-                                    <Accordion.Item eventKey="5">
+                                    <Accordion.Item eventKey="6">
                                     <Accordion.Header>
-                                    <strong>Comentarios</strong>
+                                    <strong>Escribir comentarios</strong>
                                     </Accordion.Header>
                                     <Accordion.Body>
-
+                                        <img src={comentarios} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="7">
+                                    <Accordion.Header>
+                                    <strong>Ver los comentarios</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={vercomentarios} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
                                     </Accordion.Body>
                                     </Accordion.Item>
                                 </Accordion>
