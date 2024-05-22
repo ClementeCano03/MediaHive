@@ -30,6 +30,9 @@ function Peliculas({ cambiarTituloPagina }) {
   const [searchKey, setSearchKey] = useState("");
   const [searchedMovies, setSearchedMovies] = useState([]);
 
+  //constante para peliculas guardadas
+  const [moviesSaved, setMoviesSaved] = useState([]);
+
   //funcion para realizar peticion de peliculas populares a la api
   const fetchMovies = async () => {
     const { data: { results },
@@ -62,6 +65,22 @@ function Peliculas({ cambiarTituloPagina }) {
     setTopMovies(sortedResults);
   };
 
+  //funcion para peticion de peliculas guardadas en biblioteca
+  const fetchSavedMovies = async () => {
+    const savedMovies = JSON.parse(localStorage.getItem('moviesSaved'));
+    if (savedMovies) {
+      const movieDetailsPromises = savedMovies.map(fetchMovieDetails);
+      const movieDetails = await Promise.all(movieDetailsPromises);
+      setMoviesSaved(movieDetails);
+    }
+  };
+
+  const fetchMovieDetails = async (movieId) => {
+    const response = await fetch(`${API_URL}/movie/${movieId}?api_key=${API_KEY}&language=${language}`);
+    const movieDetails = await response.json();
+    return movieDetails;
+  };
+
   //funcion para realizar peticion de estrenos a la api
   const fetchUpcomingMovies = async () => {
     const { data: { results } } = await axios.get(`${API_URL}/movie/upcoming`, {
@@ -90,6 +109,7 @@ function Peliculas({ cambiarTituloPagina }) {
     setSearchedMovies(response.data.results);
   };
 
+
   useEffect(() => {
     const cachedMovies = localStorage.getItem('movies')
     const cachedUpcomingMovies = localStorage.getItem('upcomingMovies')
@@ -106,6 +126,8 @@ function Peliculas({ cambiarTituloPagina }) {
     } else {
       fetchTopMovies();
     }
+
+    fetchSavedMovies();
 
     if (cachedUpcomingMovies) {
       setUpcomingMovies(JSON.parse(cachedUpcomingMovies))
@@ -218,41 +240,33 @@ function Peliculas({ cambiarTituloPagina }) {
         <Carousel ref={carouselRef} interval={null} indicators={false}>
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
+              {moviesSaved.length > 0 && (
+                <>
+                  {moviesSaved.slice(0,5).map((movie, index) => (
+                    <div key={movie.id} className="col d-flex justify-content-center">
+                      <Link to={`/detallesPeliculas/${movie.id}`}>
+                        <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                      </Link>
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
           </Carousel.Item>
 
           <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" style={{ width: '150px', height: 'auto' }} />
-              </div>
+          <div className="carousel-item-content row align-items-center py-2">
+              {moviesSaved.length > 0 && (
+                <>
+                  {moviesSaved.slice(5,10).map((movie, index) => (
+                    <div key={movie.id} className="col d-flex justify-content-center">
+                      <Link to={`/detallesPeliculas/${movie.id}`}>
+                        <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                      </Link>
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
           </Carousel.Item>
         </Carousel>

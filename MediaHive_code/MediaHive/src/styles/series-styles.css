@@ -20,14 +20,14 @@
 }
 
 /* Estilos para el botón de retroceso */
-.carousel-control-prev {
+a.carousel-control-prev {
     filter: invert(100%);
     width: 40px;
     margin-left: -50px;
   }
   
 /* Estilos para el botón de avance */
-.carousel-control-next {
+a.carousel-control-next {
     filter: invert(100%);
     width: 40px;
     margin-right: -50px;
