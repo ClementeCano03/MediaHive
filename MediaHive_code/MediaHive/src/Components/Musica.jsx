@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import {Link, useNavigate} from "react-router-dom";
 
 import {Carousel} from "react-bootstrap";
-import "../Styles/Musica.css";
+import "../styles/Musica.css";
 
 function Musica() {
 

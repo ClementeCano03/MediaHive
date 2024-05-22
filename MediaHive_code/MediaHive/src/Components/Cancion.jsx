@@ -3,7 +3,7 @@ import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import StarIcon from '@mui/icons-material/Star';
 import Button from '@mui/material/Button';
 
-import '../Styles/Cancion.css';
+import '../styles/Cancion.css';
 import { useParams } from "react-router-dom";
 
 function Cancion(props) {

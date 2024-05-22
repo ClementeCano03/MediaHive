@@ -8,7 +8,7 @@ import SlideshowIcon from "@mui/icons-material/Slideshow";
 import HiveIcon from "@mui/icons-material/Hive";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
-import "../Styles/LeftToolBar.css";
+import "../styles/LeftToolBar.css";
 
 function LeftToolBar() {
 

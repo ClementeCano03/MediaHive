@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import "../Styles/Perfil.css";
+import "../styles/Perfil.css";
 
 function Perfil() {
     const { handleSubmit, formState: { errors }, register, setValue } = useForm();

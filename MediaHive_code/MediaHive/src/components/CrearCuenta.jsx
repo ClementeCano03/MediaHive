@@ -1,5 +1,5 @@
 import React from "react";
-import '../Styles/CrearCuenta.css';
+import '../styles/CrearCuenta.css';
 import imagen from "../Images/MediaHive_icon.png";
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';

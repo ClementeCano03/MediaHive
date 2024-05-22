@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
-import "../Styles/detallesPeliculasSeries-style.css";
+import "../styles/detallesPeliculasSeries-style.css";
 
 function detallesSeries() {
     const { id } = useParams();

@@ -3,7 +3,7 @@ import imagen from "../Images/MediaHive_icon.png";
 import { Link } from 'react-router-dom';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
-import '../Styles/TopNavBar.css';
+import '../styles/TopNavBar.css';
 
 function TopNavBar(props){
     const username = localStorage.getItem('username');

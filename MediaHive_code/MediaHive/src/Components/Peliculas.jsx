@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-import "../Styles/peliculas-styles.css";
+import "../styles/peliculas-styles.css";
 
 function Peliculas() {
 

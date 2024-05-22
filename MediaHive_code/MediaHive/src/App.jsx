@@ -15,7 +15,7 @@ import CrearCuenta from "./Components/CrearCuenta";
 import DetallesPeliculas from "./Components/detallesPeliculas";
 import DetallesSeries from "./Components/detallesSeries";
 import Perfil from "./Components/Perfil";
-import "./Styles/App.css"
+import "./styles/App.css"
 
 function App(){
   return(
