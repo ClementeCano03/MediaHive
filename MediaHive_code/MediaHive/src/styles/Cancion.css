@@ -69,3 +69,23 @@
   .NextCommentButton{
     margin-top: 5px;
   }
+
+  .registro-cancion {
+    font-size: 23px;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+  .inicioSesion-cancion {
+    font-weight: bold;
+    font-size: 23px;
+    background-color: #00A9D3;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px; /* Añade un poco de redondez al botón */
+}

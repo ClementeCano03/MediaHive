@@ -2,11 +2,51 @@ import React, { useEffect, useState } from "react";
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import StarIcon from '@mui/icons-material/Star';
 import Button from '@mui/material/Button';
+import Modal from 'react-bootstrap/Modal';
 
 import '../styles/Cancion.css';
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
+
+/* Función para mostrar cuadro de error si el usuario no tiene cuenta */
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          ¡Debes iniciar sesión para añadir un comentario!
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Inicia sesión en tu cuenta o crea una nueva para añadir comentarios</h4>
+        <div>
+          <h5>
+          <Link to="/CrearCuenta">
+            <Button className="registro-cancion" >Registrarse</Button>
+          </Link>
+          </h5>
+          <h5>
+          <Link to="/InicioSesion">
+            <Button className="inicioSesion-cancion" >Iniciar Sesion</Button>
+          </Link>  
+          </h5>
+        </div>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Cerrar</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 function Cancion(props) {
+
+  const [modalShow, setModalShow] = React.useState(false);
 
   // Autores de comentarios
   const autores = [
@@ -101,7 +141,7 @@ function Cancion(props) {
   // Función para manejar el envío del comentario del usuario
   const handleUserCommentSubmit = () => {
     if (userComment.trim() !== "") {
-      const nuevoComentario = { texto: userComment, autor: "Usuario" };
+      const nuevoComentario = { texto: userComment, autor: localStorage.getItem('username') };
       setComentariosAleatorios((prevComments) => [...prevComments, nuevoComentario]);
       setUserComment(""); // Limpiar el cuadro de texto después de enviar el comentario
     }
@@ -157,6 +197,9 @@ function Cancion(props) {
         getSong();
     }, []);
 
+    // Obtener el nombre del usuario
+    const usuario = localStorage.getItem('username');
+
   return (
     <div>
     <div className="MusicaContainer">
@@ -207,9 +250,24 @@ function Cancion(props) {
           className="UserOpinion"
         />
         {/* Botón para añadir comentario */}
-        <Button variant="contained" color="primary" className="CommentButton" onClick={handleUserCommentSubmit}>
+        {usuario ? (
+          <>
+          <Button variant="contained" color="primary" className="CommentButton" onClick={handleUserCommentSubmit}>
           Añadir comentario
-        </Button>
+          </Button>
+          </>
+        ) : (
+          <>
+          <Button variant="contained" color="primary" className="CommentButton" onClick={() => setModalShow(true)}>
+            Añadir comentario
+          </Button>
+          <MyVerticallyCenteredModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
+        </>
+        )}
+        
       </div>
       
     </div>

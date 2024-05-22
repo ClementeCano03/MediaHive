@@ -1,4 +1,6 @@
+
 import React, { useEffect, useState, useRef } from "react";
+import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import axios from 'axios'
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
@@ -14,6 +16,19 @@ function detallesSeries({ cambiarTituloPagina }) {
 
     const [comments, setComments] = useState([]);
 
+    //Series guardadas en biblioteca
+    const [seriesSaved, setSeriesSaved] = useState(() => {
+        const savedSeries = localStorage.getItem('seriesSaved');
+        return savedSeries ? JSON.parse(savedSeries) : [];
+    });
+
+    const handleSerieSave = () => {
+        if (seriesSaved.includes(serie.id)) {
+            setSeriesSaved(seriesSaved.filter(serieId => serieId !== serie.id));
+        } else {
+            setSeriesSaved([...seriesSaved, serie.id]);
+        }
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -36,11 +51,18 @@ function detallesSeries({ cambiarTituloPagina }) {
             setSimilarSeries(response.data.results);
         };
 
-        
+        const savedSeries = JSON.parse(localStorage.getItem('seriesSaved'));
+        if (savedSeries) {
+            setSeriesSaved(savedSeries);
+        }
 
         fetchSerie();
         fetchSimilarSeries();
     }, [id]);
+
+    useEffect(() => {
+        localStorage.setItem('seriesSaved', JSON.stringify(seriesSaved));
+    }, [seriesSaved]);
 
     if (!serie) {
         return <div>Cargando...</div>
@@ -58,7 +80,12 @@ function detallesSeries({ cambiarTituloPagina }) {
                     <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.title} style={{ height: '400px', width: 'auto' }} />
                 </div>
                 <div className="mx-auto px-5 py-3">
-                    <h3>{serie.name}</h3>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <h3>{serie.title}</h3>
+                        <button onClick={handleSerieSave} style={{ border: 'none', background: 'transparent' }}>
+                            <BookmarkAddIcon className="BookmarkIcon" style={{ marginLeft: '10px', color: 'black' }} />
+                        </button>
+                    </div>
                     <div>
                         {'⭐'.repeat(fullStars)}
                         {'☆'.repeat(halfStar)}
@@ -84,24 +111,24 @@ function detallesSeries({ cambiarTituloPagina }) {
 
                 </div>
 
-                
+
 
             </div>
             <div>
-                    <h3 className="mx-auto py-3 px-5">Comentarios</h3>
-                    <div className="mx-auto px-5 py-3">
-                        {comments.map((comment, index) => (
-                            <div key={index} style={{ border: '1px solid black', margin: '10px 0', padding: '10px' }}>
-                                {comment}
-                            </div>
-                        ))}
-                    </div>
-                    <h3 className="mx-auto py-3" style={{ textAlign: 'center' }}>Añadir un comentario</h3>
-                    <form onSubmit={handleSubmit} style={{ padding: '0 50px' }}>
-                        <textarea placeholder="Escribe tu comentario aquí..." style={{ width: '100%', height: '100px', padding: '10px', resize: 'none' }}></textarea>
-                        <button type="submit" style={{ display: 'block', margin: '10px auto' }}>Enviar</button>
-                    </form>
+                <h3 className="mx-auto py-3 px-5">Comentarios</h3>
+                <div className="mx-auto px-5 py-3">
+                    {comments.map((comment, index) => (
+                        <div key={index} style={{ border: '1px solid black', margin: '10px 0', padding: '10px' }}>
+                            {comment}
+                        </div>
+                    ))}
                 </div>
+                <h3 className="mx-auto py-3" style={{ textAlign: 'center' }}>Añadir un comentario</h3>
+                <form onSubmit={handleSubmit} style={{ padding: '0 50px' }}>
+                    <textarea placeholder="Escribe tu comentario aquí..." style={{ width: '100%', height: '100px', padding: '10px', resize: 'none' }}></textarea>
+                    <button type="submit" style={{ display: 'block', margin: '10px auto' }}>Enviar</button>
+                </form>
+            </div>
         </div>
     )
 }

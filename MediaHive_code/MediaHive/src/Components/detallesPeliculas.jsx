@@ -1,9 +1,10 @@
+
 import React, { useEffect, useState, useRef } from "react";
+import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import axios from 'axios'
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import "../styles/detallesPeliculasSeries-style.css";
 
 function detallesPeliculas({ cambiarTituloPagina }) {
@@ -14,6 +15,19 @@ function detallesPeliculas({ cambiarTituloPagina }) {
 
     const [comments, setComments] = useState([]);
 
+    //Peliculas guardadas en biblioteca
+    const [moviesSaved, setMoviesSaved] = useState(() => {
+        const savedMovies = localStorage.getItem('moviesSaved');
+        return savedMovies ? JSON.parse(savedMovies) : [];
+    });
+
+    const handleMovieSave = () => {
+        if (moviesSaved.includes(movie.id)) {
+            setMoviesSaved(moviesSaved.filter(movieId => movieId !== movie.id));
+        } else {
+            setMoviesSaved([...moviesSaved, movie.id]);
+        }
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -35,9 +49,20 @@ function detallesPeliculas({ cambiarTituloPagina }) {
             setSimilarMovies(response.data.results);
         };
 
+        const savedMovies = JSON.parse(localStorage.getItem('moviesSaved'));
+        if (savedMovies) {
+            setMoviesSaved(savedMovies);
+        }
+        
         fetchMovie();
         fetchSimilarMovies();
     }, [id]);
+
+    useEffect(() => {
+        localStorage.setItem('moviesSaved', JSON.stringify(moviesSaved));
+        console.log(moviesSaved);
+    }, [moviesSaved]);
+
 
     if (!movie) {
         return <div>Cargando...</div>
@@ -48,54 +73,59 @@ function detallesPeliculas({ cambiarTituloPagina }) {
     const emptyStars = 5 - fullStars - halfStar;
 
     return (
-        <div id="detallesPeliculas">
-            <div className="mx-auto px-5 py-5 d-flex align-items-start">
+            <div id="detallesPeliculas">
+                <div className="mx-auto px-5 py-5 d-flex align-items-start">
 
-                <div>
-                    <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} style={{ height: '400px', width: 'auto' }} />
-                </div>
-                <div className="mx-auto px-5 py-3">
-                    <h3>{movie.title}</h3>
                     <div>
-                        {'⭐'.repeat(fullStars)}
-                        {'☆'.repeat(halfStar)}
-                        {'☆'.repeat(emptyStars)}
-                        <span style={{ color: 'black' }}> {movie.vote_average}</span>
+                        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} style={{ height: '400px', width: 'auto' }} />
                     </div>
-                    <div className="py-4">
-                        <p style={{ fontSize: '20px' }}>{movie.overview}</p>
+                    <div className="mx-auto px-5 py-3">
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <h3>{movie.title}</h3>
+                            <button onClick={handleMovieSave} style={{ border: 'none', background: 'transparent' }}>
+                                <BookmarkAddIcon className="BookmarkIcon" style={{ marginLeft: '10px', color: 'black'}} />
+                            </button>
+                        </div>
+                        <div>
+                            {'⭐'.repeat(fullStars)}
+                            {'☆'.repeat(halfStar)}
+                            {'☆'.repeat(emptyStars)}
+                            <span style={{ color: 'black' }}> {movie.vote_average}</span>
+                        </div>
+                        <div className="py-4">
+                            <p style={{ fontSize: '20px' }}>{movie.overview}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 className="mx-auto py-3" style={{ textAlign: 'center' }}>Películas similares</h3>
+                        <div className="mx-auto px-5 py-3" style={{ display: 'flex', flexWrap: 'wrap', width: '300px' }}>
+                            {similarMovies.slice(0, 4).map(similarMovie => (
+                                <div key={similarMovie.id} style={{ width: '50%', padding: '10px' }}>
+                                    <Link to={`/detallesPeliculas/${similarMovie.id}`}>
+                                        <img src={`https://image.tmdb.org/t/p/w500${similarMovie.poster_path}`} alt={similarMovie.title} style={{ width: '100%', height: 'auto' }} />
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+
                     </div>
                 </div>
                 <div>
-                    <h3 className="mx-auto py-3" style={{ textAlign: 'center' }}>Películas similares</h3>
-                    <div className="mx-auto px-5 py-3" style={{ display: 'flex', flexWrap: 'wrap', width: '300px' }}>
-                        {similarMovies.slice(0, 4).map(similarMovie => (
-                            <div key={similarMovie.id} style={{ width: '50%', padding: '10px' }}>
-                                <Link to={`/detallesPeliculas/${similarMovie.id}`}>
-                                    <img src={`https://image.tmdb.org/t/p/w500${similarMovie.poster_path}`} alt={similarMovie.title} style={{ width: '100%', height: 'auto' }} />
-                                </Link>
+                    <h3 className="mx-auto py-3 px-5">Comentarios</h3>
+                    <div className="mx-auto px-5 py-3">
+                        {comments.map((comment, index) => (
+                            <div key={index} style={{ border: '1px solid black', margin: '10px 0', padding: '10px' }}>
+                                {comment}
                             </div>
                         ))}
                     </div>
-
+                    <h3 className="mx-auto py-3" style={{ textAlign: 'center' }}>Añadir un comentario</h3>
+                    <form onSubmit={handleSubmit} style={{ padding: '0 50px' }}>
+                        <textarea placeholder="Escribe tu comentario aquí..." style={{ width: '100%', height: '100px', padding: '10px', resize: 'none' }}></textarea>
+                        <button type="submit" style={{ display: 'block', margin: '10px auto' }}>Enviar</button>
+                    </form>
                 </div>
             </div>
-            <div>
-                <h3 className="mx-auto py-3 px-5">Comentarios</h3>
-                <div className="mx-auto px-5 py-3">
-                    {comments.map((comment, index) => (
-                        <div key={index} style={{ border: '1px solid black', margin: '10px 0', padding: '10px' }}>
-                            {comment}
-                        </div>
-                    ))}
-                </div>
-                <h3 className="mx-auto py-3" style={{ textAlign: 'center' }}>Añadir un comentario</h3>
-                <form onSubmit={handleSubmit} style={{ padding: '0 50px' }}>
-                    <textarea placeholder="Escribe tu comentario aquí..." style={{ width: '100%', height: '100px', padding: '10px', resize: 'none' }}></textarea>
-                    <button type="submit" style={{ display: 'block', margin: '10px auto' }}>Enviar</button>
-                </form>
-            </div>
-        </div>
     )
 }
 
