@@ -28,6 +28,9 @@ function Series({ cambiarTituloPagina }) {
   const [searchKey, setSearchKey] = useState("");
   const [searchedSeries, setSearchedSeries] = useState([]);
 
+  //constante para peliculas guardadas
+  const [seriesSaved, setSeriesSaved] = useState([]);
+
   //funcion para obtener las series populares
   const fetchSeries = async () => {
     const { data: { results } } = await axios.get(`${API_URL}/tv/popular`, {
@@ -55,6 +58,22 @@ function Series({ cambiarTituloPagina }) {
 
     localStorage.setItem('topSeries', JSON.stringify(sortedResults));
     setTopSeries(sortedResults);
+  };
+
+  //funcion para peticion de series guardadas en biblioteca
+  const fetchSavedSeries = async () => {
+    const savedSeries = JSON.parse(localStorage.getItem('seriesSaved'));
+    if (savedSeries) {
+      const serieDetailsPromises = savedSeries.map(fetchSerieDetails);
+      const serieDetails = await Promise.all(serieDetailsPromises);
+      setSeriesSaved(serieDetails);
+    }
+  };
+
+  const fetchSerieDetails = async (serieId) => {
+    const response = await fetch(`${API_URL}/tv/${serieId}?api_key=${API_KEY}&language=${language}`);
+    const serieDetails = await response.json();
+    return serieDetails;
   };
 
   //funcion para realizar peticion de estrenos a la api
@@ -101,6 +120,8 @@ function Series({ cambiarTituloPagina }) {
     } else {
       fetchTopSeries();
     }
+
+    fetchSavedSeries();
 
     if (cachedUpcomingSeries) {
       setUpcomingSeries(JSON.parse(cachedUpcomingSeries))
@@ -214,41 +235,33 @@ function Series({ cambiarTituloPagina }) {
         <Carousel ref={carouselRef} interval={null} indicators={false}>
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
+              {seriesSaved.length > 0 && (
+                <>
+                  {seriesSaved.slice(0, 5).map((serie, index) => (
+                    <div key={serie.id} className="col d-flex justify-content-center">
+                      <Link to={`/detallesSeries/${serie.id}`}>
+                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                      </Link>
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
           </Carousel.Item>
 
           <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
-              </div>
-              <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" style={{ width: '150px', height: 'auto' }} />
-              </div>
+          <div className="carousel-item-content row align-items-center py-2">
+              {seriesSaved.length > 0 && (
+                <>
+                  {seriesSaved.slice(5, 10).map((serie, index) => (
+                    <div key={serie.id} className="col d-flex justify-content-center">
+                      <Link to={`/detallesSeries/${serie.id}`}>
+                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                      </Link>
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
           </Carousel.Item>
         </Carousel>
