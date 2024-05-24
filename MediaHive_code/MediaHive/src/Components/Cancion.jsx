@@ -3,7 +3,7 @@ import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import StarIcon from '@mui/icons-material/Star';
 import Button from '@mui/material/Button';
 
-import '../styles/Cancion.css';
+import '../Styles/Cancion.css';
 import { useParams } from "react-router-dom";
 
 function Cancion(props) {
@@ -57,7 +57,6 @@ function Cancion(props) {
 
   // Estado para almacenar el comentario del usuario
   const [userComment, setUserComment] = useState("");
-
 
   // Estado para rastrear las estrellas resaltadas y seleccionadas
   const [highlightedStars, setHighlightedStars] = useState(0);
@@ -120,7 +119,7 @@ function Cancion(props) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'deb3d0d461mshe58223b57415d0bp176b59jsna0efe449c75e',
+      'X-RapidAPI-Key': 'cf42432a51mshc59efc010eefd05p1b512djsn94445674b732',
       'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
     }
   };
@@ -152,85 +151,161 @@ function Cancion(props) {
     }
   };
 
+  /* Función para guardar la canción */
+  const handleCancionSave = () => {
+    if (localStorage.getItem('cancionesSaved') === null) {
+      localStorage.setItem('cancionesSaved', JSON.stringify([id]));
+    } else {
+      let cancionesSaved = JSON.parse(localStorage.getItem('cancionesSaved'));
+      if (!cancionesSaved.includes(id)) {
+        cancionesSaved.push(id);
+        localStorage.setItem('cancionesSaved', JSON.stringify(cancionesSaved));
+      }
+    }
+  }
+
   useEffect(() => {
     // Esta función se llamará directamente después de abrir la página
     getSong();
+    generarComentariosAleatorios();
   }, []);
 
   return (
-    <div className="parent-container-cancion">
-      <div className="MusicaContainer">
-        {/* Contenedor de la canción */}
-        <iframe
-          className="SongContainer"
-          src={`https://open.spotify.com/embed/track/${id}?utm_source=generator`}
-          width="500px"
-          height="500px"
-          frameBorder="0"
-          allowFullScreen="true"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
+    <div>
+      {
+      // <div className="MusicaContainer">
+      //   {/* Contenedor de la canción */}
+      //   <iframe
+      //     className="SongContainer"
+      //     src={`https://open.spotify.com/embed/track/${id}?utm_source=generator`}
+      //     width="50%"
+      //     height="55%"
+      //     frameBorder="0"
+      //     allowFullScreen="true"
+      //     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      //     loading="lazy"
+      //   ></iframe>
 
-        ></iframe>
+      //   {/* Contenedor del título y la información */}
+      //   <div className="SongInfoContainer">
+      //     {/* Título de la canción con emoticono */}
+      //     <h3 className="SongTitle">
+      //       {titulo}
+      //       <button onClick={handleCancionSave} style={{ border: 'none', background: 'transparent' }}>
+      //         <BookmarkAddIcon className="BookmarkIcon" style={{ marginLeft: '10%', marginBottom: '7%', color: 'black' }} />
+      //       </button>
+      //     </h3>
 
-        {/* Contenedor del título y la información */}
-        <div className="SongInfoContainer">
-          {/* Título de la canción con emoticono */}
+      //     {/* Estrellas */}
+      //     <div className="StarContainer">
+      //       {[1, 2, 3, 4, 5].map((index) => (
+      //         <StarIcon
+      //           key={index}
+      //           onMouseOver={() => handleStarHover(index)}
+      //           onMouseOut={handleStarMouseOut}
+      //           onClick={() => handleStarClick(index)}
+      //           className="StarIcon"
+      //           style={{ color: index <= highlightedStars ? 'yellow' : 'inherit' }}
+      //         />
+      //       ))}
+      //     </div>
+      //   </div>
+
+      //   {/* Contenedor de la imagen y el artista */}
+      //   <div className="Artista"> 
+      //     <img src={imagen} />
+      //     <h3>{artista}</h3>
+      //   </div>
+
+      // </div> 
+    }
+
+<div>
+  <div className="row">
+    <div className="MusicaContainer col-md-7">
+      {/* Contenedor de la canción */}
+      <iframe
+        src={`https://open.spotify.com/embed/track/${id}?utm_source=generator`}
+        width="80%"
+        height="400px"
+        frameBorder="0"
+        allowFullScreen="true"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      ></iframe>
+    </div>
+    <div className="col-md-5" style={{ paddingTop: '30px' }}>
+      {/* Contenedor del título y la información */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+        {/* Título de la canción con emoticono */}
+        <div>
           <h3 className="SongTitle">
-            {titulo} <BookmarkAddIcon className="BookmarkIcon" />
+            {titulo}
+            <button onClick={handleCancionSave} style={{ border: 'none', background: 'transparent' }}>
+              <BookmarkAddIcon className="BookmarkIcon" style={{ marginLeft: '10%', marginBottom: '7%', color: 'black' }} />
+            </button>
           </h3>
-
-          {/* Estrellas */}
-          <div className="StarContainer">
-            {[1, 2, 3, 4, 5].map((index) => (
-              <StarIcon
-                key={index}
-                onMouseOver={() => handleStarHover(index)}
-                onMouseOut={handleStarMouseOut}
-                onClick={() => handleStarClick(index)}
-                className="StarIcon"
-                style={{ color: index <= highlightedStars ? 'yellow' : 'inherit' }}
-              />
-            ))}
-          </div>
-
-
         </div>
+        {/* Estrellas */}
+        <div className="StarContainer">
+          {[1, 2, 3, 4, 5].map((index) => (
+            <StarIcon
+              key={index}
+              onMouseOver={() => handleStarHover(index)}
+              onMouseOut={handleStarMouseOut}
+              onClick={() => handleStarClick(index)}
+              className="StarIcon"
+              style={{ color: index <= highlightedStars ? 'yellow' : 'inherit' }}
+            />
+          ))}
+        </div>
+        {/* Contenedor de la imagen y el artista */}
+        <div className="Artista"> 
+          <img src={imagen} />
+          <h3>{artista}</h3>
+        </div>
+      </div>
+    </div>   
+  </div>
+</div>
 
-        <img src={imagen} style={{ width: '100px', height: '100px' }} />
-        <h3>{artista}</h3>
-
-        <div className="UserInputContainer">
+<div className="container">
+  <div className="row">
+    <div className="col-md-6">
+      <h4 className="CommentTitle">Comentarios:</h4>
+      <div className="tabla">
+        {comentariosAleatorios.map((comment, index) => (
+          <div key={index} className="CommentBox">
+            <p><strong>{comment.autor}</strong>: {comment.texto}</p>
+          </div>
+        ))}
+      </div>
+      <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
+        Ver más comentarios
+      </Button>
+    </div>
+    <div className="col-md-2"></div>
+    <div className="col-md-4">
+      <div className="UserInputContainer">
           {/* Cuadro de texto para la opinión del usuario */}
           <textarea
             placeholder="Escribe tu opinión aquí..."
             value={userComment}
             onChange={handleUserCommentChange}
             className="UserOpinion"
+            style={{ width: '100%', height: '100px' }}
           />
           {/* Botón para añadir comentario */}
-          <Button variant="contained" color="primary" className="CommentButton" onClick={handleUserCommentSubmit}>
-            Añadir comentario
-          </Button>
+          
         </div>
-
-      </div>
-
-      {/* Sección de comentarios */}
-      <div className="CommentContainer">
-        <h4 className="CommentTitle">Comentarios:</h4>
-        <div className="tabla">
-          {comentariosAleatorios.map((comment, index) => (
-            <div key={index} className="CommentBox">
-              <p><strong>{comment.autor}</strong>: {comment.texto}</p>
-            </div>
-
-          ))}
-        </div>
-        <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
-          Ver comentarios
+        <Button variant="contained" color="primary" className="CommentButton" onClick={handleUserCommentSubmit}>
+          Añadir comentario
         </Button>
       </div>
+    </div>
+  </div>
+        
+         
     </div>
   );
 }

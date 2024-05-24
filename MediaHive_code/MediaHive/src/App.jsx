@@ -15,12 +15,14 @@ import CrearCuenta from "./Components/CrearCuenta";
 import DetallesPeliculas from "./Components/detallesPeliculas";
 import DetallesSeries from "./Components/detallesSeries";
 import Perfil from "./Components/Perfil";
+import Ayuda from "./Components/Ayuda";
 import "./styles/App.css"
 
 function App(){
   return(
     <>
       <Routes>
+
         <Route path='/' element={
           <>
             <TopNavBar name="Inicio" className="top-nav-bar-app"/>
@@ -167,7 +169,19 @@ function App(){
               </div>
           </>
         }/>
+        <Route path='/ayuda' element={
+          <>
+            <TopNavBar name="Ayuda"/>
+              <div style={{display: "flex"}}>
+                <LeftToolBar altura="100"/>
+                  <div className="contenido">
+                    <Ayuda />
+                  </div>
+              </div>
+          </>
+        }/>
       </Routes>
+      
     </>
   );
 }
