@@ -1,3 +1,6 @@
+.pantalla{
+  background-color: #E3E9EA;
+}
 .carousel-container {
   position: relative;
   width: 95%;
@@ -11,15 +14,26 @@
 }
 
 /* Estilos para el botón de retroceso */
-.carousel-control-prev {
-  filter: invert(100%);
+a.carousel-control-prev {
+  color: black;
   width: 40px;
-  margin-left: -50px;
+  margin-left: -26px;
 }
 
 /* Estilos para el botón de avance */
-.carousel-control-next {
-  filter: invert(100%);
+a.carousel-control-next {
+  color: black;
   width: 40px;
-  margin-right: -50px;
+  margin-right: -26px;
+}
+
+.cancion{
+  width: 150px;
+  height: 150px;
+}
+
+.tituloCancion{
+  text-align: center;
+  font-size: 20px;
+  color: black;
 }

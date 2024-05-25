@@ -17,7 +17,7 @@ import Perfil from "./Components/Perfil";
 import Hive from "./Components/Hive";
 import Biblioteca from "./Components/Biblioteca";
 import Ayuda from "./Components/Ayuda";
-import "./styles/App.css"
+import "./Styles/App.css"
 
 function App(){
   return(
@@ -161,7 +161,7 @@ function App(){
         }/>
         <Route path='/hive' element={
           <>
-            <TopNavBar name="Biblioteca"/>
+            <TopNavBar name="Hive"/>
               <div style={{display: "flex"}}>
                 <LeftToolBar/>
                   <div className="contenido">

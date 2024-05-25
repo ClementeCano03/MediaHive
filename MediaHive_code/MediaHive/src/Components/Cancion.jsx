@@ -220,7 +220,7 @@ function Cancion(props) {
       // </div> 
     }
 
-<div>
+  <div>
   <div className="row">
     <div className="MusicaContainer col-md-7">
       {/* Contenedor de la canción */}
@@ -267,41 +267,41 @@ function Cancion(props) {
       </div>
     </div>   
   </div>
-</div>
+  </div>
 
-<div className="container">
-  <div className="row">
-    <div className="col-md-6">
-      <h4 className="CommentTitle">Comentarios:</h4>
-      <div className="tabla">
-        {comentariosAleatorios.map((comment, index) => (
-          <div key={index} className="CommentBox">
-            <p><strong>{comment.autor}</strong>: {comment.texto}</p>
-          </div>
-        ))}
-      </div>
-      <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
-        Ver más comentarios
-      </Button>
-    </div>
-    <div className="col-md-2"></div>
-    <div className="col-md-4">
-      <div className="UserInputContainer">
-          {/* Cuadro de texto para la opinión del usuario */}
-          <textarea
-            placeholder="Escribe tu opinión aquí..."
-            value={userComment}
-            onChange={handleUserCommentChange}
-            className="UserOpinion"
-            style={{ width: '100%', height: '100px' }}
-          />
-          {/* Botón para añadir comentario */}
-          
+  <div className="container">
+    <div className="row">
+      <div className="col-md-6">
+        <h4 className="CommentTitle">Comentarios:</h4>
+        <div className="tabla">
+          {comentariosAleatorios.map((comment, index) => (
+            <div key={index} className="CommentBox">
+              <p><strong>{comment.autor}</strong>: {comment.texto}</p>
+            </div>
+          ))}
         </div>
-        <Button variant="contained" color="primary" className="CommentButton" onClick={handleUserCommentSubmit}>
-          Añadir comentario
+        <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
+          Ver más comentarios
         </Button>
       </div>
+      <div className="col-md-2"></div>
+      <div className="col-md-4">
+        <div className="UserInputContainer">
+            {/* Cuadro de texto para la opinión del usuario */}
+            <textarea
+              placeholder="Escribe tu opinión aquí..."
+              value={userComment}
+              onChange={handleUserCommentChange}
+              className="UserOpinion"
+              style={{ width: '100%', height: '100px' }}
+            />
+            {/* Botón para añadir comentario */}
+            
+          </div>
+          <Button variant="contained" color="primary" className="CommentButton" onClick={handleUserCommentSubmit}>
+            Añadir comentario
+          </Button>
+        </div>
     </div>
   </div>
         
