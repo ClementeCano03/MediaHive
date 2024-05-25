@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import "../styles/InicioSesion.css";
 
 const InicioSesion = () => {
@@ -7,6 +7,8 @@ const InicioSesion = () => {
     const [formValues, setFormValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const navigate = useNavigate();
 
     const submit = () => {
         console.log(formValues);
@@ -29,6 +31,32 @@ const InicioSesion = () => {
     const validate = (values) => {
         let errors = {};
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+
+        const Users = JSON.parse(localStorage.getItem('users')) || [];
+        const validUser = Users.find(user => user.email === values.email && user.password === values.password);
+        if (!validUser) {
+            errors.email = "Correo electrónico o contraseña incorrectos";
+            errors.password = "Correo electrónico o contraseña incorrectos";
+        } else {
+            localStorage.setItem('username', validUser.username);
+            navigate(`/Inicio/${validUser.username}`);
+        }
+
+        /*
+        const credencialesSaved = localStorage.getItem("credencialesSaved");
+        if(credencialesSaved !== null){
+            const credencialesSavedJSON = JSON.parse(credencialesSaved);
+            for (let i = 0; i < credencialesSavedJSON.length; i++) {
+                const credenciales = credencialesSavedJSON[i];
+                if (values.email === credenciales[0] && values.password === credenciales[1]) {
+                    localStorage.setItem("username", values.email);
+                    navigate(`/Inicio/${data.nombreUsuario}`);
+                }
+            }
+            errors.email = "Correo electrónico o contraseña incorrectos";
+            errors.password = "Correo electrónico o contraseña incorrectos";
+        }
+        */
 
         if (!values.email) {
             errors.email = "No puede estar en blanco";
