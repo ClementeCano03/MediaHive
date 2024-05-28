@@ -121,7 +121,7 @@ useEffect(() => {
                     <div className="carousel-container mx-auto px-5 py-3">
 
                     <h2>Canciones</h2>
-                  <div className="cancion">
+                  <div>
                       <Carousel ref={carouselRef} interval={null} indicators={false}>
                           {Array(Math.ceil(canciones.length / 3)).fill().map((_, i) => (
                               <Carousel.Item key={i}>
@@ -130,7 +130,7 @@ useEffect(() => {
                                           <div className="col d-flex flex-column justify-content-center align-items-center" key={index}>
                                               <Link to={`/cancion/${cancion.id}`} style={{ textDecoration: 'none', textAlign: 'center' }}>
                                                 <img src={cancion.imagen} style={{ width: '180px', height: '180px'}}/>  
-                                                <h5>{cancion.titulo}</h5>
+                                                <h5 style={{color: 'white'}}>{cancion.titulo}</h5>
                                               </Link>
                                           </div>
                                       ))}

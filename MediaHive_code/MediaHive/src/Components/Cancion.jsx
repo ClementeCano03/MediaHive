@@ -163,6 +163,7 @@ function Cancion(props) {
       let cancionesSaved = JSON.parse(localStorage.getItem('cancionesSaved'));
       if (!cancionesSaved.includes(id)) {
         cancionesSaved.push(id);
+        localStorage.setItem('cancionesSaved', JSON.stringify(cancionesSaved));
       }
     }
     setGuardado(true);
@@ -246,7 +247,6 @@ function Cancion(props) {
           <h3 className="SongTitle">
             {titulo}
             <button onClick={handleCancionSave} style={{ border: 'none', background: 'transparent' }}>
-              {}
               {guardado ? <BookmarkAddedIcon className="BookmarkaddedIcon" alt={"Guardado"} style={{ marginLeft: '10px', color: 'black' }} /> 
               : <BookmarkAddIcon className="BookmarkIcon" alt={"Guardar"} style={{ marginLeft: '10px', color: 'black' }} />}
             </button>
