@@ -82,7 +82,7 @@ function detallesPeliculas({ cambiarTituloPagina }) {
                     <div className="mx-auto px-5 py-3">
                         <div style={{ display: 'flex', alignItems: 'center' }}>
                             <h3>{movie.title}</h3>
-                            <button onClick={handleMovieSave} style={{ border: 'none', background: 'transparent' }}>
+                            <button onClick={handleMovieSave} aria-label={moviesSaved.includes(movie.id) ? 'Película guardada' : 'Guardar película'} style={{ border: 'none', background: 'transparent' }}>
                                 {moviesSaved.includes(movie.id) ? <BookmarkAddedIcon className="BookmarkaddedIcon" alt={"Guardado"} style={{ marginLeft: '10px', color: 'black'}} />: <BookmarkAddIcon className="BookmarkIcon" alt={"Guardar"} style={{ marginLeft: '10px', color: 'black'}} /> }
                             </button>
                         </div>

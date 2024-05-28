@@ -82,7 +82,7 @@ function detallesSeries({ cambiarTituloPagina }) {
                 <div className="mx-auto px-5 py-3">
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <h3>{serie.name}</h3>
-                        <button onClick={handleSerieSave} style={{ border: 'none', background: 'transparent' }}>
+                        <button onClick={handleSerieSave} aria-label={seriesSaved.includes(serie.id) ? 'serie guardada' : 'Guardar serie'} style={{ border: 'none', background: 'transparent' }}>
                             {seriesSaved.includes(serie.id) ? <BookmarkAddedIcon className="BookmarkaddedIcon" alt={"Guardado"} style={{ marginLeft: '10px', color: 'black' }} /> : <BookmarkAddIcon className="BookmarkIcon" alt={"Guardar"} style={{ marginLeft: '10px', color: 'black' }} />}
                         </button>
                     </div>
