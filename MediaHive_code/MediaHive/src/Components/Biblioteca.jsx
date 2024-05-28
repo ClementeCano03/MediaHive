@@ -80,7 +80,7 @@ function Biblioteca() {
     const options = {
     method: 'GET',
     headers: {
-    'X-RapidAPI-Key': 'cf42432a51mshc59efc010eefd05p1b512djsn94445674b732',
+    'X-RapidAPI-Key': '6adaeb3733msh28bad337ffcb004p16abdajsn136b9a1b8458',
     'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
     }
     };
@@ -121,25 +121,25 @@ useEffect(() => {
                     <div className="carousel-container mx-auto px-5 py-3">
 
                     <h2>Canciones</h2>
-                    <div className="cancion">
-                        <Carousel ref={carouselRef} interval={null} indicators={false}>
-                            {Array(Math.ceil(canciones.length / 3)).fill().map((_, i) => (
-                                <Carousel.Item key={i}>
-                                    <div className="carousel-item-content row align-items-center py-2">
-                                        {canciones.slice(i * 3, i * 3 + 3).map((cancion, index) => (
-                                            <div className="col d-flex flex-column justify-content-center align-items-center" key={index}>
-                                                <Link to={`/cancion/${cancion.id}`} style={{ textDecoration: 'none', textAlign: 'center' }}>
-                                                    <img src={cancion.imagen} style={{ width: '180px', height: '180px'}}/>  
-                                                    <h5>{cancion.titulo}</h5>
-                                                </Link>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </Carousel.Item>
-                            ))}
+                  <div className="cancion">
+                      <Carousel ref={carouselRef} interval={null} indicators={false}>
+                          {Array(Math.ceil(canciones.length / 3)).fill().map((_, i) => (
+                              <Carousel.Item key={i}>
+                                  <div className="carousel-item-content row align-items-center py-2">
+                                      {canciones.slice(i * 3, i * 3 + 3).map((cancion, index) => (
+                                          <div className="col d-flex flex-column justify-content-center align-items-center" key={index}>
+                                              <Link to={`/cancion/${cancion.id}`} style={{ textDecoration: 'none', textAlign: 'center' }}>
+                                                <img src={cancion.imagen} style={{ width: '180px', height: '180px'}}/>  
+                                                <h5>{cancion.titulo}</h5>
+                                              </Link>
+                                          </div>
+                                      ))}
+                                  </div>
+                              </Carousel.Item>
+                          ))}
 
-                        </Carousel>
-                    </div>
+                      </Carousel>
+                  </div>
 
 
                     <h2>Series</h2>

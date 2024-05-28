@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import StarIcon from '@mui/icons-material/Star';
 import Button from '@mui/material/Button';
+import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 
 import '../styles/Cancion.css';
 import { useParams } from "react-router-dom";
@@ -119,7 +120,7 @@ function Cancion(props) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'cf42432a51mshc59efc010eefd05p1b512djsn94445674b732',
+      'X-RapidAPI-Key': '6adaeb3733msh28bad337ffcb004p16abdajsn136b9a1b8458',
       'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
     }
   };
@@ -151,6 +152,9 @@ function Cancion(props) {
     }
   };
 
+  const cancionesGuardadas = localStorage.getItem('cancionesSaved') === null ? [] : JSON.parse(localStorage.getItem('cancionesSaved'));
+  const [guardado, setGuardado] = useState(cancionesGuardadas.includes(id));
+
   /* Función para guardar la canción */
   const handleCancionSave = () => {
     if (localStorage.getItem('cancionesSaved') === null) {
@@ -159,9 +163,9 @@ function Cancion(props) {
       let cancionesSaved = JSON.parse(localStorage.getItem('cancionesSaved'));
       if (!cancionesSaved.includes(id)) {
         cancionesSaved.push(id);
-        localStorage.setItem('cancionesSaved', JSON.stringify(cancionesSaved));
       }
     }
+    setGuardado(true);
   }
 
   useEffect(() => {
@@ -220,7 +224,7 @@ function Cancion(props) {
       // </div> 
     }
 
-  <div>
+<div>
   <div className="row">
     <div className="MusicaContainer col-md-7">
       {/* Contenedor de la canción */}
@@ -242,7 +246,9 @@ function Cancion(props) {
           <h3 className="SongTitle">
             {titulo}
             <button onClick={handleCancionSave} style={{ border: 'none', background: 'transparent' }}>
-              <BookmarkAddIcon className="BookmarkIcon" style={{ marginLeft: '10%', marginBottom: '7%', color: 'black' }} />
+              {}
+              {guardado ? <BookmarkAddedIcon className="BookmarkaddedIcon" alt={"Guardado"} style={{ marginLeft: '10px', color: 'black' }} /> 
+              : <BookmarkAddIcon className="BookmarkIcon" alt={"Guardar"} style={{ marginLeft: '10px', color: 'black' }} />}
             </button>
           </h3>
         </div>
@@ -261,47 +267,47 @@ function Cancion(props) {
         </div>
         {/* Contenedor de la imagen y el artista */}
         <div className="Artista"> 
-          <img src={imagen} />
+          <img src={imagen} alt={artista}/>
           <h3>{artista}</h3>
         </div>
       </div>
     </div>   
   </div>
-  </div>
+</div>
 
-  <div className="container">
-    <div className="row">
-      <div className="col-md-6">
-        <h4 className="CommentTitle">Comentarios:</h4>
-        <div className="tabla">
-          {comentariosAleatorios.map((comment, index) => (
-            <div key={index} className="CommentBox">
-              <p><strong>{comment.autor}</strong>: {comment.texto}</p>
-            </div>
-          ))}
+<div className="container">
+  <div className="row">
+    <div className="col-md-6">
+      <h4 className="CommentTitle">Comentarios:</h4>
+      <div className="tabla">
+        {comentariosAleatorios.map((comment, index) => (
+          <div key={index} className="CommentBox">
+            <p><strong>{comment.autor}</strong>: {comment.texto}</p>
+          </div>
+        ))}
+      </div>
+      <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
+        Ver más comentarios
+      </Button>
+    </div>
+    <div className="col-md-2"></div>
+    <div className="col-md-4">
+      <div className="UserInputContainer">
+          {/* Cuadro de texto para la opinión del usuario */}
+          <textarea
+            placeholder="Escribe tu opinión aquí..."
+            value={userComment}
+            onChange={handleUserCommentChange}
+            className="UserOpinion"
+            style={{ width: '100%', height: '100px' }}
+          />
+          {/* Botón para añadir comentario */}
+          
         </div>
-        <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
-          Ver más comentarios
+        <Button variant="contained" color="primary" className="CommentButton" onClick={handleUserCommentSubmit}>
+          Añadir comentario
         </Button>
       </div>
-      <div className="col-md-2"></div>
-      <div className="col-md-4">
-        <div className="UserInputContainer">
-            {/* Cuadro de texto para la opinión del usuario */}
-            <textarea
-              placeholder="Escribe tu opinión aquí..."
-              value={userComment}
-              onChange={handleUserCommentChange}
-              className="UserOpinion"
-              style={{ width: '100%', height: '100px' }}
-            />
-            {/* Botón para añadir comentario */}
-            
-          </div>
-          <Button variant="contained" color="primary" className="CommentButton" onClick={handleUserCommentSubmit}>
-            Añadir comentario
-          </Button>
-        </div>
     </div>
   </div>
         
