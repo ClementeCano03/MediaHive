@@ -1,9 +1,14 @@
+.biblio{
+    background-image: url('../Images/fondobiblioteca.png');
+    background-size: cover;
+}
+
 .encabezado{
-    background-color: darkgoldenrod;
+    text-align: center;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
-    border: 1px solid #e3e3e3;
+    
 }
 
 .carousel-container {

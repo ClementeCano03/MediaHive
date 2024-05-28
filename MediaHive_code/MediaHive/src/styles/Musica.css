@@ -1,30 +1,39 @@
-#musica {
+.pantalla{
   background-color: #E3E9EA;
-  z-index: -1;
 }
-
 .carousel-container {
-    position: relative;
-    width: 95%;
-    overflow: hidden; /* Evita que los botones se desborden fuera del contenedor */
-  }
+  position: relative;
+  width: 95%;
+  overflow: hidden; /* Evita que los botones se desborden fuera del contenedor */
+}
 
 /* Estilos para los botones de navegación */
 .carousel-control{
-    width: 0%;
+  width: 0%;
 
 }
 
 /* Estilos para el botón de retroceso */
-.carousel-control-prev {
-    filter: invert(100%);
-    width: 40px;
-    margin-left: -50px;
-  }
+a.carousel-control-prev {
+  color: black;
+  width: 40px;
+  margin-left: -26px;
+}
 
 /* Estilos para el botón de avance */
-.carousel-control-next {
-    filter: invert(100%);
-    width: 40px;
-    margin-right: -50px;
+a.carousel-control-next {
+  color: black;
+  width: 40px;
+  margin-right: -26px;
+}
+
+.cancion{
+  width: 150px;
+  height: 150px;
+}
+
+.tituloCancion{
+  text-align: center;
+  font-size: 20px;
+  color: black;
 }

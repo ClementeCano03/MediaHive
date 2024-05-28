@@ -1,6 +1,6 @@
-
 import React, { useEffect, useState, useRef } from "react";
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import axios from 'axios'
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
@@ -83,7 +83,7 @@ function detallesPeliculas({ cambiarTituloPagina }) {
                         <div style={{ display: 'flex', alignItems: 'center' }}>
                             <h3>{movie.title}</h3>
                             <button onClick={handleMovieSave} style={{ border: 'none', background: 'transparent' }}>
-                                <BookmarkAddIcon className="BookmarkIcon" style={{ marginLeft: '10px', color: 'black'}} />
+                                {moviesSaved.includes(movie.id) ? <BookmarkAddedIcon className="BookmarkaddedIcon" alt={"Guardado"} style={{ marginLeft: '10px', color: 'black'}} />: <BookmarkAddIcon className="BookmarkIcon" alt={"Guardar"} style={{ marginLeft: '10px', color: 'black'}} /> }
                             </button>
                         </div>
                         <div>

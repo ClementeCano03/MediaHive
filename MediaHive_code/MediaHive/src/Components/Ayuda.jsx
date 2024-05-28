@@ -38,37 +38,22 @@ function Ayuda() {
 return (
     <Accordion defaultActiveKey="0" flush className="items">
 
-            <Accordion.Item eventKey="0" className="quienes-somos">
+            <Accordion.Item eventKey="1" className="quienes-somos">
                 <Accordion.Header>
                     <GroupsIcon id="icono-grupo"/>
                     <strong>¿Quiénes somos?</strong>
                 </Accordion.Header>
                 <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                ¡Hola a todos!<br/><br/>
+                Somos un grupo de estudiantes de la Escuela Técnica Superior de Ingenieros Informáticos (ETSII) en la Universidad de Málaga (UMA).<br/>
+                Con mucho entusiasmo y dedicación hemos desarrollado nuestra primera aplicación web llamada MediaHive
+                que tiene como objetivo ofrecer a los usuarios una plataforma donde puedan disfrutar de música, películas y series.<br/>
+                Estamos comprometidos a seguir mejorando MediaHive, añadiendo nuevas funcionalidades y escuchando el feedback de nuestros usuarios para adaptarnos a sus necesidades. <br/>
+                Este es solo el comienzo de nuestro viaje en el mundo del desarrollo de software, y estamos emocionados por lo que el futuro nos depara.<br/><br/>
+                ¡Gracias por acompañarnos en esta presentación y esperamos que disfruten usando MediaHive tanto como nosotros hemos disfrutado creándola!<br/>
                 </Accordion.Body>
             </Accordion.Item>
 
-            <Accordion.Item eventKey="1" className="manual-novato">
-                <Accordion.Header>
-                    <MenuBookIcon id="icono-manual"/>    
-                    <strong>Manual para novatos</strong>
-                </Accordion.Header>
-                <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </Accordion.Body>
-                </Accordion.Item>
 
                 <Accordion.Item eventKey="2" className="musica">
                 <Accordion.Header>

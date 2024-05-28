@@ -3,14 +3,14 @@ import React, { useRef, useState, useEffect } from "react";
 import { Carousel } from "react-bootstrap";
 import "../styles/Biblioteca.css";
 import { Link } from 'react-router-dom';
-
+import backgroundImage from '../Images/background.jpg';
 
 
 function Biblioteca() {
     const carouselRef = useRef(null);
     /*<div style={{ backgroundImage: `url(${imagen})`, backgroundSize: 'cover', height: '100vh' }}/>*/
 
-    /*Contantes para las peticiones a TMDB*/
+    /*Constantes para las peticiones a TMDB*/
     const API_URL = 'https://api.themoviedb.org/3';
     const API_KEY = 'fd04580a5174281296d7de8867bc1fa0';
     const URL_IMAGE = 'https://image.tmdb.org/t/p/original';
@@ -45,6 +45,7 @@ function Biblioteca() {
         if (savedSeries) {
             setSeriesSaved(savedSeries);
         }
+
         console.log(savedSeries);
         console.log(savedMovies);
     }, []);
@@ -71,48 +72,72 @@ function Biblioteca() {
         fetchSavedMovies();
         fetchSavedSeries();
     }, []);
+    
+    /*Estado para guardar las canciones*/
+    const [canciones, setCanciones] = useState([]);
+
+    /* Constantes para las peticiones a Spotify */
+    const options = {
+    method: 'GET',
+    headers: {
+    'X-RapidAPI-Key': 'cf42432a51mshc59efc010eefd05p1b512djsn94445674b732',
+    'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+    }
+    };
+
+    const getDatosCanciones = async (id) => {
+    let url = `https://spotify23.p.rapidapi.com/tracks/?ids=${id}`;
+    let data = await fetch(url, options);
+    let res = await data.json();
+    return {
+        id: res.tracks[0].id,
+        titulo: res.tracks[0].name,
+        imagen: res.tracks[0].album.images[0].url
+    };
+};
+
+useEffect(() => {
+    const getCancionesSaved = async () => {
+        const cancionesSaved = JSON.parse(localStorage.getItem('cancionesSaved'));
+        if (cancionesSaved) {
+            const datosCancionesPromises = cancionesSaved.map(getDatosCanciones);
+            const datosCanciones = await Promise.all(datosCancionesPromises);
+            setCanciones(datosCanciones);
+        }
+    };
+
+    getCancionesSaved();
+}, []);
+
 
     return (
         <>
-            <div className="encabezado">
-                <h1>Bienvenido a tu biblioteca</h1>
-                <h3>Aqui podrás ver tus canciones, series y películas que hayas guardado.</h3>
-            </div>
-            <div className="canciones" style={{ marginLeft: '10px', position: 'relative' }}>
-                <div className="carousel-container mx-auto px-5 py-3">
+            <div className="biblio">
+                <div className="encabezado">
+                    <h1>Bienvenido a tu biblioteca</h1>
+                    <h3>Aqui podrás ver tus canciones, series y películas que hayas guardado.</h3>
+                </div>
+                <div className="canciones" style={{ marginLeft: '10px', position: 'relative' }}>
+                    <div className="carousel-container mx-auto px-5 py-3">
 
                     <h2>Canciones</h2>
                     <div className="cancion">
                         <Carousel ref={carouselRef} interval={null} indicators={false}>
-                            <Carousel.Item>
-                                <div className="carousel-item-content row align-items-center py-2">
-                                    <div className="col-4 justify-content-center">
-                                        <iframe src="https://open.spotify.com/embed/track/5UoT7c2R5nadqdwidFhZxa?utm_source=generator" width="245" height="200" frameBorder="0" allowFullScreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                            {Array(Math.ceil(canciones.length / 3)).fill().map((_, i) => (
+                                <Carousel.Item key={i}>
+                                    <div className="carousel-item-content row align-items-center py-2">
+                                        {canciones.slice(i * 3, i * 3 + 3).map((cancion, index) => (
+                                            <div className="col d-flex flex-column justify-content-center align-items-center" key={index}>
+                                                <Link to={`/cancion/${cancion.id}`} style={{ textDecoration: 'none', textAlign: 'center' }}>
+                                                    <img src={cancion.imagen} style={{ width: '180px', height: '180px'}}/>  
+                                                    <h5>{cancion.titulo}</h5>
+                                                </Link>
+                                            </div>
+                                        ))}
                                     </div>
-                                    <div className="col-4 justify-content-center">
-                                        <iframe src="https://open.spotify.com/embed/track/0Cn8NxJZz7zUlsaA3rXoIU?utm_source=generator" width="245" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                                    </div>
-                                    <div className="col-4 justify-content-center">
-                                        <iframe src="https://open.spotify.com/embed/track/59PYgzOiOjGDzjDT5N5oOX?utm_source=generator" width="245" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                                    </div>
+                                </Carousel.Item>
+                            ))}
 
-                                </div>
-                            </Carousel.Item>
-
-                            <Carousel.Item>
-                                <div className="carousel-item-content row align-items-center py-2">
-                                    <div className="col-4 justify-content-center">
-                                        <iframe src="https://open.spotify.com/embed/track/4bTZeO72FwMa6wKOiqoynL?utm_source=generator" width="245" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                                    </div>
-                                    <div className="col-4 justify-content-center">
-                                        <iframe src="https://open.spotify.com/embed/track/6K5BsR04ijf3FHNzjbaagD?utm_source=generator" width="245" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                                    </div>
-                                    <div className="col-4 justify-content-center">
-                                        <iframe src="https://open.spotify.com/embed/track/0RDgqtvOHLwcI6yz9bjsZV?utm_source=generator" width="245" height="200" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                                    </div>
-
-                                </div>
-                            </Carousel.Item>
                         </Carousel>
                     </div>
 
@@ -191,9 +216,9 @@ function Biblioteca() {
                             </Carousel.Item>
                         </Carousel>
                     </div>
+                    </div>
                 </div>
             </div>
-
         </>
     );
 }

@@ -1,22 +1,35 @@
 import React from "react";
+import '../styles/CrearCuenta.css';
+import imagen from "../Images/MediaHive_icon.png";
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 
-import '../styles/CrearCuenta.css';
-import imagen from "../Images/MediaHive_icon.png";
-
 function CrearCuenta() {
+  //localStorage.clear();
   const { register, handleSubmit, formState: { errors }} = useForm();
   console.log(errors);
-  
   const navigate = useNavigate();
-
   const onSubmit = handleSubmit(data => {
     console.log(data)
     if (Object.keys(errors).length === 0) {
       // Si no hay errores, redireccionamos a /Inicio y guardamos el nombre de usuario en localStorage
+      const Users = JSON.parse(localStorage.getItem('users')) || [];
+      const isUserRegistered = Users.some(user => user.email === data.correoElectronico);
+      if (isUserRegistered) {
+        return alert('El correo electrónico ya está registrado');
+      }
+
+      Users.push({username: data.nombreUsuario, email: data.correoElectronico, password: data.contrasena});
+      localStorage.setItem('users', JSON.stringify(Users));
+      alert('Usuario creado correctamente');
+
       localStorage.setItem('username', data.nombreUsuario);
+      localStorage.setItem('email', data.correoElectronico);
+      localStorage.setItem('password', data.contrasena);
+      localStorage.setItem('profileImage', '');
+
       navigate(`/Inicio/${data.nombreUsuario}`);
+      
     }
   })
 
@@ -36,7 +49,7 @@ function CrearCuenta() {
                   message: 'Nombre de usuario obligatorio'
                 },
                 maxLength: {
-                  value: 20,
+                  value: 30,
                   message: 'Nombre de usuario demasiado largo'
                 },
                 minLength: {
@@ -76,15 +89,15 @@ function CrearCuenta() {
                 required: {
                   value: true, 
                   message: 'Contraseña obligatoria'
-              },
-              minLength: {
-                value: 4,
-                message: 'Contraseña debe tener al menos 4 caracteres'
-              },
-              maxLength: {
-                value: 20,
-                message: 'Contraseña debe tener menos de 20 caracteres'
-              }
+               },
+               minLength: {
+                 value: 4,
+                 message: 'Contraseña debe tener al menos 4 caracteres'
+               },
+               maxLength: {
+                  value: 30,
+                  message: 'Contraseña debe tener menos de 30 caracteres'
+               }
               })}
               className="input-crear-cuenta"
             />
