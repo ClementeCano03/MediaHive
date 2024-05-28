@@ -80,7 +80,7 @@ function Biblioteca() {
     const options = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': '85d1a8011cmsh82f87c4d3f58a27p11fb8djsnf7255cec3dce',
+        'X-RapidAPI-Key': '6adaeb3733msh28bad337ffcb004p16abdajsn136b9a1b8458',
         'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
       }
     };
