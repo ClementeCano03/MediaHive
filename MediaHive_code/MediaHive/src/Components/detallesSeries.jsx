@@ -4,7 +4,6 @@ import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import axios from 'axios'
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "../styles/detallesPeliculasSeries-style.css";
 

@@ -5,7 +5,7 @@ import axios from 'axios'
 import { Carousel } from "react-bootstrap";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 import "../styles/peliculas-styles.css";

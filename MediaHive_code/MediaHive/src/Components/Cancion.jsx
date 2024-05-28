@@ -262,12 +262,13 @@ function Cancion(props) {
               onClick={() => handleStarClick(index)}
               className="StarIcon"
               style={{ color: index <= highlightedStars ? 'yellow' : 'inherit' }}
+              alt={index + "estrellas "}
             />
           ))}
         </div>
         {/* Contenedor de la imagen y el artista */}
         <div className="Artista"> 
-          <img src={imagen} alt={artista}/>
+          <img src={imagen} alt={"Imagen del artista: " + {artista}}/>
           <h3>{artista}</h3>
         </div>
       </div>

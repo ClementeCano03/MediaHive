@@ -29,7 +29,7 @@ function MusicaResultados() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'cf42432a51mshc59efc010eefd05p1b512djsn94445674b732',
+      'X-RapidAPI-Key': '6adaeb3733msh28bad337ffcb004p16abdajsn136b9a1b8458',
       'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
     }
   };
@@ -89,8 +89,8 @@ function MusicaResultados() {
           <div className="d-flex border-bottom border-white" key={index}>
             <Link to={`/cancion/${cancion.data.id}`} style={{ textDecoration: 'none' }} className="align-self-center">
               <div className="d-flex">
-                <img src={cancion.data.albumOfTrack.coverArt.sources[0].url} style={{ width: '100px', height: '100px' }}/> 
-                <h2 className="align-self-center" style={{color:"black", marginLeft:'20px'}}>
+                <img src={cancion.data.albumOfTrack.coverArt.sources[0].url} style={{ width: '100px', height: '100px' }} alt={"Titulo de la cancion: " + cancion.data.name}/> 
+                <h2 className="align-self-center" style={{color:"black", marginLeft:'20px'}} >
                   {cancion.data.name}
                 </h2>
               </div>
