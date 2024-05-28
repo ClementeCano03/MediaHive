@@ -164,7 +164,7 @@ function Series({ cambiarTituloPagina }) {
                   {series.slice(0, 5).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -180,7 +180,7 @@ function Series({ cambiarTituloPagina }) {
                   {series.slice(5, 10).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -202,7 +202,7 @@ function Series({ cambiarTituloPagina }) {
                   {topSeries.slice(0, 5).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -218,7 +218,7 @@ function Series({ cambiarTituloPagina }) {
                   {topSeries.slice(5, 10).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -240,7 +240,7 @@ function Series({ cambiarTituloPagina }) {
                   {seriesSaved.slice(0, 5).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -256,7 +256,7 @@ function Series({ cambiarTituloPagina }) {
                   {seriesSaved.slice(5, 10).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -278,7 +278,7 @@ function Series({ cambiarTituloPagina }) {
                   {upcomingSeries.slice(0, 5).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -294,7 +294,7 @@ function Series({ cambiarTituloPagina }) {
                   {upcomingSeries.slice(5, 10).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}

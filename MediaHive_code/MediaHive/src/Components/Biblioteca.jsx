@@ -127,7 +127,7 @@ function Hive() {
                                             {seriesSaved.slice(0, 5).map((serie, index) => (
                                                 <div key={serie.id ? `serie-${serie.id}` : `serie-index-${index}`} className="col d-flex justify-content-center">
                                                     <Link to={`/detallesSeries/${serie.id}`}>
-                                                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                                                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
                                                     </Link>
                                                 </div>
                                             ))}
@@ -143,7 +143,7 @@ function Hive() {
                                             {seriesSaved.slice(5, 10).map((serie, index) => (
                                                 <div key={serie.id ? `serie-${serie.id}` : `serie-index-${index}`} className="col d-flex justify-content-center">
                                                     <Link to={`/detallesSeries/${serie.id}`}>
-                                                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                                                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
                                                     </Link>
                                                 </div>
                                             ))}
@@ -165,7 +165,7 @@ function Hive() {
                                             {moviesSaved.slice(0, 5).map((movie, index) => (
                                                 <div key={movie.id ? `pelicula-${movie.id}` : `pelicula-index-${index}`} className="col d-flex justify-content-center">
                                                     <Link to={`/detallesPeliculas/${movie.id}`}>
-                                                        <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                                                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
                                                     </Link>
                                                 </div>
                                             ))}
@@ -181,7 +181,7 @@ function Hive() {
                                             {moviesSaved.slice(5, 10).map((movie, index) => (
                                                 <div key={movie.id ? `pelicula-${movie.id}` : `pelicula-index-${index}`} className="col d-flex justify-content-center">
                                                     <Link to={`/detallesPeliculas/${movie.id}`}>
-                                                        <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                                                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
                                                     </Link>
                                                 </div>
                                             ))}

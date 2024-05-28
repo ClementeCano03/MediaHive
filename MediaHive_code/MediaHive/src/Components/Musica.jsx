@@ -139,7 +139,7 @@ function Musica() {
               <div className="carousel-item-content row align-items-center py-2">
                 <div className="col d-flex justify-content-center">
                   <Link to="/cancion/7bywjHOc0wSjGGbj04XbVi" style={{ textDecoration: 'none' }}>
-                    <img src="https://i.scdn.co/image/ab67616d00001e02e346fc6f767ca2ac8365fe60" style={{ width: '180px', height: '180px' }}/>  
+                    <img src="https://i.scdn.co/image/ab67616d00001e02e346fc6f767ca2ac8365fe60" alt= {"LUNA"}style={{ width: '180px', height: '180px' }}/>  
                   <h5 style={{textAlign: "center"}}>LUNA</h5>
                   </Link>                  
                 </div>

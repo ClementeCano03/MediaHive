@@ -169,7 +169,7 @@ function Peliculas({ cambiarTituloPagina }) {
                   {movies.slice(0, 5).map((movie, index) => (
                     <div key={movie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -185,7 +185,7 @@ function Peliculas({ cambiarTituloPagina }) {
                   {movies.slice(5, 10).map((movie, index) => (
                     <div key={movie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -207,7 +207,7 @@ function Peliculas({ cambiarTituloPagina }) {
                   {topMovies.slice(0, 5).map((movie, index) => (
                     <div key={movie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -223,7 +223,7 @@ function Peliculas({ cambiarTituloPagina }) {
                   {topMovies.slice(5, 10).map((movie, index) => (
                     <div key={movie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -245,7 +245,7 @@ function Peliculas({ cambiarTituloPagina }) {
                   {moviesSaved.slice(0,5).map((movie, index) => (
                     <div key={movie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -261,7 +261,7 @@ function Peliculas({ cambiarTituloPagina }) {
                   {moviesSaved.slice(5,10).map((movie, index) => (
                     <div key={movie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -283,7 +283,7 @@ function Peliculas({ cambiarTituloPagina }) {
                   {upcomingMovies.slice(0, 5).map((movie, index) => (
                     <div key={movie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}
@@ -299,7 +299,7 @@ function Peliculas({ cambiarTituloPagina }) {
                   {upcomingMovies.slice(5, 10).map((movie, index) => (
                     <div key={movie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
                       </Link>
                     </div>
                   ))}

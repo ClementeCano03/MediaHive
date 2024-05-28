@@ -76,11 +76,11 @@ function detallesSeries({ cambiarTituloPagina }) {
             <div className="mx-auto px-5 py-5 d-flex align-items-start">
 
                 <div>
-                    <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.title} style={{ height: '400px', width: 'auto' }} />
+                    <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.name} style={{ height: '400px', width: 'auto' }} />
                 </div>
                 <div className="mx-auto px-5 py-3">
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <h3>{serie.title}</h3>
+                        <h3>{serie.name}</h3>
                         <button onClick={handleSerieSave} style={{ border: 'none', background: 'transparent' }}>
                             <BookmarkAddIcon className="BookmarkIcon" style={{ marginLeft: '10px', color: 'black' }} />
                         </button>
@@ -102,7 +102,7 @@ function detallesSeries({ cambiarTituloPagina }) {
                         {similarSeries.slice(0, 4).map(similarSerie => (
                             <div key={similarSerie.id} style={{ width: '50%', padding: '10px' }}>
                                 <Link to={`/detallesSeries/${similarSerie.id}`}>
-                                    <img src={`https://image.tmdb.org/t/p/w500${similarSerie.poster_path}`} alt={similarSerie.title} style={{ width: '100%', height: 'auto' }} />
+                                    <img src={`https://image.tmdb.org/t/p/w500${similarSerie.poster_path}`} alt={similarSerie.name} style={{ width: '100%', height: 'auto' }} />
                                 </Link>
                             </div>
                         ))}
