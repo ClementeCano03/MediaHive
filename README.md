@@ -13,10 +13,10 @@
     <img src="https://img.shields.io/npm/l/badge-maker.svg" alt="npm license">
   </a>
   <a href="https://npmjs.org/package/badge-maker">
-    <img src="https://img.shields.io/badge/JSX-React-blueviolet" alt="JSX">
+    <img src="https://img.shields.io/badge/JSX-React-yellow" alt="JSX">
   </a>
   <a href="https://npmjs.org/package/badge-maker">
-    <img src="https://img.shields.io/badge/CSS-3-blue" alt="CSS">
+    <img src="https://img.shields.io/badge/CSS-3-blueviolet" alt="CSS">
   </a>
   <a href="https://npmjs.org/package/badge-maker">
     <img src="https://img.shields.io/badge/HTML-5-orange" alt="HTML">
