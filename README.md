@@ -4,15 +4,27 @@
   <img src="https://github.com/ClementeCano03/MediaHive/assets/124878375/8b90f7d0-51ca-45ad-af6f-9622a11cf025" alt="MediaHiveLogoGitHub">
 </p>
 
-<p align="left">
-  <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
-  
-  [![npm version](https://img.shields.io/npm/v/badge-maker.svg)](https://npmjs.org/package/badge-maker)
-  [![npm license](https://img.shields.io/npm/l/badge-maker.svg)](https://npmjs.org/package/badge-maker)
-  [![npm type definitions](https://img.shields.io/npm/types/badge-maker)](https://npmjs.org/package/badge-maker)
+<p align="center">
+  <img src="https://img.shields.io/badge/STATUS-TERMINADO-blue" alt="Project Status: Terminado">
+  <a href="https://npmjs.org/package/badge-maker">
+    <img src="https://img.shields.io/npm/v/badge-maker.svg" alt="npm version">
+  </a>
+  <a href="https://npmjs.org/package/badge-maker">
+    <img src="https://img.shields.io/npm/l/badge-maker.svg" alt="npm license">
+  </a>
+  <a href="https://npmjs.org/package/badge-maker">
+    <img src="https://img.shields.io/badge/JSX-React-blueviolet" alt="JSX">
+  </a>
+  <a href="https://npmjs.org/package/badge-maker">
+    <img src="https://img.shields.io/badge/CSS-3-blue" alt="CSS">
+  </a>
+  <a href="https://npmjs.org/package/badge-maker">
+    <img src="https://img.shields.io/badge/HTML-5-orange" alt="HTML">
+  </a>
 </p>
-
-![GitHub Org's stars](https://img.shields.io/github/stars/camilafernanda?style=social)
+  <p align="center">
+    <img src="https://img.shields.io/github/stars/camilafernanda?style=social" alt="GitHub Org's stars">
+  </p>
 
 <div>¡Bienvenido a <strong>MediaHive</strong>! Esta aplicación web te permite gestionar y organizar tus películas, series de televisión y música favoritas en un solo lugar. También puedes agregar comentarios, valorar los elementos, marcarlos como favoritos e incluso escuchar canciones directamente desde <em>Spotify</em>.</div>
 
@@ -43,39 +55,37 @@
   </li>
 </ul>
 
-<h1>Empezar</h1>
-  <h2>Requisitos previos</h2>
-  Antes de ejecutar la aplicación, asegúrate de tener instalado lo siguiente:
-<ul>
-  <li>Node.js</li>
-  <li>npm</li>
-</ul>
+<h1>MediaHive</h1>
+    <h2>Despliegue Local de la Aplicación</h2>
+    <p>Para desplegar la aplicación localmente, sigue los siguientes pasos:</p>
+      <h3>1. Clonar el Repositorio</h3>
+        <p>Clona este repositorio en tu máquina local si aún no lo has hecho:</p>
+        <pre><code>git <span style="color: orange;">clone</span> https://github.com/ClementeCano03/MediaHive </code></pre>
+        <pre><code>cd MediaHive </code></pre>
+      <h3>2. Navegar al Directorio del Proyecto</h3>
+        <p>Accede al directorio donde se encuentra el código fuente de la aplicación. En este caso, debes ejecutar los siguientes comandos en la terminal de Visual Studio Code:</p>
+        <pre><code>cd MediaHive_code</code></pre>
+        <pre><code>cd MediaHive</code></pre>
+      <h3>3. Instalar Dependencias</h3>
+        <p>Antes de iniciar la aplicación, asegúrate de que todas las dependencias están instaladas. Ejecuta el siguiente comando en el directorio <code>MediaHive</code>:</p>
+        <pre><code>npm install</code></pre>
+      <h3>4. Iniciar el Servidor de Desarrollo</h3>
+        <p>Para desplegar la aplicación localmente, utiliza el siguiente comando:</p>
+        <pre><code>npm run dev</code></pre>
+        <p>Este comando iniciará el servidor de desarrollo utilizando Vite. La salida esperada debería ser algo similar a:</p>
+        <pre><code>&gt; mediahive@0.0.0 dev &gt; vite
 
-<h1>📁 Acceso al proyecto</h1>
-  <ul>
-  <li>
-    Clona el repositorio:
-    git clone https://github.com/ClementeCano03/MediaHive.git
-  </li>
-  <li>
-    Navega hasta el directorio del proyecto:
-    cd MediaHive_code/MediaHive
-  </li>
-  <li>
-    Instala las dependencias:
-    npm install
-  </li>
-</ul>
+  VITE v5.2.11  ready in 3934 ms
 
-<h1>🛠️ Abre y ejecuta el proyecto</h1>
-<ul>
-  <li>
-    npm start
-  </li>
-  <li >
-    Abre tu navegador y ve a <a href="http://localhost:5173">http://localhost:5173<a/> para ver la aplicación.
-  </li>
-</ul>
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help</code></pre>
+  <h3>5. Acceder a la Aplicación</h3>
+    <p>Abre tu navegador web y navega a la siguiente URL para ver la aplicación en funcionamiento:</p>
+    <pre><code>http://localhost:5173/</code></pre>
+  <h3>Notas Adicionales</h3>
+    <p><strong>Exponer en la Red:</strong> Si deseas exponer el servidor en la red local, puedes usar la opción <code>--host</code> con el comando <code>npm run dev</code>. Por ejemplo:</p>
+    <pre><code>npm run dev -- --host</code></pre>
 
 <h1>🧰 Uso</h1>
 <h2>🗒️ Registrarse/Iniciar sesión:</h2>
