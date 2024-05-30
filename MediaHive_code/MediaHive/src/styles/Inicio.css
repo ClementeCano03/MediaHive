@@ -1,10 +1,11 @@
 .content-inicio {
-    position: relative; /* Add this line */
+    /* position: relative; /* Add this line */
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente */
-    height: 100vh;
-    margin: 0;
+    height: calc(100%-11.5vh);
+    margin-top: 11.5vh;
+    margin-left: 5.5rem;
     padding: 0;
     overflow: hidden;
 }

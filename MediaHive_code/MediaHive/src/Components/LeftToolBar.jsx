@@ -18,7 +18,7 @@ function LeftToolBar(props) {
 
   return (
     
-    <>
+    <div class="parent-container-leftnav">
       <div id="leftnav" className="d-flex flex-column" style={{ height: `${props.altura}vh`}}>
         {/* Barra lateral */}
         <ul id="barraLateral" className="nav nav-flush flex-column mb-auto text-center">
@@ -101,7 +101,7 @@ function LeftToolBar(props) {
           
         </ul>
       </div>
-    </>
+    </div>
   );
 }
 

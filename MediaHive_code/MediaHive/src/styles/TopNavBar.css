@@ -1,9 +1,19 @@
+.container-topnav {
+    position: fixed;
+    width: 100%; /* Establece el ancho al 100% */
+    z-index: 100;
+}
+
+#navbarcontainer {
+    padding: 0;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
 .navbar {
     background-color: #283033;
     display: flex;
     align-items: center;
-    padding: 0.5rem 1rem;
-    width: 100%; /* Establece el ancho al 100% */
 }
 
 img {
@@ -28,6 +38,7 @@ img {
     color: black;
     border: none;
     padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
     margin-right: 10px;
     border-radius: 5px;
 }
@@ -38,6 +49,7 @@ img {
     background-color: #00A9D3;
     color: white;
     border: none;
+    margin-top: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 5px; /* Añade un poco de redondez al botón */
 }

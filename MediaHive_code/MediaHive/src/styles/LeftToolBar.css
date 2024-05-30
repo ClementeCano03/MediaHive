@@ -1,6 +1,12 @@
+.parent-container-leftnav {
+    position: fixed;
+    z-index: 100;
+    margin-top: 11.5vh;
+    width: 6.3rem;
+}
+
 #barraLateral{
     background-color: #283033;
-    width: 6.3rem; 
     flex-grow: 1;
 }
 
