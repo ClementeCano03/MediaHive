@@ -41,7 +41,7 @@ function App(){
           <>
             <TopNavBar name="Inicio"/>
             <div style={{display: "flex"}}>
-              <LeftToolBar altura="100"/>
+              <LeftToolBar />
               <div className="contenido">
                 <Inicio />
               </div>

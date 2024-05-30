@@ -36,7 +36,7 @@ function TopNavBar(props){
                         </h5>
                         <h5>
                             <Link to="/InicioSesion">
-                                <button className="inicioSesion">Iniciar Sesion</button>
+                                <button className="inicioSesion">Iniciar Sesión</button>
                             </Link>
                         </h5>
                     </>
