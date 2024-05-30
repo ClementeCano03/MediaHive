@@ -30,7 +30,7 @@ function App(){
           <>
             <TopNavBar name="Inicio"/>
             <div style={{display: "flex"}}>
-              <LeftToolBar altura="100"/>
+              <LeftToolBar/>
               <div className="contenido">
                 <Inicio />
               </div>
@@ -52,7 +52,7 @@ function App(){
           <>
             <TopNavBar name="Inicio"/>
             <div style={{display: "flex"}}>
-              <LeftToolBar altura="100"/>
+              <LeftToolBar/>
               <div className="contenido">
                 <Inicio />
               </div>
@@ -63,7 +63,7 @@ function App(){
           <>
             <TopNavBar name="Inicio de Sesión"/>
             <div style={{display: "flex"}}>
-              <LeftToolBar altura="100"/>
+              <LeftToolBar/>
               <div className="contenido">
                 <InicioSesion />
               </div>
@@ -74,7 +74,7 @@ function App(){
           <>
             <TopNavBar name="Registrarse"/>
             <div style={{display: "flex"}}>
-              <LeftToolBar altura="100"/>
+              <LeftToolBar/>
               <div className="contenido">
                 <CrearCuenta />
               </div>
@@ -85,7 +85,7 @@ function App(){
           <>
             <TopNavBar name="Tu Perfil"/>
             <div style={{display: "flex"}}>
-              <LeftToolBar altura="100"/>
+              <LeftToolBar/>
               <div className="contenido">
                 <Perfil />
               </div>
@@ -96,7 +96,7 @@ function App(){
           <>
             <TopNavBar name="Música"/>
               <div style={{display: "flex"}}>
-                <LeftToolBar altura="127"/>
+                <LeftToolBar/>
                   <div className="contenido">
                     <Musica />
                   </div>
@@ -107,7 +107,7 @@ function App(){
           <>
             <TopNavBar name="Resultados"/>
               <div style={{display: "flex"}}>
-                <LeftToolBar altura="100"/>
+                <LeftToolBar/>
                   <div className="contenido">
                     <MusicaResultados />
                   </div>
@@ -118,7 +118,7 @@ function App(){
           <>
             <TopNavBar name="Películas"/>
               <div style={{display: "flex"}}>
-                <LeftToolBar altura="154"/>
+                <LeftToolBar/>
                   <div className="contenido">
                     <Peliculas />
                   </div>
@@ -129,7 +129,7 @@ function App(){
           <>
             <TopNavBar name="Película"/>
               <div style={{display: "flex"}}>
-                <LeftToolBar altura="111"/>
+                <LeftToolBar/>
                   <div className="contenido">
                     <DetallesPeliculas />
                   </div>
@@ -140,7 +140,7 @@ function App(){
           <>
             <TopNavBar name="Series"/>
               <div style={{display: "flex"}}>
-                <LeftToolBar altura="154"/>
+                <LeftToolBar/>
                   <div className="contenido">
                     <Series />
                   </div>
@@ -151,7 +151,7 @@ function App(){
           <>
             <TopNavBar name="Serie"/>
               <div style={{display: "flex"}}>
-                <LeftToolBar altura="120"/>
+                <LeftToolBar/>
                   <div className="contenido">
                     <DetallesSeries />
                   </div>
@@ -162,7 +162,7 @@ function App(){
           <>
             <TopNavBar name="Biblioteca"/>
               <div style={{display: "flex"}}>
-                <LeftToolBar altura="120"/>
+                <LeftToolBar/>
                   <div className="contenido">
                     <Biblioteca />
                   </div>
@@ -173,7 +173,7 @@ function App(){
           <>
             <TopNavBar name="Ayuda"/>
               <div style={{display: "flex"}}>
-                <LeftToolBar altura="100"/>
+                <LeftToolBar/>
                   <div className="contenido">
                     <Ayuda />
                   </div>
@@ -184,7 +184,7 @@ function App(){
           <>
             <TopNavBar name="Canción"/>
               <div style={{display: "flex"}}>
-                <LeftToolBar altura="100"/>
+                <LeftToolBar/>
                   <div className="contenido">
                     <Cancion />
                   </div>
