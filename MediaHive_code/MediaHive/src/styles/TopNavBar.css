@@ -34,13 +34,17 @@ img {
 
 .registro {
     font-size: 23px;
-    background-color: white;
+    background-color: #ebfdff;
     color: black;
     border: none;
     padding: 0.5rem 1rem;
     margin-top: 0.5rem;
     margin-right: 10px;
     border-radius: 5px;
+}
+
+.registro:hover {
+    background-color: #cef8ff;
 }
 
 .inicioSesion {
@@ -52,6 +56,10 @@ img {
     margin-top: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 5px; /* Añade un poco de redondez al botón */
+}
+
+.inicioSesion:hover {
+    background-color: #0a6f94; /* Cambia el color de fondo al pasar el cursor */
 }
 
 .username {
