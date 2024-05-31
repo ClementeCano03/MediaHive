@@ -1,9 +1,8 @@
 .content-inicio {
-     content: "";
+    content: "";
     background-image: url("../src/Images/fondo.png");
     background-size: cover;
     background-position: center;
-    
     height: calc(100vh - 13vh);
     width: calc(100vw - 6.5rem);
     margin-top: 13vh;

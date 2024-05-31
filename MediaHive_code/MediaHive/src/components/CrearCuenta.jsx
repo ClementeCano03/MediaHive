@@ -109,7 +109,7 @@ function CrearCuenta() {
                 type="submit"
                 to="/Inicio"
                 className="boton-aceptar">
-                ACEPTAR
+                Aceptar
               </button>
           </form>
       </div>
