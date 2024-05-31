@@ -176,7 +176,7 @@ function Cancion(props) {
   }, []);
 
   return (
-    <div>
+    <div class="parent-container-musica">
       {
       // <div className="MusicaContainer">
       //   {/* Contenedor de la canción */}
@@ -278,7 +278,7 @@ function Cancion(props) {
 
 <div className="container">
   <div className="row">
-    <div className="col-md-6">
+    <div className="col-md-6" id="container-comentarios">
       <h4 className="CommentTitle">Comentarios:</h4>
       <div className="tabla">
         {comentariosAleatorios.map((comment, index) => (
@@ -287,12 +287,11 @@ function Cancion(props) {
           </div>
         ))}
       </div>
-      <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios}>
+      <Button variant="contained" color="secondary" className="NextCommentButton" onClick={generarComentariosAleatorios} sx={{marginBottom: '2vh'}}>
         Ver más comentarios
       </Button>
     </div>
-    <div className="col-md-2"></div>
-    <div className="col-md-4">
+    <div className="col-md-4" id="nuevo-comentario-cancion">
       <div className="UserInputContainer">
           {/* Cuadro de texto para la opinión del usuario */}
           <textarea

@@ -9,9 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "../styles/peliculas-styles.css";
 
-function Peliculas({ cambiarTituloPagina }) {
-  //cambiarTituloPagina("Películas");
-
+function Peliculas() {
   // Ref para el carrusel
   const carouselRef = useRef(null);
 

@@ -88,9 +88,10 @@ function Perfil() {
                         }
                     </div>
 
-                    <div className="inline-group">
-                        <button type="submit" className="boton-perfil">Guardar cambios</button>
+                    <div className="inline-button">
                         <button type="button" onClick={handleLogout} className="boton-cerrar-sesion-perfil">Cerrar sesión</button>
+                        <button type="submit" className="boton-guardar-perfil">Guardar cambios</button>
+                        
                     </div>
                 </form>
             </div>

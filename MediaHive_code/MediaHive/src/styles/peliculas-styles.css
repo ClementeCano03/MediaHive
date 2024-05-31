@@ -1,13 +1,20 @@
 #peliculas {
+  margin-top: 13vh;
+  margin-left: 6.5rem;
   background-color: #E3E9EA;
   z-index: -1;
 }
 
 #peliculas img {
   border-radius: 5px; /* Ajusta este valor para cambiar el grado de redondeo de los bordes */
-  border: 2px solid #333; /* Añade un borde más grueso y de un color oscuro */
+  border: 1px solid #333; /* Añade un borde más grueso y de un color oscuro */
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5); /* Añade una sombra para darle profundidad */
-} 
+}
+
+#peliculas img:hover {
+  transform: scale(1.1); /* Ajusta este valor para cambiar el grado de aumento */
+}
+
 .carousel-container {
   position: relative;
   width: 95%;

@@ -21,7 +21,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 35%;
+  width: 32%;
   height: 90%;
   background-color: #78939878;
   border-radius: 45px;
@@ -60,7 +60,7 @@
   font-size: 3vh;
   background-color: #009f04;
   color: white;
-  border-radius: 5px;
+  border-radius: 10px;
   border: solid 1px #067509;
   display: block;
   margin-top: 1.5vh;
