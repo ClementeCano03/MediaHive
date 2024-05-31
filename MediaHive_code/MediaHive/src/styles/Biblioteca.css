@@ -1,26 +1,33 @@
-.biblio{
+/* Biblioteca.css */
+
+.biblioteca-container {
     background-image: url('../Images/fondobiblioteca.png');
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.encabezado{
+.encabezado {
     text-align: center;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
+    color: white; /* Asegúrate de que el color del texto se destaca con el contorno */
     
 }
+
+
+
 
 .carousel-container {
     position: relative;
     width: 95%;
     overflow: hidden; /* Evita que los botones se desborden fuera del contenedor */
-  }
+}
 
 /* Estilos para los botones de navegación */
-.carousel-control{
+.carousel-control {
     width: 0%;
-
 }
 
 /* Estilos para el botón de retroceso */

@@ -36,8 +36,8 @@ const InicioSesion = () => {
         const Users = JSON.parse(localStorage.getItem('users')) || [];
         const validUser = Users.find(user => user.email === values.email && user.password === values.password);
         if (!validUser) {
-            errors.email = "Correo electrónico o contraseña incorrectos";
-            errors.password = "Correo electrónico o contraseña incorrectos";
+            errors.email = <span className="error-message">Correo electrónico o contraseña incorrectos</span>;
+            errors.password = <span className="error-message">Correo electrónico o contraseña incorrectos</span>;
         } else {
             localStorage.setItem('username', validUser.username);
             navigate(`/Inicio/${validUser.username}`);
@@ -54,21 +54,21 @@ const InicioSesion = () => {
                     navigate(`/Inicio/${data.nombreUsuario}`);
                 }
             }
-            errors.email = "Correo electrónico o contraseña incorrectos";
-            errors.password = "Correo electrónico o contraseña incorrectos";
+            errors.email = <span className="error-message">Correo electrónico o contraseña incorrectos</span>;
+            errors.password = <span className="error-message">Correo electrónico o contraseña incorrectos</span>;
         }
         */
 
         if (!values.email) {
-            errors.email = "No puede estar en blanco";
+            errors.email = <span className="error-message">No puede estar en blanco</span>;
         } else if (!regex.test(values.email)) {
-            errors.email = "Formato de correo electrónico no válido";
+            errors.email = <span className="error-message">Formato de correo electrónico no válido</span>;
         }
 
         if (!values.password) {
-            errors.password = "No puede estar en blanco";
+            errors.password = <span className="error-message">No puede estar en blanco</span>;
         } else if (values.password.length < 4) {
-            errors.password = "La contraseña debe tener más de 4 caracteres";
+            errors.password = <span className="error-message">La contraseña debe tener más de 4 caracteres</span>;
         }
 
         return errors;

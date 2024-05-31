@@ -14,22 +14,29 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 //-------------------------------------------------------------//
 // Importar imágenes de las secciones
     //
-import barranav from "../Images/Ayuda/barra.png";
-import Ultimosestrenos from "../Images/Ayuda/estrenos.png";
-import Maspopulares from "../Images/Ayuda/popu.png";
-import Top10 from "../Images/Ayuda/top.png";
-    // 
-import resultados from "../Images/Ayuda/resultados.png";
-import artista from "../Images/Ayuda/artista.png";
+import barranav from "../Images/Ayuda/Música/barra.png";
+import Ultimosestrenos from "../Images/Ayuda/Música/estrenos.png";
+import Maspopulares from "../Images/Ayuda/Música/popu.png";
+import Top10 from "../Images/Ayuda/Música/top.png";
+        // 
+import resultados from "../Images/Ayuda/Música/resultados.png";
+import artista from "../Images/Ayuda/Música/artista.png";
+            //
+import reproductor from "../Images/Ayuda/Música/repro.png";
+import titulo from "../Images/Ayuda/Música/titulo.png";
+import artis from "../Images/Ayuda/Música/artis.png";
+import valorar from "../Images/Ayuda/Música/valorar.png";
+import favoritos from "../Images/Ayuda/Música/fav.png";
+import comentarios from "../Images/Ayuda/Música/comen.png";
+import vercomentarios from "../Images/Ayuda/Música/coments.png";
     //
-import reproductor from "../Images/Ayuda/repro.png";
-import titulo from "../Images/Ayuda/titulo.png";
-import artis from "../Images/Ayuda/artis.png";
-import valorar from "../Images/Ayuda/valorar.png";
-import favoritos from "../Images/Ayuda/fav.png";
-import comentarios from "../Images/Ayuda/comen.png";
-import vercomentarios from "../Images/Ayuda/coments.png";
-
+import barranavpelis from "../Images/Ayuda/Peliculas/barranav.png";
+import estrenos from "../Images/Ayuda/Peliculas/estrenos.png";
+import guardadas from "../Images/Ayuda/Peliculas/guardadas.png";
+import popu from "../Images/Ayuda/Peliculas/popu.png";
+import top from "../Images/Ayuda/Peliculas/top.png";
+        //
+import resultadopeli from "../Images/Ayuda/Peliculas/resultadopeli.png";
 
 //-------------------------------------------------------------//
 function Ayuda() {
@@ -228,13 +235,162 @@ return (
                     <strong>Sección Películas</strong>
                 </Accordion.Header>
                 <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                <Accordion defaultActiveKey="0" flush className="sub-items-musica">
+                        <Accordion.Item eventKey="1">
+                            <Accordion.Header>
+                                <strong>¿Qué aparece al inicio de la seccion?</strong>
+                            </Accordion.Header>
+                            <Accordion.Body>
+                            En nuestra sección de películas podrás encontrar las películas más populares, el top 10, tus películas guardadas y los últimos estrenos.
+                            Además, podrás buscar tus películas favoritas, añadirlas a favoritos, darles una valoración, poner comentarios y ver los comentarios de otros usuarios.
+                                <Accordion defaultActiveKey="0" flush className="sub-items-musica">
+                                    <Accordion.Item eventKey="1">
+                                    <Accordion.Header>
+                                        <strong>Barra de navegación</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={barranavpelis} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                        En la barra de navegación podrás buscar la película que desees.
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="2">
+                                    <Accordion.Header>
+                                        <strong>Películas populares</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={popu} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                        Aquí podrás descubrir las últimas películas más populares del momento.
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="3">
+                                    <Accordion.Header>
+                                    <strong>Top 10 películas</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={top} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                        Aquí podrás ver un top de películas.
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="4">
+                                        <Accordion.Header>
+                                        <strong>Películas guardadas</strong>
+                                        </Accordion.Header>
+                                        <Accordion.Body>
+                                            <img src={guardadas} style={{ width: '1000px', height: '500px', 
+                                            display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                            Aquí podrás ver las películas que has guardado en favoritos.
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="5">
+                                        <Accordion.Header>
+                                        <strong>Últimos estrenos</strong>
+                                        </Accordion.Header>
+                                        <Accordion.Body>
+                                            <img src={estrenos} style={{ width: '1000px', height: '500px', 
+                                            display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                            Aquí podrás ver las películas que se han estrenado recientemente.
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header>
+                                <strong>Buscar una película</strong>
+                            </Accordion.Header>
+                            <Accordion.Body>
+                                Podrás buscar una película por su título.
+                                <Accordion defaultActiveKey="0" flush className="sub-items-musica">
+                                    <Accordion.Item eventKey="1">
+                                        <Accordion.Header>
+                                        <strong>Buscar una película por título</strong>
+                                        </Accordion.Header>
+                                        <Accordion.Body>
+                                            <img src={resultadopeli} style={{ width: '1000px', height: '500px', 
+                                            display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                            Cuando buscas el título de una película, aparecerán los resultados de la búsqueda.
+                                            Aparecerán varias portadas de títulos relacionados.<br/>
+                                        </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="3">
+                            <Accordion.Header>
+                            <strong>¿Qué veo cuando busco una película?</strong>
+                            </Accordion.Header>
+                            <Accordion.Body>
+                                <Accordion defaultActiveKey="0" flush className="sub-items-musica">
+                                    <Accordion.Item eventKey="1">
+                                    <Accordion.Header>
+                                    <strong>Portada de la película</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={reproductor} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="2">
+                                    <Accordion.Header>
+                                    <strong>Título de la película</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={titulo} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="3">
+                                    <Accordion.Header>
+                                    <strong>Películas similares</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={artis} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="4">
+                                    <Accordion.Header>
+                                    <strong>Sinopsis</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={valorar} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="5">
+                                    <Accordion.Header>
+                                    <strong>Guardar en favoritos</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={favoritos} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="6">
+                                    <Accordion.Header>
+                                    <strong>Escribir comentarios</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={comentarios} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                    <Accordion.Item eventKey="7">
+                                    <Accordion.Header>
+                                    <strong>Ver los comentarios</strong>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        <img src={vercomentarios} style={{ width: '1000px', height: '500px', 
+                                        display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
+                                    </Accordion.Body>
+                                    </Accordion.Item>
+                                </Accordion>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
                 </Accordion.Body>
                 </Accordion.Item>
 

@@ -14,9 +14,9 @@ function Inicio() {
           <div class="cuadro-texto">
               <h2>¡Bienvenidos a nuestra comunidad sobre multimedia!</h2>
               <p class="text-wrap">
-                  Organiza tus series, películas o música favoritos en unsolo lugar de forma sencilla. <br></br>
-                  Descubre cuáles son los contenidos en tendencia y vota portu contenido favorito. <br></br>
-                  Debate en los diversos foros el últmo capítulo de tu serieen emisión. <br></br>
+                Organiza tus series, películas o música favoritos en un solo lugar de forma sencilla <br></br>
+                Descubre cuáles son los contenidos en tendencia y vota por tu contenido favorito <br></br>
+                Debate en los diversos foros el últmo capítulo de tu serie en emisión <br></br>
               </p>
           </div>
           {username ? (
