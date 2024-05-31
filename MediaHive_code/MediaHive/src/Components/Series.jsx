@@ -281,7 +281,7 @@ function Series({ cambiarTituloPagina }) {
                   {upcomingSeries.slice(5, 10).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} class="imagen-serie" />
                       </Link>
                     </div>
                   ))}
