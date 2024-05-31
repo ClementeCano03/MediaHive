@@ -1,3 +1,8 @@
+.parent-container-hive{
+    margin-top: 13vh;
+    margin-left: 6rem;
+}
+
 .biblio{
     background-image: url('../Images/fondobiblioteca.png');
     background-size: cover;

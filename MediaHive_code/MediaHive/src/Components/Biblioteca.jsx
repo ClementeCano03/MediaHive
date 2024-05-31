@@ -111,7 +111,7 @@ useEffect(() => {
 
 
     return (
-        <>
+        <div class="parent-container-hive">
             <div className="biblio">
                 <div className="encabezado">
                     <h1>Bienvenido a tu biblioteca</h1>
@@ -219,7 +219,7 @@ useEffect(() => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
