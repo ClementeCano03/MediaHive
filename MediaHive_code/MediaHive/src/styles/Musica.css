@@ -1,3 +1,11 @@
+.parent-container-resultadosmusica {
+  margin-top: 13vh;
+  margin-left: 6.3rem;
+  width: calc(100% - 6.3rem);
+  height: calc(100% - 13vh);
+
+}
+
 .pantalla{
   margin-top: 13vh;
   margin-left: 6.3rem;
@@ -5,6 +13,7 @@
   height: calc(100% - 13vh);
   background-color: #E3E9EA;
 }
+
 .carousel-container {
   position: relative;
   width: 95%;
@@ -32,6 +41,7 @@ a.carousel-control-next {
 }
 
 .cancion{
+  border-radius: 5px;
   width: 150px;
   height: 150px;
 }
@@ -41,6 +51,7 @@ a.carousel-control-next {
 }
 
 .tituloCancion{
+  margin-top: 1vh;
   text-align: center;
   font-size: 20px;
   color: black;

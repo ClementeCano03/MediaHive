@@ -126,7 +126,7 @@ function Series({ cambiarTituloPagina }) {
         {searchedSeries.slice(0, 5).map((serie) => (
           <div key={serie.id} className="m-3 d-flex flex-column align-items-center">
             <Link to={`/detallesSeries/${serie.id}`}>
-              <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+              <img src={`${URL_IMAGE + serie.poster_path}`}  class="imagen-serie" />
             </Link>
           </div>
         ))}
@@ -143,7 +143,7 @@ function Series({ cambiarTituloPagina }) {
                   {series.slice(0, 5).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} class="imagen-serie" />
                       </Link>
                     </div>
                   ))}
@@ -159,7 +159,7 @@ function Series({ cambiarTituloPagina }) {
                   {series.slice(5, 10).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} class="imagen-serie" />
                       </Link>
                     </div>
                   ))}
@@ -181,7 +181,7 @@ function Series({ cambiarTituloPagina }) {
                   {topSeries.slice(0, 5).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} class="imagen-serie" />
                       </Link>
                     </div>
                   ))}
@@ -197,7 +197,7 @@ function Series({ cambiarTituloPagina }) {
                   {topSeries.slice(5, 10).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} class="imagen-serie" />
                       </Link>
                     </div>
                   ))}
@@ -209,25 +209,25 @@ function Series({ cambiarTituloPagina }) {
       </div>
 
       {/* Carrusel de guardadas*/}
-      <div id="guardadas" className="carousel-container mx-auto px-5 py-3">
+      <div id="guardadas" className="carousel-container mx-auto px-5 py-3" >
         <h2>Guardadas</h2>
         <Carousel ref={carouselRef} interval={null} indicators={false}>
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img src="imagen.jpg" alt="Imagen de la película" class="imagen-serie"/>
               </div>
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img src="imagen.jpg" alt="Imagen de la película" class="imagen-serie"/>
               </div>
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img src="imagen.jpg" alt="Imagen de la película" class="imagen-serie"/>
               </div>
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img src="imagen.jpg" alt="Imagen de la película" class="imagen-serie" />
               </div>
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img src="imagen.jpg" alt="Imagen de la película" class="imagen-serie"/>
               </div>
             </div>
           </Carousel.Item>
@@ -235,19 +235,19 @@ function Series({ cambiarTituloPagina }) {
           <Carousel.Item>
             <div className="carousel-item-content row align-items-center py-2">
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img src="imagen.jpg" alt="Imagen de la película" class="imagen-serie"/>
               </div>
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img src="imagen.jpg" alt="Imagen de la película" class="imagen-serie"/>
               </div>
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img src="imagen.jpg" alt="Imagen de la película" class="imagen-serie"/>
               </div>
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" />
+                <img src="imagen.jpg" alt="Imagen de la película" class="imagen-serie"/>
               </div>
               <div className="col">
-                <img src="imagen.jpg" alt="Imagen de la película" style={{ width: '150px', height: 'auto' }} />
+                <img src="imagen.jpg" alt="Imagen de la película" class="imagen-serie" />
               </div>
             </div>
           </Carousel.Item>
@@ -265,7 +265,7 @@ function Series({ cambiarTituloPagina }) {
                   {upcomingSeries.slice(0, 5).map((serie, index) => (
                     <div key={serie.id} className="col d-flex justify-content-center">
                       <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+                        <img src={`${URL_IMAGE + serie.poster_path}`} class="imagen-serie" />
                       </Link>
                     </div>
                   ))}

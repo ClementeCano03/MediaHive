@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import { Link, useParams } from "react-router-dom";
 
-//import "../styles/Musica.css"
+import "../styles/Musica.css"
 
 function MusicaResultados() {
 
@@ -55,7 +55,7 @@ function MusicaResultados() {
 
     
   return (
-    <>
+    <div class="parent-container-resultadosmusica">
     <br/>
       {/*Barra de buscador*/}
       <form onSubmit={handleSearch} className="formulario" style={{display:'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -89,25 +89,21 @@ function MusicaResultados() {
           <div className="d-flex border-bottom border-white" key={index}>
             <Link to={`/cancion/${cancion.data.id}`} style={{ textDecoration: 'none' }} className="align-self-center">
               <div className="d-flex">
-                <img src={cancion.data.albumOfTrack.coverArt.sources[0].url} style={{ width: '100px', height: '100px' }} alt={"Titulo de la cancion: " + cancion.data.name}/> 
-                <h2 className="align-self-center" style={{color:"black", marginLeft:'20px'}} >
+                <img src={cancion.data.albumOfTrack.coverArt.sources[0].url} style={{ width: '15vh', 
+                                                                                      height: '15vh', 
+                                                                                      borderRadius: '5px' 
+                                                                                    }} 
+                                                                              alt={"Titulo de la cancion: " + cancion.data.name}
+                /> 
+                <h2 className="align-self-center" style={{color:"black", marginLeft:'20px', fontSize: '4vh'}} >
                   {cancion.data.name}
                 </h2>
               </div>
             </Link>
-            {/* <iframe
-              src={`https://open.spotify.com/embed/track/${cancion.data.id}?utm_source=generator`}
-              width="30%"
-              height="352"
-              frameBorder="0"
-              allowFullScreen=""
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-            ></iframe><br/> */}
             
             <a className="ms-auto p-3" href={cancion.data.uri}>
               <button style={{
-                padding: '10px 20px',
+                padding: '10px 10px',
                 borderRadius: '5px',
                 border: 'none',
                 backgroundColor: '#455559',
@@ -117,13 +113,13 @@ function MusicaResultados() {
                 transition: 'background-color 0.3s',
                 
               }}>
-                Abrir canción en spotify
+                Abrir en Spotify
               </button>
             </a>
           </div>
       ))}
       </div>
-    </>
+    </div>
     
   );
 }
