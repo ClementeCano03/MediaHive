@@ -137,7 +137,7 @@ function Cancion(props) {
     setComentariosAleatorios(comentariosAleatorios);
   };
 
-  // Función para manejar el envío del comentario del usuario
+// Función para manejar el envío del comentario del usuario
   const handleUserCommentSubmit = () => {
     if (userComment.trim() !== "") {
       const nuevoComentario = { texto: userComment, autor: localStorage.getItem('username') };

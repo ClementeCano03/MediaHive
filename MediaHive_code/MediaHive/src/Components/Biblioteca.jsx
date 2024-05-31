@@ -119,7 +119,7 @@ function Biblioteca() {
                                                 <div className="col d-flex flex-column justify-content-center align-items-center" key={index}>
                                                     <Link to={`/cancion/${cancion.id}`} style={{ textDecoration: 'none', textAlign: 'center' }}>
                                                         <img src={cancion.imagen} style={{ width: '180px', height: '180px'}}/>  
-                                                        <h5 style={{color: 'white'}}>{cancion.titulo}</h5>
+                                                        <h5 style={{color: 'black'}}>{cancion.titulo}</h5>
                                                     </Link>
                                                 </div>
                                             ))}

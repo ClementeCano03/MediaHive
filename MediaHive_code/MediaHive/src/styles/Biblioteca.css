@@ -1,7 +1,7 @@
 /* Biblioteca.css */
 
 .biblioteca-container {
-    background-image: url('../Images/fondobiblioteca.png');
+    background-color: #E3E9EA;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -12,7 +12,7 @@
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
-    color: white; /* Asegúrate de que el color del texto se destaca con el contorno */
+    color: black; /* Asegúrate de que el color del texto se destaca con el contorno */
     
 }
 

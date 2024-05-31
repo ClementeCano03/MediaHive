@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from 'axios'
 
 import { Carousel } from "react-bootstrap";
-import { BrowserRouter as Router } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -140,38 +139,38 @@ function Peliculas({ cambiarTituloPagina }) {
   return (
     <div id="peliculas" className="d-flex flex-column flex-grow-1">
       <h1 className="visually-hidden">Página de Películas</h1>
-
+      
       {/*Formulario para buscar peliculas*/}
       <div className="row" >
-        <div id="barra de busqueda peliculas">
-          <div className="col-md-12" tabIndex="0">
-            <form onSubmit={searchMovies} className="formulario d-flex p-12"  style={{alignItems: 'center', justifyContent: 'center', 
-            marginTop: '10px'}}>
-                    <input type="text"  onChange={(e) => setSearchKey(e.target.value)} style={{
-                      padding: '10px',
+      <div id="barra de busqueda peliculas">
+        <div className="col-md-12" tabIndex="0">
+          <form onSubmit={searchMovies} className="formulario d-flex p-12"  style={{alignItems: 'center', justifyContent: 'center', 
+          marginTop: '10px'}}>
+                  <input type="text"  onChange={(e) => setSearchKey(e.target.value)} style={{
+                    padding: '10px',
+                    borderRadius: '5px',
+                    border: '2px solid #ccc',
+                    marginRight: '10px',
+                    fontSize: '16px',
+                    outline: 'none',
+                  }}
+                  placeholder="Buscar película..."
+                  />
+                  <button type="submit" style={{
+                      padding: '5px',
                       borderRadius: '5px',
-                      border: '2px solid #ccc',
-                      marginRight: '10px',
+                      border: 'none',
+                      backgroundColor: '#455559',
+                      color: 'white',
                       fontSize: '16px',
-                      outline: 'none',
+                      cursor: 'pointer',
+                      transition: 'background-color 0.3s',
                     }}
-                    placeholder="Buscar película..."
-                    />
-                    <button type="submit" style={{
-                        padding: '5px',
-                        borderRadius: '5px',
-                        border: 'none',
-                        backgroundColor: '#455559',
-                        color: 'white',
-                        fontSize: '16px',
-                        cursor: 'pointer',
-                        transition: 'background-color 0.3s',
-                      }}
-                    >Buscar</button>
-              </form>
-          </div>
+                  >Buscar</button>
+            </form>
         </div>
       </div>
+    </div>
 
       {/*Contenedor para el resultado de búsqueda*/}
       <div className="search-results d-flex justify-content-center align-items-center flex-wrap">
