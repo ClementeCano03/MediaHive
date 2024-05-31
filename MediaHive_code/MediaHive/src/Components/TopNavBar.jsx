@@ -19,11 +19,16 @@ function TopNavBar(props){
                 {username ? (
                     <Link to="/Perfil">
                         <div className="usuario-container-topnav">
-                        {profileImage ? (  
-                            <img src={profileImage} className="imagenPerfil-topnav"/>  
-                        ) : (
-                            <AccountBoxIcon style={{fill: "white"}} className="imagenPerfil-topnav"/>
-                        )}
+                            {profileImage ? (  
+                                <img src={profileImage} className="imagenPerfil-topnav"/>  
+                            ) : (
+                                <AccountBoxIcon style={{fill: "white",
+                                                        width: '6.5vh',
+                                                        height: '6.5vh',
+                                                        marginTop: '0.5vh',
+                                                        }}
+                                />
+                            )}
                             <h5 className="username-topnav">{username}</h5>
                         </div>
                     </Link>

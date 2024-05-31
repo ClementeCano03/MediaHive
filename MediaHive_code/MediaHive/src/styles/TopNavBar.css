@@ -69,11 +69,7 @@
     margin-right: 1rem; /* Ajusta el margen a tu preferencia */
 }
 
-.username-topnav {
-    display: flex;
-    color:white;
-    font-size: 2vh;
-}
+
 
 .h2-topnav {
     margin-top: 0.5rem;
@@ -81,13 +77,26 @@
     box-shadow: #283033;
 }
 
+.usuario-container-topnav{
+    margin-right: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.username-topnav {
+    display: flex;
+    color:white;
+    font-size: 2vh;
+}
+
 .imagenPerfil-topnav {
     width: 6vh;
     height: 6vh;
     border-radius: 10px;
-    border: 2px solid white;
-    margin-top: 1vh;
-    
+    border: 1px solid white;
 }
 
 

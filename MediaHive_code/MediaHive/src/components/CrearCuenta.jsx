@@ -39,7 +39,10 @@ function CrearCuenta() {
       <div className="crear-cuenta-container">
         <img className="imagen-crear-cuenta" src={imagen} alt="Icono de MediaHive"/>
           <form onSubmit={ onSubmit } className="form-container">
-            <label htmlFor="nombreUsuario" className="label-crear-cuenta">Nombre de usuario</label>
+            <div class="info-crearcuenta">
+              <label htmlFor="nombreUsuario" className="label-crear-cuenta">Nombre de usuario</label>
+              <span class="info-crearcuenta">(Entre 4 y 30 caracteres)</span>
+            </div>
             <input
               type="text"
               name="nombreUsuario"
@@ -81,7 +84,10 @@ function CrearCuenta() {
             {
               errors.correoElectronico && <span className='span-crearcuenta'>{errors.correoElectronico.message}</span>
             }
-            <label htmlFor="contrasena" className="label-crear-cuenta">Contraseña</label>
+            <div class="inline-crearcuenta">
+              <label htmlFor="contrasena" className="label-crear-cuenta">Contraseña</label>
+              <span class="info-crearcuenta">(Entre 4 y 30 caracteres)</span>
+            </div>
             <input
               type="password"
               name="contrasena"
