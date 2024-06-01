@@ -225,9 +225,13 @@ function detallesPeliculas() {
                         {usuario ? (
                             <button onClick={handleMovieSave} style={{ border: 'none', background: 'transparent' }}>
                             {moviesSaved.includes(movie.id) ? 
-                                <BookmarkAddedIcon className="BookmarkaddedIcon" alt={"Guardado"} style={{ marginLeft: '10px', color: 'black'}} />
-                                : 
-                                <BookmarkAddIcon className="BookmarkIcon" alt={"Guardar"} style={{ marginLeft: '10px', color: 'black'}} /> }
+                                <div title="Guardada">
+                                <BookmarkAddedIcon className="BookmarkaddedIcon" alt={"Guardado"} style={{ marginLeft: '10px', color: 'black' }} />
+                              </div>
+                              :
+                              <div title="Guardar">
+                                <BookmarkAddIcon className="BookmarkaddIcon" alt={"Guardar"} style={{ marginLeft: '10px', color: 'black' }} />
+                              </div>}
                             </button>
                         ) : (
                             <>

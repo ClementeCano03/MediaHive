@@ -20,33 +20,32 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          ¡Debes iniciar sesión para añadir un comentario!
+          ¡Debes iniciar sesión para {`${props.error}`}!
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Inicia sesión en tu cuenta o crea una nueva para añadir comentarios</h4>
-        <div>
+        <h4>Inicia sesión en tu cuenta o crea una nueva para {`${props.error}`}</h4>
+        <div style={{ textAlign: "center" }}>
           <h5>
-          <Link to="/CrearCuenta">
-            <Button className="registro-cancion" >Registrarse</Button>
-          </Link>
+            <Link to="/CrearCuenta">
+              <Button className="registro-cancion" >Registrarse</Button>
+            </Link>
           </h5>
           <h5>
-          <Link to="/InicioSesion">
-            <Button className="inicioSesion-cancion" >Iniciar Sesion</Button>
-          </Link>  
+            <Link to="/InicioSesion">
+              <Button className="inicioSesion-cancion" >Iniciar Sesion</Button>
+            </Link>
           </h5>
         </div>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Cerrar</Button>
-      </Modal.Footer>
+
     </Modal>
   );
 }
 
 function Cancion() {
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShowComentarios, setModalShowComentarios] = React.useState(false);
+  const [modalShowGuardar, setModalShowGuardar] = React.useState(false);
 
   // Autores de comentarios
   const autores = [
@@ -137,7 +136,7 @@ function Cancion() {
     setComentariosAleatorios(comentariosAleatorios);
   };
 
-// Función para manejar el envío del comentario del usuario
+  // Función para manejar el envío del comentario del usuario
   const handleUserCommentSubmit = () => {
     if (userComment.trim() !== "") {
       const nuevoComentario = { texto: userComment, autor: localStorage.getItem('username') };
@@ -159,7 +158,7 @@ function Cancion() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '6adaeb3733msh28bad337ffcb004p16abdajsn136b9a1b8458',
+      'X-RapidAPI-Key': 'a8e49a3adcmsh7aab7090d88bff5p17d687jsn80c93f71f7e8',
       'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
     }
   };
@@ -197,7 +196,7 @@ function Cancion() {
   // Obtener el nombre del usuario
   const usuario = localStorage.getItem('username');
 
- /* Función para guardar la canción */
+  /* Función para guardar la canción */
   const handleCancionSave = () => {
     if (localStorage.getItem('cancionesSaved') === null) {
       localStorage.setItem('cancionesSaved', JSON.stringify([id]));
@@ -205,10 +204,15 @@ function Cancion() {
       let cancionesSaved = JSON.parse(localStorage.getItem('cancionesSaved'));
       if (!cancionesSaved.includes(id)) {
         cancionesSaved.push(id);
+        localStorage.setItem('cancionesSaved', JSON.stringify(cancionesSaved));
+        setGuardado(true);
+      } else {
+        cancionesSaved = cancionesSaved.filter((cancion) => cancion !== id);
+        localStorage.setItem('cancionesSaved', JSON.stringify(cancionesSaved));
+        setGuardado(false);
       }
     }
-  setGuardado(true);
-}
+  }
 
   useEffect(() => {
     // Esta función se llamará directamente después de abrir la página
@@ -239,10 +243,34 @@ function Cancion() {
               <div>
                 <h3 className="SongTitle">
                   {titulo}
-                  <button onClick={handleCancionSave} style={{ border: 'none', background: 'transparent' }}>
-                    {guardado ? <BookmarkAddedIcon className="BookmarkaddedIcon" alt={"Guardado"} style={{ marginLeft: '10px', color: 'black' }} /> 
-                    : <BookmarkAddIcon className="BookmarkIcon" alt={"Guardar"} style={{ marginLeft: '10px', color: 'black' }} />}
-                  </button>
+                  {usuario ? (
+                    <button onClick={handleCancionSave} style={{ border: 'none', background: 'transparent' }}>
+                      {guardado ?
+                        <div title="Guardada">
+                          <BookmarkAddedIcon className="BookmarkaddedIcon" alt={"Guardado"} style={{ marginLeft: '10px', color: 'black' }} />
+                        </div>
+                        :
+                        <div title="Guardar">
+                          <BookmarkAddIcon className="BookmarkaddIcon" alt={"Guardar"} style={{ marginLeft: '10px', color: 'black' }} />
+                        </div>}
+                    </button>
+                  ) : (
+                    <>
+                      <button onClick={() => setModalShowGuardar(true)} style={{ border: 'none', background: 'transparent' }}>
+                        <BookmarkAddIcon
+                          className="BookmarkIcon"
+                          alt={"Guardar"}
+                          style={{ marginLeft: '10px', color: 'black' }}
+                        />
+                      </button>
+                      <MyVerticallyCenteredModal
+                        show={modalShowGuardar}
+                        onHide={() => setModalShowGuardar(false)}
+                        error='guardar canciones'
+                      />
+                    </>
+                  )}
+
                 </h3>
               </div>
               {/* Estrellas */}
@@ -260,12 +288,12 @@ function Cancion() {
                 ))}
               </div>
               {/* Contenedor de la imagen y el artista */}
-              <div className="Artista"> 
-                <img src={imagen} alt={"Imagen del artista: " + {artista}}/>
+              <div className="Artista">
+                <img src={imagen} alt={"Imagen del artista: " + { artista }} />
                 <h3>{artista}</h3>
               </div>
             </div>
-          </div>   
+          </div>
         </div>
       </div>
 
@@ -287,39 +315,40 @@ function Cancion() {
           <div className="col-md-2"></div>
           <div className="col-md-4">
             <div className="UserInputContainer">
-                {/* Cuadro de texto para la opinión del usuario */}
-                <textarea
-                  placeholder="Escribe tu opinión aquí..."
-                  value={userComment}
-                  onChange={handleUserCommentChange}
-                  className="UserOpinion"
-                  style={{ width: '100%', height: '100px' }}
-                />
-                {/* Botón para añadir comentario */}
-                
-              </div>
-              {usuario ? (
-                <>
-                  <Button variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleUserCommentSubmit}>
-                    Añadir comentario
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Button variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} onClick={() => setModalShow(true)}>
-                    Añadir comentario
-                  </Button>
-                  <MyVerticallyCenteredModal
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                  />
-              </>
-              )}
+              {/* Cuadro de texto para la opinión del usuario */}
+              <textarea
+                placeholder="Escribe tu opinión aquí..."
+                value={userComment}
+                onChange={handleUserCommentChange}
+                className="UserOpinion"
+                style={{ width: '100%', height: '100px' }}
+              />
+              {/* Botón para añadir comentario */}
+
             </div>
+            {usuario ? (
+              <>
+                <Button variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleUserCommentSubmit}>
+                  Añadir comentario
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} onClick={() => setModalShowComentarios(true)}>
+                  Añadir comentario
+                </Button>
+                <MyVerticallyCenteredModal
+                  show={modalShowComentarios}
+                  onHide={() => setModalShowComentarios(false)}
+                  error='añadir comentarios'
+                />
+              </>
+            )}
           </div>
         </div>
       </div>
-    );
+    </div>
+  );
 }
 
 export default Cancion;

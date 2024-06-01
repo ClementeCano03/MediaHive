@@ -228,16 +228,13 @@ function detallesSeries() {
                         {usuario ? (
                             <button onClick={handleSerieSave} style={{ border: 'none', background: 'transparent' }}>
                                 {seriesSaved.includes(serie.id) ?
-                                    <BookmarkAddedIcon
-                                        className="BookmarkaddedIcon"
-                                        alt={"Guardado"}
-                                        style={{ marginLeft: '10px', color: 'black' }}
-                                    /> :
-                                    <BookmarkAddIcon
-                                        className="BookmarkIcon"
-                                        alt={"Guardar"}
-                                        style={{ marginLeft: '10px', color: 'black' }}
-                                    />}
+                                    <div title="Guardada">
+                                    <BookmarkAddedIcon className="BookmarkaddedIcon" alt={"Guardado"} style={{ marginLeft: '10px', color: 'black' }} />
+                                  </div>
+                                  :
+                                  <div title="Guardar">
+                                    <BookmarkAddIcon className="BookmarkaddIcon" alt={"Guardar"} style={{ marginLeft: '10px', color: 'black' }} />
+                                  </div>}
                             </button>
                         ) : (
                             <>
