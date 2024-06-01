@@ -142,17 +142,38 @@ function Peliculas({ cambiarTituloPagina }) {
       <h1 className="visually-hidden">Página de Películas</h1>
 
       {/*Formulario para buscar peliculas*/}
-      <form id="buscadorSeries" className="d-flex justify-content-center mx-auto py-5 w-75" onSubmit={searchMovies}>
-        <input type="text" placeholder="Buscar..." className="flex-grow-1 " onChange={(e) => setSearchKey(e.target.value)} />
-        <button type="send">Buscar</button>
+      <br />
+      <form onSubmit={searchMovies} className="formulario d-flex p-12" style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <input type="text" onChange={e => setSearchKey(e.target.value)} alt={"Buscador de peliculas"} style={{
+          padding: '10px',
+          borderRadius: '5px',
+          border: '2px solid #ccc',
+          marginRight: '10px',
+          fontSize: '16px',
+          outline: 'none',
+        }}
+          placeholder="Buscar pelicula..."
+        />
+        <button type="submit" alt={"Buscar Pelicula"} style={{
+          padding: '10px 20px',
+          borderRadius: '5px',
+          border: 'none',
+          backgroundColor: '#455559',
+          color: 'white',
+          fontSize: '16px',
+          cursor: 'pointer',
+          transition: 'background-color 0.3s',
+        }}
+        >Buscar</button>
       </form>
+      <br />
 
       {/*Contenedor para el resultado de búsqueda*/}
       <div className="search-results d-flex justify-content-center align-items-center flex-wrap">
         {searchedMovies.slice(0, 5).map((movie) => (
           <div key={movie.id} className="m-3 d-flex flex-column align-items-center">
             <Link to={`/detallesPeliculas/${movie.id}`}>
-              <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+              <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
             </Link>
           </div>
         ))}
