@@ -730,7 +730,8 @@ function Ayuda() {
                             </Accordion.Header>
                             <Accordion.Body>
                                 <Accordion defaultActiveKey="0" flush className="sub-items-series">
-                                    <img src={fotoinicio} style={{ width: '1000px', height: '500px', 
+                                    <img alt="Para acceder a tu perfil, haz clic en tu foto de perfil en la esquina superior derecha de la pantalla" 
+                                        src={fotoinicio} style={{ width: '1000px', height: '500px', 
                                         display: 'flex', marginLeft:'500px', marginBottom:'25px'}}/>
                                     <br/>Para acceder a tu perfil, haz clic en tu foto de perfil en la esquina superior derecha de la pantalla.<br/>
                                 </Accordion>
@@ -775,6 +776,8 @@ function Ayuda() {
                 </Accordion.Item>
         </Accordion>
 
+{/*------------------------------------------------SUGERENCIAS--------------------------------------------------------------- */}
+
         <div className="container">
             <div className="row">
                 <div className="col-md-3">
@@ -796,7 +799,7 @@ function Ayuda() {
                     </div>
                     {usuario ? (
                         <>
-                        <Button variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} ref={target} onClick={() => {handleUserCommentSubmit(); setShow(!show)}}>
+                        <Button alt="Enviar sugerencia" variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} ref={target} onClick={() => {handleUserCommentSubmit(); setShow(!show)}}>
                             Enviar sugerencia
                         </Button>
                         <Overlay target={target.current} show={show} placement="right">
@@ -809,7 +812,7 @@ function Ayuda() {
                         </>
                     ) : (
                         <>
-                        <Button variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} onClick={() => setModalShow(true)} >
+                        <Button alt="Enviar sugerencia" variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} onClick={() => setModalShow(true)} >
                             Enviar sugerencia
                         </Button>
                         <MyVerticallyCenteredModal
@@ -821,11 +824,7 @@ function Ayuda() {
                 </div>
             </div>
         </div>
-        
-
-        </div>
-
-        
+    </div>
     );
 }
 
