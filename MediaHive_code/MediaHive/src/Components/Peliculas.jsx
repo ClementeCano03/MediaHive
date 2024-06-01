@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from 'axios'
 
 import { Carousel } from "react-bootstrap";
+import { BrowserRouter as Router } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -139,45 +140,40 @@ function Peliculas({ cambiarTituloPagina }) {
   return (
     <div id="peliculas" className="d-flex flex-column flex-grow-1">
       <h1 className="visually-hidden">Página de Películas</h1>
-      
+
       {/*Formulario para buscar peliculas*/}
-      <div className="row" >
-      <div id="barra de busqueda peliculas">
-        <div className="col-md-12" tabIndex="0">
-          <form onSubmit={searchMovies} className="formulario d-flex p-12"  style={{alignItems: 'center', justifyContent: 'center', 
-          marginTop: '10px'}}>
-                  <input type="text"  onChange={(e) => setSearchKey(e.target.value)} style={{
-                    padding: '10px',
-                    borderRadius: '5px',
-                    border: '2px solid #ccc',
-                    marginRight: '10px',
-                    fontSize: '16px',
-                    outline: 'none',
-                  }}
-                  placeholder="Buscar película..."
-                  />
-                  <button type="submit" style={{
-                      padding: '5px',
-                      borderRadius: '5px',
-                      border: 'none',
-                      backgroundColor: '#455559',
-                      color: 'white',
-                      fontSize: '16px',
-                      cursor: 'pointer',
-                      transition: 'background-color 0.3s',
-                    }}
-                  >Buscar</button>
-            </form>
-        </div>
-      </div>
-    </div>
+      <br />
+      <form onSubmit={searchMovies} className="formulario d-flex p-12" style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <input type="text" onChange={e => setSearchKey(e.target.value)} alt={"Buscador de peliculas"} style={{
+          padding: '10px',
+          borderRadius: '5px',
+          border: '2px solid #ccc',
+          marginRight: '10px',
+          fontSize: '16px',
+          outline: 'none',
+        }}
+          placeholder="Buscar pelicula..."
+        />
+        <button type="submit" alt={"Buscar Pelicula"} style={{
+          padding: '10px 20px',
+          borderRadius: '5px',
+          border: 'none',
+          backgroundColor: '#455559',
+          color: 'white',
+          fontSize: '16px',
+          cursor: 'pointer',
+          transition: 'background-color 0.3s',
+        }}
+        >Buscar</button>
+      </form>
+      <br />
 
       {/*Contenedor para el resultado de búsqueda*/}
       <div className="search-results d-flex justify-content-center align-items-center flex-wrap">
         {searchedMovies.slice(0, 5).map((movie) => (
           <div key={movie.id} className="m-3 d-flex flex-column align-items-center">
             <Link to={`/detallesPeliculas/${movie.id}`}>
-              <img src={`${URL_IMAGE + movie.poster_path}`} style={{ height: '200px', width: 'auto' }} />
+              <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
             </Link>
           </div>
         ))}
@@ -187,37 +183,30 @@ function Peliculas({ cambiarTituloPagina }) {
       <div id="populares" className="carousel-container mx-auto px-5 py-3">
         <h2>Populares</h2>
         <Carousel ref={carouselRef} interval={null} indicators={false}>
-          <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              {movies.length > 0 && (
-                <>
-                  {movies.slice(0, 5).map((movie, index) => (
-                    <div key={movie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+          {
+            // Dividir el array 'movies' en subarrays de 5 elementos cada uno
+            [...Array(Math.ceil(movies.length / 5))].map((_, i) => {
+              const start = i * 5;
+              const end = start + 5;
+              const slice = movies.slice(start, end);
 
-          <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              {movies.length > 0 && (
-                <>
-                  {movies.slice(5, 10).map((movie, index) => (
-                    <div key={movie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+              // Retornar un 'Carousel.Item' para cada subarray
+              return (
+                <Carousel.Item key={i}>
+                  <div className="carousel-item-content row align-items-center py-2">
+                    {slice.map((movie) => (
+                      // Retornar el elemento de imagen para cada pelicula
+                      <div key={movie.id} className="col d-flex justify-content-center">
+                        <Link to={`/detallesPeliculas/${movie.id}`}>
+                          <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </Carousel.Item>
+              );
+            })
+          }
         </Carousel>
       </div>
 
@@ -263,37 +252,30 @@ function Peliculas({ cambiarTituloPagina }) {
       <div id="guardadas" className="carousel-container mx-auto px-5 py-3">
         <h2>Guardadas</h2>
         <Carousel ref={carouselRef} interval={null} indicators={false}>
-          <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              {moviesSaved.length > 0 && (
-                <>
-                  {moviesSaved.slice(0,5).map((movie, index) => (
-                    <div key={movie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+          {
+            // Dividir el array 'moviesSaved' en subarrays de 5 elementos cada uno
+            [...Array(Math.ceil(moviesSaved.length / 5))].map((_, i) => {
+              const start = i * 5;
+              const end = start + 5;
+              const slice = moviesSaved.slice(start, end);
 
-          <Carousel.Item>
-          <div className="carousel-item-content row align-items-center py-2">
-              {moviesSaved.length > 0 && (
-                <>
-                  {moviesSaved.slice(5,10).map((movie, index) => (
-                    <div key={movie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+              // Retornar un 'Carousel.Item' para cada subarray
+              return (
+                <Carousel.Item key={i}>
+                  <div className="carousel-item-content row align-items-center py-2">
+                    {slice.map((movie) => (
+                      // Retornar el elemento de imagen para cada pelicula
+                      <div key={movie.id} className="col d-flex justify-content-center">
+                        <Link to={`/detallesPeliculas/${movie.id}`}>
+                          <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </Carousel.Item>
+              );
+            })
+          }
         </Carousel>
       </div>
 
@@ -301,37 +283,30 @@ function Peliculas({ cambiarTituloPagina }) {
       <div id="estrenos" className="carousel-container mx-auto px-5 py-3">
         <h2>Estrenos</h2>
         <Carousel ref={carouselRef} interval={null} indicators={false}>
-          <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              {upcomingMovies.length > 0 && (
-                <>
-                  {upcomingMovies.slice(0, 5).map((movie, index) => (
-                    <div key={movie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+          {
+            // Dividir el array 'upcomingMovies' en subarrays de 5 elementos cada uno
+            [...Array(Math.ceil(upcomingMovies.length / 5))].map((_, i) => {
+              const start = i * 5;
+              const end = start + 5;
+              const slice = upcomingMovies.slice(start, end);
 
-          <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              {upcomingMovies.length > 0 && (
-                <>
-                  {upcomingMovies.slice(5, 10).map((movie, index) => (
-                    <div key={movie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesPeliculas/${movie.id}`}>
-                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+              // Retornar un 'Carousel.Item' para cada subarray
+              return (
+                <Carousel.Item key={i}>
+                  <div className="carousel-item-content row align-items-center py-2">
+                    {slice.map((movie) => (
+                      // Retornar el elemento de imagen para cada pelicula
+                      <div key={movie.id} className="col d-flex justify-content-center">
+                        <Link to={`/detallesPeliculas/${movie.id}`}>
+                          <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </Carousel.Item>
+              );
+            })
+          }
         </Carousel>
       </div>
 

@@ -10,7 +10,8 @@ function TopNavBar(props){
     const profileImage = localStorage.getItem('profileImage');
 
     return(
-        <nav className="navbar">
+        <div id="parent-container">
+            <nav className="navbar">
             <div className="container-fluid align-items-center">
                 <img className="imagen" src={imagen} href="home.jsx" alt="Imagen de la web"/>
                 <h2 className="nombre">MediaHive</h2>
@@ -42,6 +43,8 @@ function TopNavBar(props){
                 )}
             </div>
         </nav>
+    </div>
+        
     );
 }
 
