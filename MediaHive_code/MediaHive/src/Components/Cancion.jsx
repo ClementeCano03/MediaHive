@@ -45,7 +45,7 @@ function MyVerticallyCenteredModal(props) {
   );
 }
 
-function Cancion(props) {
+function Cancion() {
   const [modalShow, setModalShow] = React.useState(false);
 
   // Autores de comentarios
