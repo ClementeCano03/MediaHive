@@ -168,7 +168,7 @@ function Series({ cambiarTituloPagina }) {
         {searchedSeries.slice(0, 5).map((serie) => (
           <div key={serie.id} className="m-3 d-flex flex-column align-items-center">
             <Link to={`/detallesSeries/${serie.id}`}>
-              <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
+              <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} class="imagen-serie" />
             </Link>
           </div>
         ))}
@@ -193,7 +193,7 @@ function Series({ cambiarTituloPagina }) {
                       // Retornar el elemento de imagen para cada serie
                       <div key={serie.id} className="col d-flex justify-content-center">
                         <Link to={`/detallesSeries/${serie.id}`}>
-                          <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
+                          <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} class="imagen-serie" />
                         </Link>
                       </div>
                     ))}
@@ -224,7 +224,7 @@ function Series({ cambiarTituloPagina }) {
                       // Retornar el elemento de imagen para cada serie
                       <div key={serie.id} className="col d-flex justify-content-center">
                         <Link to={`/detallesSeries/${serie.id}`}>
-                          <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
+                          <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} class="imagen-serie" />
                         </Link>
                       </div>
                     ))}
@@ -255,7 +255,7 @@ function Series({ cambiarTituloPagina }) {
                       // Retornar el elemento de imagen para cada serie
                       <div key={serie.id} className="col d-flex justify-content-center">
                         <Link to={`/detallesSeries/${serie.id}`}>
-                          <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
+                          <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} class="imagen-serie" />
                         </Link>
                       </div>
                     ))}
@@ -286,7 +286,7 @@ function Series({ cambiarTituloPagina }) {
                       // Retornar el elemento de imagen para cada serie
                       <div key={serie.id} className="col d-flex justify-content-center">
                         <Link to={`/detallesSeries/${serie.id}`}>
-                          <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
+                          <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} class="imagen-serie" />
                         </Link>
                       </div>
                     ))}

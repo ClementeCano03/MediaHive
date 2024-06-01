@@ -1,8 +1,15 @@
-#barraLateral{
+
+.parent-container-leftnav {
     position: fixed;
-    background-color: #283033;
-    width: 6.3rem; 
+    z-index: 100;
+    margin-top: 4.8rem;
+    width: 6.3rem;
+}
+
+#barraLateral{
+    background-color: hsl(196, 12%, 18%);
     flex-grow: 1;
+    height: 100vh;
 }
 
 #barraLateral .nav-link.active {
@@ -70,4 +77,3 @@ li:hover span{
     overflow: hidden;
     outline: none;
 }
-

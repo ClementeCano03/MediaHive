@@ -9,7 +9,7 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 import "../styles/LeftToolBar.css";
 
-function LeftToolBar(props) {
+function LeftToolBar() {
   const [seccionSeleccionada, setSeccionSeleccionada] = useState(null);
 
   const handleClick = (seccion) => {
@@ -18,8 +18,8 @@ function LeftToolBar(props) {
 
   return (
     
-    <>
-      <div id="leftnav" className="d-flex flex-column" style={{ height: `${props.altura}vh`}}>
+    <div class="parent-container-leftnav">
+      <div id="leftnav" className="d-flex flex-column">
         {/* Barra lateral */}
         <ul id="barraLateral" className="nav nav-flush flex-column mb-auto text-center">
           {/* Elemento de la barra lateral: Home */}
@@ -101,7 +101,7 @@ function LeftToolBar(props) {
           
         </ul>
       </div>
-    </>
+    </div>
   );
 }
 

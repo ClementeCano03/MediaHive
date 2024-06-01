@@ -1,6 +1,16 @@
+.parent-container-resultadosmusica {
+  margin-top: 4.8rem;
+  margin-left: 6.3rem;
+  width: calc(100% - 6.3rem);
+
+}
+
 .pantalla{
+  margin-top: 13vh;
+  margin-left: 6.3rem;
   background-color: #E3E9EA;
 }
+
 .carousel-container {
   position: relative;
   width: 95%;
@@ -28,12 +38,32 @@ a.carousel-control-next {
 }
 
 .cancion{
+  border-radius: 5px;
   width: 150px;
   height: 150px;
 }
 
+.cancion:hover {
+  transform: scale(1.1);
+}
+
 .tituloCancion{
+  margin-top: 1vh;
   text-align: center;
   font-size: 20px;
   color: black;
+}
+
+#boton-buscar-musica {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #455559;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#boton-buscar-musica:hover {
+  background-color: #373f42;
 }

@@ -217,7 +217,7 @@ function Cancion(props) {
   }, []);
 
   return (
-    <div>
+    <div class="parent-container-cancion">
       <div>
         <div className="row">
           <div className="MusicaContainer col-md-7">
