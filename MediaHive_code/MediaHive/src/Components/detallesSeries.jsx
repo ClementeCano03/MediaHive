@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from "react";
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
@@ -24,27 +25,25 @@ function MyVerticallyCenteredModal(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    ¡Debes iniciar sesión para añadir un comentario!
+                    ¡Debes iniciar sesión para {`${props.error}`}!
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Inicia sesión en tu cuenta o crea una nueva para añadir comentarios</h4>
-                <div>
+                <h4>Inicia sesión en tu cuenta o crea una nueva para {`${props.error}`}</h4>
+                <div style={{ textAlign: "center" }}>
                     <h5>
-                    <Link to="/CrearCuenta">
-                    <Button className="registro-cancion" >Registrarse</Button>
-                    </Link>
+                        <Link to="/CrearCuenta">
+                            <Button className="registro-cancion" >Registrarse</Button>
+                        </Link>
                     </h5>
                     <h5>
-                    <Link to="/InicioSesion">
-                    <Button className="inicioSesion-cancion" >Iniciar Sesion</Button>
-                    </Link>  
+                        <Link to="/InicioSesion">
+                            <Button className="inicioSesion-cancion" >Iniciar Sesion</Button>
+                        </Link>
                     </h5>
                 </div>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Cerrar</Button>
-            </Modal.Footer>
+
         </Modal>
     );
 }
@@ -56,16 +55,19 @@ function MyVerticallyCenteredModal(props) {
 //<---------------------------------FUNCIONES Y CONSTANTES PARA SERIES------------------------------------->//
 //<-------------------------------------------------------------------------------------------------------->//
 
-function detallesSeries({ cambiarTituloPagina }) {
+function detallesSeries() {
     const { id } = useParams();
     const [serie, setSerie] = useState(null);
     const language = 'es-ES';
     const [similarSeries, setSimilarSeries] = useState([]);
 
-//<-------------------------------------------------------------------------------------------------------->//
-//<------------------------------FUNCIONES Y CONSTANTES PARA COMENTARIOS----------------------------------->//
-//<-------------------------------------------------------------------------------------------------------->//
-    const [comments, setComments] = useState([]);
+    const [modalShowComentarios, setModalShowComentarios] = React.useState(false);
+    const [modalShowGuardar, setModalShowGuardar] = React.useState(false);
+
+
+    //<-------------------------------------------------------------------------------------------------------->//
+    //<------------------------------FUNCIONES Y CONSTANTES PARA COMENTARIOS----------------------------------->//
+    //<-------------------------------------------------------------------------------------------------------->//
 
     // Autores de comentarios
     const autores = [
@@ -126,11 +128,11 @@ function detallesSeries({ cambiarTituloPagina }) {
     const generarComentariosAleatorios = () => {
         const comentariosAleatorios = [];
         while (comentariosAleatorios.length < 4) {
-        const comentario = obtenerElementoAleatorio(comentarios);
-        const autor = obtenerElementoAleatorio(autores);
-        if (!comentariosAleatorios.some((com) => com.texto === comentario)) {
-            comentariosAleatorios.push({ texto: comentario, autor });
-        }
+            const comentario = obtenerElementoAleatorio(comentarios);
+            const autor = obtenerElementoAleatorio(autores);
+            if (!comentariosAleatorios.some((com) => com.texto === comentario)) {
+                comentariosAleatorios.push({ texto: comentario, autor });
+            }
         }
         setComentariosAleatorios(comentariosAleatorios);
     };
@@ -138,9 +140,9 @@ function detallesSeries({ cambiarTituloPagina }) {
     // Función para manejar el envío del comentario del usuario
     const handleUserCommentSubmit = () => {
         if (userComment.trim() !== "") {
-        const nuevoComentario = { texto: userComment, autor: localStorage.getItem('username') };
-        setComentariosAleatorios((prevComments) => [...prevComments, nuevoComentario]);
-        setUserComment(""); // Limpiar el cuadro de texto después de enviar el comentario
+            const nuevoComentario = { texto: userComment, autor: localStorage.getItem('username') };
+            setComentariosAleatorios((prevComments) => [...prevComments, nuevoComentario]);
+            setUserComment(""); // Limpiar el cuadro de texto después de enviar el comentario
         }
     };
 
@@ -152,7 +154,7 @@ function detallesSeries({ cambiarTituloPagina }) {
     // Obtener el nombre del usuario
     const usuario = localStorage.getItem('username');
 
-//<-------------------------------------------------------------------------------------------------------->//
+    //<-------------------------------------------------------------------------------------------------------->//
 
     //Series guardadas en biblioteca
     const [seriesSaved, setSeriesSaved] = useState(() => {
@@ -166,13 +168,6 @@ function detallesSeries({ cambiarTituloPagina }) {
         } else {
             setSeriesSaved([...seriesSaved, serie.id]);
         }
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const comment = event.target.elements[0].value;
-        setComments([comment, ...comments]);
-        event.target.reset();
     };
 
     // Función que realiza solicitudes a una API para obtener los detalles de una serie de televisión y 
@@ -198,6 +193,7 @@ function detallesSeries({ cambiarTituloPagina }) {
 
         fetchSerie();
         fetchSimilarSeries();
+        setComentariosAleatorios([]); // Limpiar los comentarios al cargar una nueva serie
     }, [id]);
 
     // Función para que los datos se conserven incluso si el usuario actualiza o cierra la página
@@ -220,7 +216,7 @@ function detallesSeries({ cambiarTituloPagina }) {
     const halfStar = serie.vote_average % 2 === 0 ? 0 : 1;
     const emptyStars = 5 - fullStars - halfStar;
 
-//<-------------------------------------------------------------------------------------------------------->//
+    //<-------------------------------------------------------------------------------------------------------->//
     return (
         <div id="detallesSeries">
             <div className="mx-auto px-5 py-5 d-flex align-items-start">
@@ -230,19 +226,34 @@ function detallesSeries({ cambiarTituloPagina }) {
                 <div className="mx-auto px-5 py-3">
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <h3>{serie.name}</h3>
-                        <button onClick={handleSerieSave} style={{ border: 'none', background: 'transparent' }}>
-                            {seriesSaved.includes(serie.id) ? 
-                            <BookmarkAddedIcon 
-                                className="BookmarkaddedIcon" 
-                                alt={"Guardado"} 
-                                style={{ marginLeft: '10px', color: 'black' }} 
-                            /> : 
-                            <BookmarkAddIcon 
-                                className="BookmarkIcon" 
-                                alt={"Guardar"} 
-                                style={{ marginLeft: '10px', color: 'black' }} 
-                            />}
-                        </button>
+                        {usuario ? (
+                            <button onClick={handleSerieSave} style={{ border: 'none', background: 'transparent' }}>
+                                {seriesSaved.includes(serie.id) ?
+                                    <div title="Guardada">
+                                    <BookmarkAddedIcon className="BookmarkaddedIcon" alt={"Guardado"} style={{ marginLeft: '10px', color: 'black' }} />
+                                  </div>
+                                  :
+                                  <div title="Guardar">
+                                    <BookmarkAddIcon className="BookmarkaddIcon" alt={"Guardar"} style={{ marginLeft: '10px', color: 'black' }} />
+                                  </div>}
+                            </button>
+                        ) : (
+                            <>
+                                <button onClick={() => setModalShowGuardar(true)} style={{ border: 'none', background: 'transparent' }}>
+                                <BookmarkAddIcon 
+                                    className="BookmarkIcon" 
+                                    alt={"Guardar"} 
+                                    style={{ marginLeft: '10px', color: 'black' }} 
+                                />
+                                </button>
+                                <MyVerticallyCenteredModal
+                                    show={modalShowGuardar}
+                                    onHide={() => setModalShowGuardar(false)}
+                                    error='guardar series'
+                                />
+                            </>
+                        )}
+
                     </div>
                     <div>
                         {'⭐'.repeat(fullStars)}
@@ -269,7 +280,7 @@ function detallesSeries({ cambiarTituloPagina }) {
                 </div>
             </div>
 
-{/*<---------------------------------COMENTARIOS------------------------------------------------------->*/}
+            {/*<---------------------------------COMENTARIOS------------------------------------------------------->*/}
 
             <div className="container">
                 <div className="row">
@@ -278,12 +289,12 @@ function detallesSeries({ cambiarTituloPagina }) {
                         <div className="tabla">
                             {comentariosAleatorios.map((comment, index) => (
                                 <div key={index} className="CommentBox">
-                                <p><strong>{comment.autor}</strong>: {comment.texto}</p>
+                                    <p><strong>{comment.autor}</strong>: {comment.texto}</p>
                                 </div>
                             ))}
                         </div>
                         <Button variant="contained" color="secondary" className="NextCommentButton" style={{ backgroundColor: 'purple', color: 'white' }} onClick={generarComentariosAleatorios}>
-                        Ver más comentarios
+                            Ver más comentarios
                         </Button>
                     </div>
                     <div className="col-md-2"></div>
@@ -291,39 +302,39 @@ function detallesSeries({ cambiarTituloPagina }) {
                         <div className="UserInputContainer">
                             {/* Cuadro de texto para la opinión del usuario */}
                             <textarea
-                            placeholder="Escribe tu opinión aquí..."
-                            value={userComment}
-                            onChange={handleUserCommentChange}
-                            className="UserOpinion"
-                            style={{ width: '100%', height: '100px' }}
+                                placeholder="Escribe tu opinión aquí..."
+                                value={userComment}
+                                onChange={handleUserCommentChange}
+                                className="UserOpinion"
+                                style={{ width: '100%', height: '100px' }}
                             />
                             {/* Botón para añadir comentario */}
-                            
+
                         </div>
                         {usuario ? (
                             <>
-                            <Button variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleUserCommentSubmit}>
-                                Añadir comentario
-                            </Button>
+                                <Button variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleUserCommentSubmit}>
+                                    Añadir comentario
+                                </Button>
                             </>
                         ) : (
                             <>
-                            <Button variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} onClick={() => setModalShow(true)}>
-                                Añadir comentario
-                            </Button>
-                            <MyVerticallyCenteredModal
-                                show={modalShow}
-                                onHide={() => setModalShow(false)}
-                            />
-                        </>
+                                <Button variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} onClick={() => setModalShowComentarios(true)}>
+                                    Añadir comentario
+                                </Button>
+                                <MyVerticallyCenteredModal
+                                    show={modalShowComentarios}
+                                    onHide={() => setModalShowComentarios(false)}
+                                    error='añadir comentarios'
+                                />
+                            </>
                         )}
                     </div>
                 </div>
             </div>
-{/*<----------------------------------------------------------------------------------------------->*/}
+            {/*<----------------------------------------------------------------------------------------------->*/}
         </div>
     )
 }
 
 export default detallesSeries;
-

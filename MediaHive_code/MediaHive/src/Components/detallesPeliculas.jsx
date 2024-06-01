@@ -24,38 +24,39 @@ function MyVerticallyCenteredModal(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    ¡Debes iniciar sesión para añadir un comentario!
+                    ¡Debes iniciar sesión para {`${props.error}`}!
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Inicia sesión en tu cuenta o crea una nueva para añadir comentarios</h4>
-                <div>
+                <h4>Inicia sesión en tu cuenta o crea una nueva para {`${props.error}`}</h4>
+                <div style={{ textAlign: "center" }}>
                     <h5>
-                    <Link to="/CrearCuenta">
-                    <Button className="registro-cancion" >Registrarse</Button>
-                    </Link>
+                        <Link to="/CrearCuenta">
+                            <Button className="registro-cancion" >Registrarse</Button>
+                        </Link>
                     </h5>
                     <h5>
-                    <Link to="/InicioSesion">
-                    <Button className="inicioSesion-cancion" >Iniciar Sesion</Button>
-                    </Link>  
+                        <Link to="/InicioSesion">
+                            <Button className="inicioSesion-cancion" >Iniciar Sesion</Button>
+                        </Link>
                     </h5>
                 </div>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Cerrar</Button>
-            </Modal.Footer>
+
         </Modal>
     );
 }
 
 //<-------------------------------------------------------------------------------------------------------->//
 
-function detallesPeliculas({ cambiarTituloPagina }) {
+function detallesPeliculas() {
     const { id } = useParams();
     const [movie, setMovie] = useState(null);
     const language = 'es-ES';
     const [similarMovies, setSimilarMovies] = useState([]);
+
+    const [modalShowComentarios, setModalShowComentarios] = React.useState(false);
+    const [modalShowGuardar, setModalShowGuardar] = React.useState(false);
 
 //<-------------------------------------------------------------------------------------------------------->//
 //<------------------------------FUNCIONES Y CONSTANTES PARA COMENTARIOS----------------------------------->//
@@ -168,13 +169,6 @@ function detallesPeliculas({ cambiarTituloPagina }) {
         }
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const comment = event.target.elements[0].value;
-        setComments([comment, ...comments]);
-        event.target.reset();
-    };
-
     useEffect(() => {
         const fetchMovie = async () => {
             const { data } = await axios.get(
@@ -195,6 +189,7 @@ function detallesPeliculas({ cambiarTituloPagina }) {
         
         fetchMovie();
         fetchSimilarMovies();
+        setComentariosAleatorios([]);
     }, [id]);
 
     useEffect(() => {
@@ -227,9 +222,33 @@ function detallesPeliculas({ cambiarTituloPagina }) {
                 <div className="mx-auto px-5 py-3">
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <h3>{movie.title}</h3>
-                        <button onClick={handleMovieSave} style={{ border: 'none', background: 'transparent' }}>
-                            {moviesSaved.includes(movie.id) ? <BookmarkAddedIcon className="BookmarkaddedIcon" alt={"Guardado"} style={{ marginLeft: '10px', color: 'black'}} />: <BookmarkAddIcon className="BookmarkIcon" alt={"Guardar"} style={{ marginLeft: '10px', color: 'black'}} /> }
-                        </button>
+                        {usuario ? (
+                            <button onClick={handleMovieSave} style={{ border: 'none', background: 'transparent' }}>
+                            {moviesSaved.includes(movie.id) ? 
+                                <div title="Guardada">
+                                <BookmarkAddedIcon className="BookmarkaddedIcon" alt={"Guardado"} style={{ marginLeft: '10px', color: 'black' }} />
+                              </div>
+                              :
+                              <div title="Guardar">
+                                <BookmarkAddIcon className="BookmarkaddIcon" alt={"Guardar"} style={{ marginLeft: '10px', color: 'black' }} />
+                              </div>}
+                            </button>
+                        ) : (
+                            <>
+                                <button onClick={() => setModalShowGuardar(true)} style={{ border: 'none', background: 'transparent' }}>
+                                <BookmarkAddIcon 
+                                    className="BookmarkIcon" 
+                                    alt={"Guardar"} 
+                                    style={{ marginLeft: '10px', color: 'black' }} 
+                                />
+                                </button>
+                                <MyVerticallyCenteredModal
+                                    show={modalShowGuardar}
+                                    onHide={() => setModalShowGuardar(false)}
+                                    error='guardar películas'
+                                />
+                            </>
+                        )}
                     </div>
                     <div>
                         {'⭐'.repeat(fullStars)}
@@ -295,12 +314,13 @@ function detallesPeliculas({ cambiarTituloPagina }) {
                             </>
                         ) : (
                             <>
-                            <Button variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} onClick={() => setModalShow(true)}>
+                            <Button variant="contained" color="primary" className="CommentButton" style={{ backgroundColor: 'blue', color: 'white' }} onClick={() => setModalShowComentarios(true)}>
                                 Añadir comentario
                             </Button>
                             <MyVerticallyCenteredModal
-                                show={modalShow}
-                                onHide={() => setModalShow(false)}
+                                show={modalShowComentarios}
+                                onHide={() => setModalShowComentarios(false)}
+                                error='añadir comentarios'
                             />
                         </>
                         )}

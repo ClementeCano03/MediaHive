@@ -1,5 +1,8 @@
-.container-topnav {
+.parent-container {
     position: fixed;
+}
+
+.container-topnav {
     width: 100%; /* Establece el ancho al 100% */
     z-index: 100;
 }

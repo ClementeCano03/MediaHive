@@ -1,4 +1,5 @@
 #barraLateral{
+    position: fixed;
     background-color: #283033;
     width: 6.3rem; 
     flex-grow: 1;
