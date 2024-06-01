@@ -120,37 +120,30 @@ function Hive() {
                     <h2>Series</h2>
                     <div className="series">
                         <Carousel ref={carouselRef} interval={null} indicators={false}>
-                            <Carousel.Item>
-                                <div className="carousel-item-content row align-items-center py-2">
-                                    {seriesSaved.length > 0 && (
-                                        <>
-                                            {seriesSaved.slice(0, 5).map((serie, index) => (
-                                                <div key={serie.id ? `serie-${serie.id}` : `serie-index-${index}`} className="col d-flex justify-content-center">
-                                                    <Link to={`/detallesSeries/${serie.id}`}>
-                                                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
-                                                    </Link>
-                                                </div>
-                                            ))}
-                                        </>
-                                    )}
-                                </div>
-                            </Carousel.Item>
+                            {
+                                // Dividir el array 'series' en subarrays de 5 elementos cada uno
+                                [...Array(Math.ceil(seriesSaved.length / 5))].map((_, i) => {
+                                    const start = i * 5;
+                                    const end = start + 5;
+                                    const slice = seriesSaved.slice(start, end);
 
-                            <Carousel.Item>
-                                <div className="carousel-item-content row align-items-center py-2">
-                                    {seriesSaved.length > 0 && (
-                                        <>
-                                            {seriesSaved.slice(5, 10).map((serie, index) => (
-                                                <div key={serie.id ? `serie-${serie.id}` : `serie-index-${index}`} className="col d-flex justify-content-center">
-                                                    <Link to={`/detallesSeries/${serie.id}`}>
-                                                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
-                                                    </Link>
-                                                </div>
-                                            ))}
-                                        </>
-                                    )}
-                                </div>
-                            </Carousel.Item>
+                                    // Retornar un 'Carousel.Item' para cada subarray
+                                    return (
+                                        <Carousel.Item key={i}>
+                                            <div className="carousel-item-content row align-items-center py-2">
+                                                {slice.map((serie) => (
+                                                    // Retornar el elemento de imagen para cada serie
+                                                    <div key={serie.id} className="col d-flex justify-content-center">
+                                                        <Link to={`/detallesSeries/${serie.id}`}>
+                                                            <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
+                                                        </Link>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </Carousel.Item>
+                                    );
+                                })
+                            }
                         </Carousel>
                     </div>
 
@@ -158,37 +151,30 @@ function Hive() {
                     <h2 style={{ marginTop: '100px' }}>Películas</h2>
                     <div className="peliculas">
                         <Carousel ref={carouselRef} interval={null} indicators={false}>
-                            <Carousel.Item>
-                                <div className="carousel-item-content row align-items-center py-2">
-                                    {moviesSaved.length > 0 && (
-                                        <>
-                                            {moviesSaved.slice(0, 5).map((movie, index) => (
-                                                <div key={movie.id ? `pelicula-${movie.id}` : `pelicula-index-${index}`} className="col d-flex justify-content-center">
-                                                    <Link to={`/detallesPeliculas/${movie.id}`}>
-                                                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
-                                                    </Link>
-                                                </div>
-                                            ))}
-                                        </>
-                                    )}
-                                </div>
-                            </Carousel.Item>
+                            {
+                                // Dividir el array 'movies' en subarrays de 5 elementos cada uno
+                                [...Array(Math.ceil(moviesSaved.length / 5))].map((_, i) => {
+                                    const start = i * 5;
+                                    const end = start + 5;
+                                    const slice = moviesSaved.slice(start, end);
 
-                            <Carousel.Item>
-                                <div className="carousel-item-content row align-items-center py-2">
-                                    {moviesSaved.length > 0 && (
-                                        <>
-                                            {moviesSaved.slice(5, 10).map((movie, index) => (
-                                                <div key={movie.id ? `pelicula-${movie.id}` : `pelicula-index-${index}`} className="col d-flex justify-content-center">
-                                                    <Link to={`/detallesPeliculas/${movie.id}`}>
-                                                        <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
-                                                    </Link>
-                                                </div>
-                                            ))}
-                                        </>
-                                    )}
-                                </div>
-                            </Carousel.Item>
+                                    // Retornar un 'Carousel.Item' para cada subarray
+                                    return (
+                                        <Carousel.Item key={i}>
+                                            <div className="carousel-item-content row align-items-center py-2">
+                                                {slice.map((movie) => (
+                                                    // Retornar el elemento de imagen para cada pelicula
+                                                    <div key={movie.id} className="col d-flex justify-content-center">
+                                                        <Link to={`/detallesPeliculas/${movie.id}`}>
+                                                            <img src={`${URL_IMAGE + movie.poster_path}`} alt={movie.title} style={{ height: '200px', width: 'auto' }} />
+                                                        </Link>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </Carousel.Item>
+                                    );
+                                })
+                            }
                         </Carousel>
                     </div>
                 </div>

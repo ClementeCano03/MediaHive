@@ -178,37 +178,30 @@ function Series({ cambiarTituloPagina }) {
       <div id="populares" className="carousel-container mx-auto px-5 py-3">
         <h2>Populares</h2>
         <Carousel ref={carouselRef} interval={null} indicators={false}>
-          <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              {series.length > 0 && (
-                <>
-                  {series.slice(0, 5).map((serie, index) => (
-                    <div key={serie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+          {
+            // Dividir el array 'series' en subarrays de 5 elementos cada uno
+            [...Array(Math.ceil(series.length / 5))].map((_, i) => {
+              const start = i * 5;
+              const end = start + 5;
+              const slice = series.slice(start, end);
 
-          <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              {series.length > 0 && (
-                <>
-                  {series.slice(5, 10).map((serie, index) => (
-                    <div key={serie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+              // Retornar un 'Carousel.Item' para cada subarray
+              return (
+                <Carousel.Item key={i}>
+                  <div className="carousel-item-content row align-items-center py-2">
+                    {slice.map((serie) => (
+                      // Retornar el elemento de imagen para cada serie
+                      <div key={serie.id} className="col d-flex justify-content-center">
+                        <Link to={`/detallesSeries/${serie.id}`}>
+                          <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </Carousel.Item>
+              );
+            })
+          }
         </Carousel>
       </div>
 
@@ -216,37 +209,30 @@ function Series({ cambiarTituloPagina }) {
       <div id="top10" className="carousel-container mx-auto px-5 py-3">
         <h2>Top 10 series</h2>
         <Carousel ref={carouselRef} interval={null} indicators={false}>
-          <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              {topSeries.length > 0 && (
-                <>
-                  {topSeries.slice(0, 5).map((serie, index) => (
-                    <div key={serie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+          {
+            // Dividir el array 'topSeries' en subarrays de 5 elementos cada uno
+            [...Array(Math.ceil(topSeries.length / 5))].map((_, i) => {
+              const start = i * 5;
+              const end = start + 5;
+              const slice = topSeries.slice(start, end);
 
-          <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              {topSeries.length > 0 && (
-                <>
-                  {topSeries.slice(5, 10).map((serie, index) => (
-                    <div key={serie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+              // Retornar un 'Carousel.Item' para cada subarray
+              return (
+                <Carousel.Item key={i}>
+                  <div className="carousel-item-content row align-items-center py-2">
+                    {slice.map((serie) => (
+                      // Retornar el elemento de imagen para cada serie
+                      <div key={serie.id} className="col d-flex justify-content-center">
+                        <Link to={`/detallesSeries/${serie.id}`}>
+                          <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </Carousel.Item>
+              );
+            })
+          }
         </Carousel>
       </div>
 
@@ -254,37 +240,30 @@ function Series({ cambiarTituloPagina }) {
       <div id="guardadas" className="carousel-container mx-auto px-5 py-3">
         <h2>Guardadas</h2>
         <Carousel ref={carouselRef} interval={null} indicators={false}>
-          <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              {seriesSaved.length > 0 && (
-                <>
-                  {seriesSaved.slice(0, 5).map((serie, index) => (
-                    <div key={serie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+          {
+            // Dividir el array 'guardadas' en subarrays de 5 elementos cada uno
+            [...Array(Math.ceil(seriesSaved.length / 5))].map((_, i) => {
+              const start = i * 5;
+              const end = start + 5;
+              const slice = seriesSaved.slice(start, end);
 
-          <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              {seriesSaved.length > 0 && (
-                <>
-                  {seriesSaved.slice(5, 10).map((serie, index) => (
-                    <div key={serie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+              // Retornar un 'Carousel.Item' para cada subarray
+              return (
+                <Carousel.Item key={i}>
+                  <div className="carousel-item-content row align-items-center py-2">
+                    {slice.map((serie) => (
+                      // Retornar el elemento de imagen para cada serie
+                      <div key={serie.id} className="col d-flex justify-content-center">
+                        <Link to={`/detallesSeries/${serie.id}`}>
+                          <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </Carousel.Item>
+              );
+            })
+          }
         </Carousel>
       </div>
 
@@ -292,37 +271,30 @@ function Series({ cambiarTituloPagina }) {
       <div id="estrenos" className="carousel-container mx-auto px-5 py-3">
         <h2>En emisión</h2>
         <Carousel ref={carouselRef} interval={null} indicators={false}>
-          <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              {upcomingSeries.length > 0 && (
-                <>
-                  {upcomingSeries.slice(0, 5).map((serie, index) => (
-                    <div key={serie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+          {
+            // Dividir el array 'upcomingSeries' en subarrays de 5 elementos cada uno
+            [...Array(Math.ceil(upcomingSeries.length / 5))].map((_, i) => {
+              const start = i * 5;
+              const end = start + 5;
+              const slice = upcomingSeries.slice(start, end);
 
-          <Carousel.Item>
-            <div className="carousel-item-content row align-items-center py-2">
-              {upcomingSeries.length > 0 && (
-                <>
-                  {upcomingSeries.slice(5, 10).map((serie, index) => (
-                    <div key={serie.id} className="col d-flex justify-content-center">
-                      <Link to={`/detallesSeries/${serie.id}`}>
-                        <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
-                      </Link>
-                    </div>
-                  ))}
-                </>
-              )}
-            </div>
-          </Carousel.Item>
+              // Retornar un 'Carousel.Item' para cada subarray
+              return (
+                <Carousel.Item key={i}>
+                  <div className="carousel-item-content row align-items-center py-2">
+                    {slice.map((serie) => (
+                      // Retornar el elemento de imagen para cada serie
+                      <div key={serie.id} className="col d-flex justify-content-center">
+                        <Link to={`/detallesSeries/${serie.id}`}>
+                          <img src={`${URL_IMAGE + serie.poster_path}`} alt={serie.name} style={{ height: '200px', width: 'auto' }} />
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </Carousel.Item>
+              );
+            })
+          }
         </Carousel>
       </div>
 
