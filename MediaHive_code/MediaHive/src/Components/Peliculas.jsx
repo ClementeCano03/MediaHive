@@ -253,7 +253,7 @@ function Peliculas({ cambiarTituloPagina }) {
         <h2>Guardadas</h2>
         <Carousel ref={carouselRef} interval={null} indicators={false}>
           {
-            // Dividir el array 'movies' en subarrays de 5 elementos cada uno
+            // Dividir el array 'moviesSaved' en subarrays de 5 elementos cada uno
             [...Array(Math.ceil(moviesSaved.length / 5))].map((_, i) => {
               const start = i * 5;
               const end = start + 5;
@@ -284,7 +284,7 @@ function Peliculas({ cambiarTituloPagina }) {
         <h2>Estrenos</h2>
         <Carousel ref={carouselRef} interval={null} indicators={false}>
           {
-            // Dividir el array 'movies' en subarrays de 5 elementos cada uno
+            // Dividir el array 'upcomingMovies' en subarrays de 5 elementos cada uno
             [...Array(Math.ceil(upcomingMovies.length / 5))].map((_, i) => {
               const start = i * 5;
               const end = start + 5;

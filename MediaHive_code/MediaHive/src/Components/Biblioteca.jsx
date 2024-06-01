@@ -121,7 +121,7 @@ function Hive() {
                     <div className="series">
                         <Carousel ref={carouselRef} interval={null} indicators={false}>
                             {
-                                // Dividir el array 'series' en subarrays de 5 elementos cada uno
+                                // Dividir el array 'seriesSaved' en subarrays de 5 elementos cada uno
                                 [...Array(Math.ceil(seriesSaved.length / 5))].map((_, i) => {
                                     const start = i * 5;
                                     const end = start + 5;
@@ -152,7 +152,7 @@ function Hive() {
                     <div className="peliculas">
                         <Carousel ref={carouselRef} interval={null} indicators={false}>
                             {
-                                // Dividir el array 'movies' en subarrays de 5 elementos cada uno
+                                // Dividir el array 'moviesSaved' en subarrays de 5 elementos cada uno
                                 [...Array(Math.ceil(moviesSaved.length / 5))].map((_, i) => {
                                     const start = i * 5;
                                     const end = start + 5;
